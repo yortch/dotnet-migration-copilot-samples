@@ -3,22 +3,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSystemWebAdapters()
-    .AddWrappedAspNetCoreSession()
-    .AddJsonSessionSerializer(options =>
-    {
-        options.RegisterKey<string>("MachineName");
-        options.RegisterKey<string>("SessionStartTime");
-    })
-    .AddHttpApplication<MvcApplication>();
 
-// Add services to the container.
+// Remove SystemWebAdapters integration and configure Core services
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
+    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
@@ -27,12 +21,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
-app.UseSystemWebAdapters();
 
-// Add conventional default route mapping (replacing RouteTable.Routes Default)
+// Replace MapControllers + SystemWebAdapters with conventional routing
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-   .RequireSystemWebAdapterSession();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
