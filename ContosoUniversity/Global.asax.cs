@@ -1,11 +1,10 @@
 using System;
-using System.Web;
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Data;
 
 namespace ContosoUniversity
 {
-    public class MvcApplication : HttpApplication
+    public class MvcApplication
     {
         protected void Application_Start()
         {
