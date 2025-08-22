@@ -1,34 +1,43 @@
 using System;
-using System.Messaging;
-using System.Configuration;
+using System.Threading.Tasks;
+using System.Configuration; // kept for backward compat if needed
 using ContosoUniversity.Models;
 using Newtonsoft.Json;
+using Azure.Messaging.ServiceBus;
+using Microsoft.Extensions.Configuration;
 
 namespace ContosoUniversity.Services
 {
-    public class NotificationService
+    public class NotificationService : IDisposable
     {
-        private readonly string _queuePath;
-        private readonly MessageQueue _queue;
+        private readonly string _connectionString;
+        private readonly string _queueName;
+        private readonly ServiceBusClient _client;
+        private readonly ServiceBusSender _sender;
+        private readonly bool _enabled;
 
         public NotificationService()
         {
-            // Get queue path from configuration or use default
-            _queuePath = ConfigurationManager.AppSettings["NotificationQueuePath"] ?? @".\Private$\ContosoUniversityNotifications";
-            
-            // Ensure the queue exists
-            if (!MessageQueue.Exists(_queuePath))
+            // Load configuration from appsettings.json
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            _connectionString = config["Notification:ServiceBusConnectionString"];
+            _queueName = config["Notification:QueueName"] ?? "contosouniversity-notifications";
+
+            if (string.IsNullOrWhiteSpace(_connectionString))
             {
-                _queue = MessageQueue.Create(_queuePath);
-                _queue.SetPermissions("Everyone", MessageQueueAccessRights.FullControl);
+                _enabled = false;
+                System.Diagnostics.Debug.WriteLine("NotificationService disabled: ServiceBus connection string not configured.");
+                return;
             }
-            else
-            {
-                _queue = new MessageQueue(_queuePath);
-            }
-            
-            // Configure queue formatter
-            _queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+
+            _enabled = true;
+            _client = new ServiceBusClient(_connectionString);
+            _sender = _client.CreateSender(_queueName);
         }
 
         public void SendNotification(string entityType, string entityId, EntityOperation operation, string userName = null)
@@ -40,6 +49,11 @@ namespace ContosoUniversity.Services
         {
             try
             {
+                if (!_enabled)
+                {
+                    return;
+                }
+
                 var notification = new Notification
                 {
                     EntityType = entityType,
@@ -52,13 +66,13 @@ namespace ContosoUniversity.Services
                 };
 
                 var jsonMessage = JsonConvert.SerializeObject(notification);
-                var message = new Message(jsonMessage)
+                var message = new ServiceBusMessage(jsonMessage)
                 {
-                    Label = $"{entityType} {operation}",
-                    Priority = MessagePriority.Normal
+                    Subject = $"{entityType} {operation}"
                 };
 
-                _queue.Send(message);
+                // send synchronously-compatible
+                _sender.SendMessageAsync(message).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
@@ -71,14 +85,26 @@ namespace ContosoUniversity.Services
         {
             try
             {
-                var message = _queue.Receive(TimeSpan.FromSeconds(1));
+                if (!_enabled)
+                {
+                    return null;
+                }
+
+                // Use a receiver scoped for this call to avoid keeping open long-lived receivers
+                var receiver = _client.CreateReceiver(_queueName);
+                var message = receiver.ReceiveMessageAsync(TimeSpan.FromSeconds(1)).GetAwaiter().GetResult();
+                if (message == null)
+                {
+                    return null;
+                }
+
                 var jsonContent = message.Body.ToString();
-                return JsonConvert.DeserializeObject<Notification>(jsonContent);
-            }
-            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)
-            {
-                // No messages available
-                return null;
+                var notification = JsonConvert.DeserializeObject<Notification>(jsonContent);
+
+                // Complete message to remove from queue
+                receiver.CompleteMessageAsync(message).GetAwaiter().GetResult();
+                receiver.DisposeAsync().AsTask().GetAwaiter().GetResult();
+                return notification;
             }
             catch (Exception ex)
             {
@@ -114,7 +140,12 @@ namespace ContosoUniversity.Services
 
         public void Dispose()
         {
-            _queue?.Dispose();
+            try
+            {
+                _sender?.DisposeAsync().AsTask().GetAwaiter().GetResult();
+                _client?.DisposeAsync().AsTask().GetAwaiter().GetResult();
+            }
+            catch { }
         }
     }
 }
