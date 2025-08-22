@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
 using System.Net;
 using System.IO;
 using System.Web;
@@ -57,7 +58,7 @@ namespace ContosoUniversity.Controllers
                     var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
                     var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();
 
-                    if (!allowedExtensions.Contains(fileExtension))
+                    if (!(allowedExtensions as IEnumerable<string>).Contains(fileExtension))
                     {
                         ModelState.AddModelError("teachingMaterialImage", "Please upload a valid image file (jpg, jpeg, png, gif, bmp).");
                         ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name", course.DepartmentID);
@@ -140,7 +141,7 @@ namespace ContosoUniversity.Controllers
                     var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
                     var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();
 
-                    if (!allowedExtensions.Contains(fileExtension))
+                    if (!(allowedExtensions as IEnumerable<string>).Contains(fileExtension))
                     {
                         ModelState.AddModelError("teachingMaterialImage", "Please upload a valid image file (jpg, jpeg, png, gif, bmp).");
                         ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name", course.DepartmentID);
