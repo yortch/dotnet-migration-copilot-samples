@@ -147,7 +147,7 @@ namespace ContosoUniversity.Controllers
                .Where(i => i.ID == id)
                .Single();
 
-            if (TryUpdateModelAsync<Instructor>(instructorToUpdate, "", new string[] { "LastName", "FirstMidName", "HireDate", "OfficeAssignment" }))
+            if (TryUpdateModelAsync<Instructor>(instructorToUpdate, "", null, new string[] { "LastName", "FirstMidName", "HireDate", "OfficeAssignment" }).Result)
             {
                 try
                 {
