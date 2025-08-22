@@ -10,7 +10,6 @@ namespace ContosoUniversity
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             // RouteConfig removed; routing now configured in Program.cs
             // BundleConfig removed; bundling replaced with direct tags/CDN
