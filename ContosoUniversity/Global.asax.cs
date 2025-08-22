@@ -1,6 +1,5 @@
 using System;
 using System.Web;
-using System.Web.Optimization;
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Data;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,9 +12,9 @@ namespace ContosoUniversity
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+            // RouteConfig removed; routing now configured in Program.cs
+            // BundleConfig removed; bundling replaced with direct tags/CDN
+
             // Initialize database with EF Core
             InitializeDatabase();
         }

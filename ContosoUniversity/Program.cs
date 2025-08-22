@@ -29,7 +29,10 @@ app.UseRouting();
 app.UseSession();
 app.UseSystemWebAdapters();
 
-app.MapControllers()
-    .RequireSystemWebAdapterSession();
+// Add conventional default route mapping (replacing RouteTable.Routes Default)
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+   .RequireSystemWebAdapterSession();
 
 app.Run();
