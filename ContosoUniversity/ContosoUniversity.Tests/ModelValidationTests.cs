@@ -38,6 +38,21 @@ namespace ContosoUniversity.Tests
         }
 
         [Test]
+        public void StudentEnrollmentDateWithinRangeIsValid()
+        {
+            var student = new Student
+            {
+                FirstMidName = "Jenna",
+                LastName = "Lee",
+                EnrollmentDate = new DateTime(2020, 1, 1)
+            };
+
+            var results = ValidateModel(student);
+
+            Assert.That(results, Is.Empty);
+        }
+
+        [Test]
         public void CourseCreditsMustBeWithinRange()
         {
             var course = new Course
@@ -54,6 +69,22 @@ namespace ContosoUniversity.Tests
         }
 
         [Test]
+        public void CourseCreditsWithinRangeAreValid()
+        {
+            var course = new Course
+            {
+                CourseID = 44,
+                Title = "Biology",
+                Credits = 4,
+                DepartmentID = 1
+            };
+
+            var results = ValidateModel(course);
+
+            Assert.That(results, Is.Empty);
+        }
+
+        [Test]
         public void CourseTitleMustMeetMinimumLength()
         {
             var course = new Course
@@ -67,6 +98,22 @@ namespace ContosoUniversity.Tests
             var results = ValidateModel(course);
 
             Assert.That(results.Any(result => result.MemberNames.Contains(nameof(Course.Title))), Is.True);
+        }
+
+        [Test]
+        public void CourseTitleMeetingMinimumLengthIsValid()
+        {
+            var course = new Course
+            {
+                CourseID = 45,
+                Title = "AI Lab",
+                Credits = 3,
+                DepartmentID = 1
+            };
+
+            var results = ValidateModel(course);
+
+            Assert.That(results, Is.Empty);
         }
 
         private static IList<ValidationResult> ValidateModel(object model)
