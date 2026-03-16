@@ -1,27 +1,25 @@
-# Scenario Instructions
+# .NET 10 Upgrade
 
-## Scenario Parameters
-- **Solution**: D:\a\dotnet-migration-copilot-samples\dotnet-migration-copilot-samples\ContosoUniversity\ContosoUniversity.sln
-- **Target Framework**: net10.0 (.NET 10.0 LTS)
+## Strategy
+**All-At-Once** — Single project upgraded in one operation, organized by concern area.
+**Rationale**: Single project (ContosoUniversity), clear migration path from ASP.NET MVC 5 to ASP.NET Core.
+
+### Execution Constraints
+- Single atomic upgrade — all concerns updated together
+- Validate full solution build after upgrade
+- No tier ordering needed — single project
+
+## Preferences
+- **Flow Mode**: Automatic
+- **Commit Strategy**: After Each Task
+- **Target Framework**: net10.0
 - **Source Branch**: main
 - **Working Branch**: upgrade-to-net10-coding-agent
 
-## Preferences
-
-### Flow Mode
-**Automatic** — Run end-to-end, only pause when blocked or needing user input.
-
-### Technical Preferences
-(None yet)
-
-### Execution Style
-(None yet)
-
-### Custom Instructions
-(None yet)
-
-## Key Decisions Log
-- 2026-03-16: User requested upgrade to .NET 10 with branch name `upgrade-to-net10-coding-agent` and PR creation upon completion.
-
-## User Preferences
+## Decisions
+- Use All-at-Once strategy (single project)
+- Replace MSMQ NotificationService with in-memory ConcurrentQueue implementation
 - Create a pull request when complete
+
+## Custom Instructions
+<!-- Task-specific overrides -->
