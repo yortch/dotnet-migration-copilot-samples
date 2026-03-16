@@ -3,12 +3,15 @@
   "operationId": "d7d0b490-f8e6-4ab5-9cff-ac40f4d5e420",
   "description": "Upgrade .NET projects to newer .NET versions",
   "startTime": "2026-03-16T17:41:52.4683726Z",
-  "lastUpdateTime": "2026-03-16T17:47:53.9576049Z",
+  "lastUpdateTime": "2026-03-16T17:56:49.4895401Z",
   "properties": {
+    "task:04-controllers-views:startedAt": "2026-03-16T17:56:23.8639315Z",
     "UpgradeTargetFramework": "net10.0",
-    "currentTask": "03-aspnet-core-bootstrap",
+    "currentTask": "06-build-validation",
     "task:03-aspnet-core-bootstrap:startedAt": "2026-03-16T17:47:53.9575954Z",
+    "task:05-services-infrastructure:startedAt": "2026-03-16T17:56:37.9945420Z",
     "task:01-sdk-conversion:startedAt": "2026-03-16T17:46:14.2331556Z",
+    "task:06-build-validation:startedAt": "2026-03-16T17:56:49.4895325Z",
     "task:02-framework-packages:startedAt": "2026-03-16T17:46:59.6059991Z"
   },
   "folderPath": ""
