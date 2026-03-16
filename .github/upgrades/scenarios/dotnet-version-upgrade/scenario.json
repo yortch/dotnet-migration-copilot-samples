@@ -1,0 +1,11 @@
+{
+  "scenarioId": "dotnet-version-upgrade",
+  "operationId": "d7d0b490-f8e6-4ab5-9cff-ac40f4d5e420",
+  "description": "Upgrade .NET projects to newer .NET versions",
+  "startTime": "2026-03-16T17:41:52.4683726Z",
+  "lastUpdateTime": "2026-03-16T17:42:40.0513977Z",
+  "properties": {
+    "UpgradeTargetFramework": "net10.0"
+  },
+  "folderPath": ""
+}
