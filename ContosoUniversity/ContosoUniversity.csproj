@@ -50,6 +50,9 @@
     </PackageReference>
     <!-- JSON -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <!-- Microsoft Entra ID Authentication -->
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.7.1" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup Label="Compile items now included by globbing that were not in the original project file">
     <Compile Remove="Services\LoggingService.cs" />

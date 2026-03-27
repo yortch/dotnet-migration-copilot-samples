@@ -26,7 +26,7 @@ namespace ContosoUniversity.Controllers
         {
             try
             {
-                var userName = "System"; // No authentication, use System as default user
+                var userName = User.Identity?.Name ?? "System";
                 notificationService.SendNotification(entityType, entityId, entityDisplayName, operation, userName);
             }
             catch (Exception ex)

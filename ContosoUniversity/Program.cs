@@ -1,12 +1,20 @@
 using ContosoUniversity.Data;
 using ContosoUniversity.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Microsoft Entra ID authentication
+builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration);
+
 // Add MVC services
 builder.Services.AddControllersWithViews()
-    .AddNewtonsoftJson();
+    .AddNewtonsoftJson()
+    .AddMicrosoftIdentityUI();
+
+builder.Services.AddRazorPages();
 
 // Register EF Core DbContext with connection string from appsettings.json
 builder.Services.AddDbContext<SchoolContext>(options =>
@@ -32,11 +40,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 // Initialize the database
 using (var scope = app.Services.CreateScope())
