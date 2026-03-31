@@ -1,0 +1,3450 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-03-31T19:07:24.5686996Z",
+  "analysisEndTime": "2026-03-31T19:07:33.7567264Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 16,
+      "incidents": 147,
+      "effort": 147
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 90,
+        "Optional": 4,
+        "Potential": 53,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 40,
+        "Project": 2,
+        "Feature": 13,
+        "Api": 92
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "ContosoUniversity.csproj",
+      "startingProject": true,
+      "issues": 13,
+      "storyPoints": 147,
+      "properties": {
+        "appName": "ContosoUniversity",
+        "projectKind": "Wap",
+        "frameworks": [
+          "net48"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 83,
+        "numberOfCodeFiles": 56,
+        "linesTotal": 16497,
+        "linesOfCode": 3392,
+        "totalApiScanned": 1365,
+        "minLinesOfCodeToChange": 92,
+        "maxLinesOfCodeToChange": 92
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "b9a3ff3e-7fa7-48a2-a1e7-84f77cd47917",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Antlr, 3.4.1.9004\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+              "protected": "Antlr, 3.4.1.9004\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Antlr, 3.4.1.9004\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "protectedSnippet": "Antlr, 3.4.1.9004\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "label": "Antlr 3.4.1.9004",
+            "properties": {
+              "PackageId": "Antlr",
+              "PackageVersion": "3.4.1.9004",
+              "PackageNewVersion": null,
+              "PackageReplacements": "Replace with new package Antlr4=4.6.6"
+            }
+          }
+        },
+        {
+          "incidentId": "5e66e993-4e93-4051-b930-b71f0fb62796",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Mvc, 5.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.Mvc, 5.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.AspNet.Mvc, 5.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.Mvc, 5.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.Mvc 5.2.9",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Mvc",
+              "PackageVersion": "5.2.9",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "dacdf328-f95d-4eee-9712-830ed4100b75",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Razor, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.Razor, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.AspNet.Razor, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.Razor, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.Razor 3.2.9",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Razor",
+              "PackageVersion": "3.2.9",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ee1cf9c2-9339-4c5b-8b7e-de6b20d48c9a",
+          "ruleId": "NuGet.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.Web.Optimization 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ceae8667-5af5-428b-bb2f-ef6ecb040e17",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.WebPages, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.WebPages, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.AspNet.WebPages, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.WebPages, 3.2.9\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.WebPages 3.2.9",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.WebPages",
+              "PackageVersion": "3.2.9",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9c56fb75-4a8c-4edb-9f56-f1b77f4e879d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.AsyncInterfaces, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 10.0.5",
+              "protected": "Microsoft.Bcl.AsyncInterfaces, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Bcl.AsyncInterfaces, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 10.0.5",
+            "protectedSnippet": "Microsoft.Bcl.AsyncInterfaces, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 10.0.5",
+            "label": "Microsoft.Bcl.AsyncInterfaces 1.1.1",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.AsyncInterfaces",
+              "PackageVersion": "1.1.1",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "7b28a69b-2e35-41ac-8fb8-b24cc45234c6",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+              "protected": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+            "protectedSnippet": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecommendation:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+            "label": "Microsoft.Bcl.HashCode 1.1.1",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.HashCode",
+              "PackageVersion": "1.1.1",
+              "PackageNewVersion": "6.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2ce9bed7-80b0-4ede-a8fa-3e1059ca4f91",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform 2.0.1",
+            "properties": {
+              "PackageId": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+              "PackageVersion": "2.0.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "61ddc8a4-fdd6-4ecb-be08-3e8931dbd6e9",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9135df94-ba2a-4f01-97e9-52c1ee1a679a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e114ba6a-b9d1-43c0-8a4e-1b4f25e9a6bc",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Analyzers 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Analyzers",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "997911ae-378a-4d20-b0b3-34e2fe8cf18d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Relational 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Relational",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "adf2ff00-bcc1-49c1-adf9-0a342899440c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.SqlServer, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.SqlServer, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.SqlServer, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.SqlServer 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.SqlServer",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a82deee2-89b5-49bb-90a4-365b0eb320b6",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Tools 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Tools",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ae606251-8ac0-40d0-8b01-4801a9993398",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Caching.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.5",
+              "protected": "Microsoft.Extensions.Caching.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Caching.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Caching.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.5",
+            "label": "Microsoft.Extensions.Caching.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Caching.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "dbe04aaf-d545-4120-8225-199efb56da3b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Caching.Memory, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.5",
+              "protected": "Microsoft.Extensions.Caching.Memory, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Caching.Memory, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Caching.Memory, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.5",
+            "label": "Microsoft.Extensions.Caching.Memory 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Caching.Memory",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "65be6d37-b647-4ac6-9c42-9d5f2ac82e04",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.5",
+              "protected": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.5",
+            "label": "Microsoft.Extensions.Configuration 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "702953f1-6442-4699-9b87-3d32c3c8807a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.5",
+              "protected": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.5",
+            "label": "Microsoft.Extensions.Configuration.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "7083d077-5838-44da-a5b7-821e51de0929",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.5",
+              "protected": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.5",
+            "label": "Microsoft.Extensions.Configuration.Binder 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration.Binder",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "80ae8101-2525-4503-bf3f-1ab20387ff96",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.DependencyInjection, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.5",
+              "protected": "Microsoft.Extensions.DependencyInjection, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.DependencyInjection, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.DependencyInjection, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.5",
+            "label": "Microsoft.Extensions.DependencyInjection 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.DependencyInjection",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ebdb59ee-6466-4bc5-9068-f793031a35e4",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.DependencyInjection.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.5",
+              "protected": "Microsoft.Extensions.DependencyInjection.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.DependencyInjection.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.DependencyInjection.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.5",
+            "label": "Microsoft.Extensions.DependencyInjection.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.DependencyInjection.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ae8245b9-dd0c-46da-83d5-0e515d5979f5",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.5",
+              "protected": "Microsoft.Extensions.Logging, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Logging, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Logging, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.5",
+            "label": "Microsoft.Extensions.Logging 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "824538c4-518f-4a72-9c9c-6dd22a490d50",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.5",
+              "protected": "Microsoft.Extensions.Logging.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Abstractions, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.5",
+            "label": "Microsoft.Extensions.Logging.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "25782240-8863-4171-b8f7-ef5f57e5de71",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Options, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.5",
+              "protected": "Microsoft.Extensions.Options, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Options, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Options, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.5",
+            "label": "Microsoft.Extensions.Options 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Options",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b0fb3ac8-dc77-434b-9e5a-636389b2c314",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Primitives, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.5",
+              "protected": "Microsoft.Extensions.Primitives, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Extensions.Primitives, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Primitives, 3.1.32\n\nRecommendation:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.5",
+            "label": "Microsoft.Extensions.Primitives 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Primitives",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f681e133-23c6-4d54-af28-d05953bded65",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Web.Infrastructure, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.Web.Infrastructure, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Web.Infrastructure, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.Web.Infrastructure, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.Web.Infrastructure 2.0.1",
+            "properties": {
+              "PackageId": "Microsoft.Web.Infrastructure",
+              "PackageVersion": "2.0.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "aab38e96-ea49-4b8f-bc1b-f19b56e83d9e",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "NETStandard.Library, 2.0.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "NETStandard.Library, 2.0.3\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "NETStandard.Library, 2.0.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "NETStandard.Library, 2.0.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "NETStandard.Library 2.0.3",
+            "properties": {
+              "PackageId": "NETStandard.Library",
+              "PackageVersion": "2.0.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "69e15c36-a920-4e78-b560-a1cd6ba5e810",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 13.0.3",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "13.0.3",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "57684f01-acc8-44de-9e75-3df898679310",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Buffers, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Buffers, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Buffers, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Buffers, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Buffers 4.5.1",
+            "properties": {
+              "PackageId": "System.Buffers",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d2820d41-afbf-4d91-a405-6a17d764502c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Collections.Immutable, 1.7.1\n\nRecommendation:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.5",
+              "protected": "System.Collections.Immutable, 1.7.1\n\nRecommendation:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Collections.Immutable, 1.7.1\n\nRecommendation:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.5",
+            "protectedSnippet": "System.Collections.Immutable, 1.7.1\n\nRecommendation:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.5",
+            "label": "System.Collections.Immutable 1.7.1",
+            "properties": {
+              "PackageId": "System.Collections.Immutable",
+              "PackageVersion": "1.7.1",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "44c7032f-21ae-4c59-84da-6133c3fe8e8c",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.ComponentModel.Annotations, 4.7.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.ComponentModel.Annotations, 4.7.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.ComponentModel.Annotations, 4.7.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.ComponentModel.Annotations, 4.7.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.ComponentModel.Annotations 4.7.0",
+            "properties": {
+              "PackageId": "System.ComponentModel.Annotations",
+              "PackageVersion": "4.7.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e8e980ce-5719-4203-abf9-c20715a88dd3",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Diagnostics.DiagnosticSource, 4.7.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.5",
+              "protected": "System.Diagnostics.DiagnosticSource, 4.7.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.5"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Diagnostics.DiagnosticSource, 4.7.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.5",
+            "protectedSnippet": "System.Diagnostics.DiagnosticSource, 4.7.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.5",
+            "label": "System.Diagnostics.DiagnosticSource 4.7.1",
+            "properties": {
+              "PackageId": "System.Diagnostics.DiagnosticSource",
+              "PackageVersion": "4.7.1",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "bbc9ec4e-dad7-4ee4-8b01-1ad70af277a3",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Memory, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Memory, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Memory, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Memory, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Memory 4.5.4",
+            "properties": {
+              "PackageId": "System.Memory",
+              "PackageVersion": "4.5.4",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "eeb9e7ba-defa-450f-92c3-3b5c9685b593",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Numerics.Vectors, 4.5.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Numerics.Vectors, 4.5.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Numerics.Vectors, 4.5.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Numerics.Vectors, 4.5.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Numerics.Vectors 4.5.0",
+            "properties": {
+              "PackageId": "System.Numerics.Vectors",
+              "PackageVersion": "4.5.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3da49400-e0ee-4653-b7ed-23ec63ade9bd",
+          "ruleId": "NuGet.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Runtime.CompilerServices.Unsafe, 4.5.3\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+              "protected": "System.Runtime.CompilerServices.Unsafe, 4.5.3\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Runtime.CompilerServices.Unsafe, 4.5.3\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "protectedSnippet": "System.Runtime.CompilerServices.Unsafe, 4.5.3\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "label": "System.Runtime.CompilerServices.Unsafe 4.5.3",
+            "properties": {
+              "PackageId": "System.Runtime.CompilerServices.Unsafe",
+              "PackageVersion": "4.5.3",
+              "PackageNewVersion": "6.1.2",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "39b40bad-074c-436b-a129-5e2c19317b79",
+          "ruleId": "NuGet.0003",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Tasks.Extensions, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Threading.Tasks.Extensions, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "System.Threading.Tasks.Extensions, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Threading.Tasks.Extensions, 4.5.4\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Threading.Tasks.Extensions 4.5.4",
+            "properties": {
+              "PackageId": "System.Threading.Tasks.Extensions",
+              "PackageVersion": "4.5.4",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "7f2bcef8-02b9-431f-9c2b-134f8d5c48de",
+          "ruleId": "NuGet.0005",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+              "protected": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+            "label": "Microsoft.AspNet.Web.Optimization 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2ac3a2bf-a5bf-4d17-bae0-762fac716e67",
+          "ruleId": "NuGet.0004",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nMicrosoft.Data.SqlClient, 7.0.0",
+              "protected": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nMicrosoft.Data.SqlClient, 7.0.0"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nMicrosoft.Data.SqlClient, 7.0.0",
+            "protectedSnippet": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nMicrosoft.Data.SqlClient, 7.0.0",
+            "label": "Microsoft.Data.SqlClient 2.1.4",
+            "properties": {
+              "PackageId": "Microsoft.Data.SqlClient",
+              "PackageVersion": "2.1.4",
+              "PackageNewVersion": "7.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "62d20fd0-e696-4201-8555-e9fe3f44c4de",
+          "ruleId": "NuGet.0005",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nAn important security issue exists in this version of the package. It is recommended to update to a newer version.\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-0056\nRemove Microsoft.Data.SqlClient, and replace with new package Microsoft.Data.SqlClient, 7.0.0",
+              "protected": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nAn important security issue exists in this version of the package. It is recommended to update to a newer version.\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-0056\nRemove Microsoft.Data.SqlClient, and replace with new package Microsoft.Data.SqlClient, 7.0.0"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nAn important security issue exists in this version of the package. It is recommended to update to a newer version.\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-0056\nRemove Microsoft.Data.SqlClient, and replace with new package Microsoft.Data.SqlClient, 7.0.0",
+            "protectedSnippet": "Microsoft.Data.SqlClient, 2.1.4\n\nRecommendation:\n\nAn important security issue exists in this version of the package. It is recommended to update to a newer version.\nhttps://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-0056\nRemove Microsoft.Data.SqlClient, and replace with new package Microsoft.Data.SqlClient, 7.0.0",
+            "label": "Microsoft.Data.SqlClient 2.1.4",
+            "properties": {
+              "PackageId": "Microsoft.Data.SqlClient",
+              "PackageVersion": "2.1.4",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ea8341af-09a8-49db-865b-bcc1f3313a0f",
+          "ruleId": "NuGet.0005",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Identity.Client, 4.21.1\n\nRecommendation:\n\nMove to latest Microsoft.Identity.Client. See https://aka.ms/msal/LTS for details.\nRemove Microsoft.Identity.Client, and replace with new package Microsoft.Identity.Client, 4.83.3",
+              "protected": "Microsoft.Identity.Client, 4.21.1\n\nRecommendation:\n\nMove to latest Microsoft.Identity.Client. See https://aka.ms/msal/LTS for details.\nRemove Microsoft.Identity.Client, and replace with new package Microsoft.Identity.Client, 4.83.3"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Microsoft.Identity.Client, 4.21.1\n\nRecommendation:\n\nMove to latest Microsoft.Identity.Client. See https://aka.ms/msal/LTS for details.\nRemove Microsoft.Identity.Client, and replace with new package Microsoft.Identity.Client, 4.83.3",
+            "protectedSnippet": "Microsoft.Identity.Client, 4.21.1\n\nRecommendation:\n\nMove to latest Microsoft.Identity.Client. See https://aka.ms/msal/LTS for details.\nRemove Microsoft.Identity.Client, and replace with new package Microsoft.Identity.Client, 4.83.3",
+            "label": "Microsoft.Identity.Client 4.21.1",
+            "properties": {
+              "PackageId": "Microsoft.Identity.Client",
+              "PackageVersion": "4.21.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6cb4b2f0-575a-4bfe-b249-c42211bc89c0",
+          "ruleId": "Project.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "ContosoUniversity.csproj"
+          }
+        },
+        {
+          "incidentId": "5f9341dc-e34b-491e-ad1c-11dc27eb4e90",
+          "ruleId": "Project.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net10.0",
+              "protected": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "ContosoUniversity.csproj",
+            "snippet": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.8",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "ecc5d9bb-afaa-4f4c-8fc9-44db56a7bf6f",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Courses\\Create.cshtml"
+          }
+        },
+        {
+          "incidentId": "b6c3da54-5a28-467d-98a6-3644f246cd6f",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Courses\\Edit.cshtml"
+          }
+        },
+        {
+          "incidentId": "82e908e0-c805-4ec2-a453-ff272450df4e",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Departments\\Create.cshtml"
+          }
+        },
+        {
+          "incidentId": "46ed5511-095d-46f1-b197-a8063936d1f3",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Departments\\Edit.cshtml"
+          }
+        },
+        {
+          "incidentId": "d76495ae-405a-4bdb-8da4-3985cf3a3d28",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Instructors\\Create.cshtml"
+          }
+        },
+        {
+          "incidentId": "94ab214a-60d6-49dd-86e4-fb3a4973696c",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Instructors\\Edit.cshtml"
+          }
+        },
+        {
+          "incidentId": "fe84ec52-d135-4d1c-b813-9b6694c8b705",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Shared\\_Layout.cshtml"
+          }
+        },
+        {
+          "incidentId": "f4bc3bc9-e1ae-46e9-88c5-57a742223cab",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Students\\Create.cshtml"
+          }
+        },
+        {
+          "incidentId": "50bf8ed6-cdcb-4525-9407-a5d82c594bb4",
+          "ruleId": "Feature.0001",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Views\\Students\\Edit.cshtml"
+          }
+        },
+        {
+          "incidentId": "0a009be2-835c-4360-a379-0369896db7e4",
+          "ruleId": "Feature.1000",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Global.asax.cs"
+          }
+        },
+        {
+          "incidentId": "fbeaf9e9-436f-4674-ac6b-310a56a81fe7",
+          "ruleId": "Feature.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Global.asax.cs"
+          }
+        },
+        {
+          "incidentId": "31cced75-39f1-4fc0-bdd6-f690a20cb1d1",
+          "ruleId": "Feature.0002",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "App_Start\\RouteConfig.cs"
+          }
+        },
+        {
+          "incidentId": "a1df314f-4559-4591-9aaf-f5340a10857b",
+          "ruleId": "Feature.0008",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "Services\\NotificationService.cs"
+          }
+        },
+        {
+          "incidentId": "db4533d1-acb2-4649-bdeb-1e6373568ab9",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue?.Dispose();",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue?.Dispose();",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 116,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "588ba9da-d3d6-4d8d-9a52-ce74308e203d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+              "protected": "T:System.Messaging.MessageQueueErrorCode"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+            "protectedSnippet": "T:System.Messaging.MessageQueueErrorCode",
+            "label": "T:System.Messaging.MessageQueueErrorCode",
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b07dfb60-0669-4db2-8d89-94092e8a32d7",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+              "protected": "T:System.Messaging.MessageQueueErrorCode"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+            "protectedSnippet": "T:System.Messaging.MessageQueueErrorCode",
+            "label": "T:System.Messaging.MessageQueueErrorCode",
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "99ccf13a-3ac7-4a31-b291-f19ae7cdc2d5",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+              "protected": "F:System.Messaging.MessageQueueErrorCode.IOTimeout"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+            "protectedSnippet": "F:System.Messaging.MessageQueueErrorCode.IOTimeout",
+            "label": "F:System.Messaging.MessageQueueErrorCode.IOTimeout",
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "886b0360-0fa3-453c-b2d6-e2edcadd974a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+              "protected": "T:System.Messaging.MessageQueueErrorCode"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+            "protectedSnippet": "T:System.Messaging.MessageQueueErrorCode",
+            "label": "T:System.Messaging.MessageQueueErrorCode",
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "cf0d31b6-ce0f-4aee-9f1e-edd2ec43b964",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+              "protected": "P:System.Messaging.MessageQueueException.MessageQueueErrorCode"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "try\r\n            {\r\n                var message = _queue.Receive(TimeSpan.FromSeconds(1));\r\n                var jsonContent = message.Body.ToString();\r\n                return JsonConvert.DeserializeObject\u003CNotification\u003E(jsonContent);\r\n            }\r\n            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)\r\n            {\r\n                // No messages available\r\n                return null;\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                System.Diagnostics.Debug.WriteLine($\u0022Failed to receive notification: {ex.Message}\u0022);\r\n                return null;\r\n            }",
+            "protectedSnippet": "P:System.Messaging.MessageQueueException.MessageQueueErrorCode",
+            "label": "P:System.Messaging.MessageQueueException.MessageQueueErrorCode",
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "fe52fde5-d21b-4dc3-a991-00976eb43078",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var jsonContent = message.Body.ToString();",
+              "protected": "P:System.Messaging.Message.Body"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var jsonContent = message.Body.ToString();",
+            "protectedSnippet": "P:System.Messaging.Message.Body",
+            "label": "P:System.Messaging.Message.Body",
+            "line": 74,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "ed67c40f-975c-4222-83ee-2cf0df34c08b",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+              "protected": "M:System.TimeSpan.FromSeconds(System.Double)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+            "protectedSnippet": "M:System.TimeSpan.FromSeconds(System.Double)",
+            "label": "M:System.TimeSpan.FromSeconds(System.Double)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 73,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "33edb087-55c5-4fb6-9d7e-da2d1969f90b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 73,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "0d26cdd1-38de-4dfd-bf1f-516973514580",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+              "protected": "T:System.Messaging.Message"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+            "protectedSnippet": "T:System.Messaging.Message",
+            "label": "T:System.Messaging.Message",
+            "line": 73,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "4634af1b-6a73-4b22-bef6-3ca4265bb467",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+              "protected": "M:System.Messaging.MessageQueue.Receive(System.TimeSpan)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = _queue.Receive(TimeSpan.FromSeconds(1));",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Receive(System.TimeSpan)",
+            "label": "M:System.Messaging.MessageQueue.Receive(System.TimeSpan)",
+            "line": 73,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "cd93a6a4-2e9d-4519-8990-58734a6e1e0c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Send(message);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Send(message);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 60,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "c3b611d0-4df1-4415-931e-f34c940a2b6b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Send(message);",
+              "protected": "M:System.Messaging.MessageQueue.Send(System.Object)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Send(message);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Send(System.Object)",
+            "label": "M:System.Messaging.MessageQueue.Send(System.Object)",
+            "line": 60,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "17318690-3b96-46d3-9f88-7e9b42f370b9",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "T:System.Messaging.MessagePriority"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "T:System.Messaging.MessagePriority",
+            "label": "T:System.Messaging.MessagePriority",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "a4a2db1e-6e07-40ba-8904-521e66b832a3",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "T:System.Messaging.MessagePriority"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "T:System.Messaging.MessagePriority",
+            "label": "T:System.Messaging.MessagePriority",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "e43f8bd6-91c1-4ffd-be00-dc7a6e9bae93",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "F:System.Messaging.MessagePriority.Normal"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "F:System.Messaging.MessagePriority.Normal",
+            "label": "F:System.Messaging.MessagePriority.Normal",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "5ff7f814-8dc1-4ad6-a784-bfdf58ee9f85",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "T:System.Messaging.MessagePriority"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "T:System.Messaging.MessagePriority",
+            "label": "T:System.Messaging.MessagePriority",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "be46e88f-b9d5-4c7f-ba19-ec330befdb9a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "P:System.Messaging.Message.Priority"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "P:System.Messaging.Message.Priority",
+            "label": "P:System.Messaging.Message.Priority",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "fe2a0d69-1b63-4e3c-bd83-7f947bb8251d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "P:System.Messaging.Message.Label"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "P:System.Messaging.Message.Label",
+            "label": "P:System.Messaging.Message.Label",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "07fe771c-d1ef-42b0-8d03-9c6155123fc6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "T:System.Messaging.Message"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "T:System.Messaging.Message",
+            "label": "T:System.Messaging.Message",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "1f16d378-ae73-4474-a2bb-8844e2f34104",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+              "protected": "M:System.Messaging.Message.#ctor(System.Object)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "var message = new Message(jsonMessage)\r\n                {\r\n                    Label = $\u0022{entityType} {operation}\u0022,\r\n                    Priority = MessagePriority.Normal\r\n                };",
+            "protectedSnippet": "M:System.Messaging.Message.#ctor(System.Object)",
+            "label": "M:System.Messaging.Message.#ctor(System.Object)",
+            "line": 54,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "bfb46d95-4cdf-40b3-a48e-4a215add6af1",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.XmlMessageFormatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.XmlMessageFormatter",
+            "label": "T:System.Messaging.XmlMessageFormatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "49c3dcbd-5232-4ea9-b751-470f1a22a2ab",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])",
+            "label": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "31b0da3c-e4ed-419c-a97e-c33cbc5bb731",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d2603441-18c7-46ad-a2b6-ae15548acfcf",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.IMessageFormatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.IMessageFormatter",
+            "label": "T:System.Messaging.IMessageFormatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "bd4c95fd-0ee8-4a29-ad1f-54b26d17de97",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "P:System.Messaging.MessageQueue.Formatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "P:System.Messaging.MessageQueue.Formatter",
+            "label": "P:System.Messaging.MessageQueue.Formatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a4cef3d3-96b6-4c74-a591-d136cf010cff",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "c8bc852c-b050-47e9-8bb2-6f7fd3d832a6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "M:System.Messaging.MessageQueue.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.#ctor(System.String)",
+            "label": "M:System.Messaging.MessageQueue.#ctor(System.String)",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "9fd36726-2390-4f81-9700-35274522e02f",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "1ed462fe-b622-4e39-9ed8-94d6cc8b9872",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueueAccessRights"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueueAccessRights",
+            "label": "T:System.Messaging.MessageQueueAccessRights",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "fac5fbd3-f52f-4413-94c2-94a0a81290f0",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueueAccessRights"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueueAccessRights",
+            "label": "T:System.Messaging.MessageQueueAccessRights",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "6f8e4d46-361e-4d1d-b548-db8ae5c1556b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "F:System.Messaging.MessageQueueAccessRights.FullControl"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "F:System.Messaging.MessageQueueAccessRights.FullControl",
+            "label": "F:System.Messaging.MessageQueueAccessRights.FullControl",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "fdf28082-2f3e-4f62-95e4-3cbfe7758f8e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "9b310184-31b4-4975-8a36-74d76d154519",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)",
+            "label": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "0c896ab7-ca80-4a63-94ee-15fcd6297d52",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "81eff17d-5e69-4258-8ab4-27ac0f347f4c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "4ba17249-3ed5-4f41-b20e-a709a816b545",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "M:System.Messaging.MessageQueue.Create(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Create(System.String)",
+            "label": "M:System.Messaging.MessageQueue.Create(System.String)",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "681a505a-fe43-4fe8-8df6-e7749d14884e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "bf118bd7-cb86-4d10-b206-bb2d3e02bcf9",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 19,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "faa72627-f86b-4bfc-89f4-730cd4fb42a0",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+              "protected": "M:System.Messaging.MessageQueue.Exists(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Exists(System.String)",
+            "label": "M:System.Messaging.MessageQueue.Exists(System.String)",
+            "line": 19,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "4e136a7b-b19a-4ad6-b320-fba592218283",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+              "protected": "T:System.Configuration.ConfigurationManager"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+            "protectedSnippet": "T:System.Configuration.ConfigurationManager",
+            "label": "T:System.Configuration.ConfigurationManager",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ee1cd6b1-e8a1-4628-9735-85d900a17f2e",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+              "protected": "P:System.Configuration.ConfigurationManager.AppSettings"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+            "protectedSnippet": "P:System.Configuration.ConfigurationManager.AppSettings",
+            "label": "P:System.Configuration.ConfigurationManager.AppSettings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "794eb2e4-635c-40a5-9a76-6ec41eb5d60b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 11,
+            "column": 38
+          }
+        },
+        {
+          "incidentId": "47f9eed5-c78d-4f67-93a4-7ebe1ab95b1b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.XmlMessageFormatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.XmlMessageFormatter",
+            "label": "T:System.Messaging.XmlMessageFormatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6d25e986-17f1-42d4-8c97-7887f812493e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])",
+            "label": "M:System.Messaging.XmlMessageFormatter.#ctor(System.Type[])",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "383d2add-b6ea-46c8-8dd1-95403e45d213",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c7c837bd-2082-4f36-9d0f-c50b2d4c7605",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "T:System.Messaging.IMessageFormatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "T:System.Messaging.IMessageFormatter",
+            "label": "T:System.Messaging.IMessageFormatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "cc2ec9de-a4a7-49f0-a4ea-ed032df55bbf",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+              "protected": "P:System.Messaging.MessageQueue.Formatter"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });",
+            "protectedSnippet": "P:System.Messaging.MessageQueue.Formatter",
+            "label": "P:System.Messaging.MessageQueue.Formatter",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "84d52120-b476-4131-a51b-e653894bae7d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "2fa3229d-d55b-408b-8808-82677bc393bc",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "M:System.Messaging.MessageQueue.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.#ctor(System.String)",
+            "label": "M:System.Messaging.MessageQueue.#ctor(System.String)",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "34260251-1f1f-428c-92a6-6b1e1e61fed4",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = new MessageQueue(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = new MessageQueue(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 26,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "413c1eaa-633a-4b9d-87d0-5a421fa00476",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueueAccessRights"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueueAccessRights",
+            "label": "T:System.Messaging.MessageQueueAccessRights",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "1870d320-c2e3-4626-8d51-c3fe033c8027",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueueAccessRights"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueueAccessRights",
+            "label": "T:System.Messaging.MessageQueueAccessRights",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "6c4a952e-56f9-47e0-8eb3-bc2c8870f282",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "F:System.Messaging.MessageQueueAccessRights.FullControl"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "F:System.Messaging.MessageQueueAccessRights.FullControl",
+            "label": "F:System.Messaging.MessageQueueAccessRights.FullControl",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "263121e4-3af7-4a5f-99cd-d2a6ee7f047d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "351d542e-5736-4249-8b8c-e425fbda4561",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+              "protected": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)",
+            "label": "M:System.Messaging.MessageQueue.SetPermissions(System.String,System.Messaging.MessageQueueAccessRights)",
+            "line": 22,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "8334c33f-620e-4b2e-8fe6-dc8df1c2a884",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "1b172aa0-6356-4791-8230-ba38cd4c6e1e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "632e1e95-26fa-4f6b-abb5-e7088ddf9f17",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "M:System.Messaging.MessageQueue.Create(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Create(System.String)",
+            "label": "M:System.Messaging.MessageQueue.Create(System.String)",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "1fa5e51e-9700-4c85-b7f6-f8e791043ff1",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queue = MessageQueue.Create(_queuePath);",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queue = MessageQueue.Create(_queuePath);",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 21,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "b78b5b1f-1182-449a-b914-729edd5f72a6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+              "protected": "T:System.Messaging.MessageQueue"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+            "protectedSnippet": "T:System.Messaging.MessageQueue",
+            "label": "T:System.Messaging.MessageQueue",
+            "line": 19,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f7ba228c-0b99-464d-bb9a-a3ab8d929a12",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+              "protected": "M:System.Messaging.MessageQueue.Exists(System.String)"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "if (!MessageQueue.Exists(_queuePath))\r\n            {\r\n                _queue = MessageQueue.Create(_queuePath);\r\n                _queue.SetPermissions(\u0022Everyone\u0022, MessageQueueAccessRights.FullControl);\r\n            }\r\n            else\r\n            {\r\n                _queue = new MessageQueue(_queuePath);\r\n            }",
+            "protectedSnippet": "M:System.Messaging.MessageQueue.Exists(System.String)",
+            "label": "M:System.Messaging.MessageQueue.Exists(System.String)",
+            "line": 19,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6aa15e20-827a-495b-98bb-55e3838e74cb",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+              "protected": "T:System.Configuration.ConfigurationManager"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+            "protectedSnippet": "T:System.Configuration.ConfigurationManager",
+            "label": "T:System.Configuration.ConfigurationManager",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "45aaded9-cb43-4a0d-a5d4-016a88c70687",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+              "protected": "P:System.Configuration.ConfigurationManager.AppSettings"
+            },
+            "kind": "File",
+            "path": "Services\\NotificationService.cs",
+            "snippet": "_queuePath = ConfigurationManager.AppSettings[\u0022NotificationQueuePath\u0022] ?? @\u0022.\\Private$\\ContosoUniversityNotifications\u0022;",
+            "protectedSnippet": "P:System.Configuration.ConfigurationManager.AppSettings",
+            "label": "P:System.Configuration.ConfigurationManager.AppSettings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "90f91fa7-76e5-4eea-9cef-55012c287d56",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConfigurationManager"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConfigurationManager",
+            "label": "T:System.Configuration.ConfigurationManager",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "cfe4f182-d235-423e-be3d-a29eb857bc3f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConnectionStringSettingsCollection"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConnectionStringSettingsCollection",
+            "label": "T:System.Configuration.ConnectionStringSettingsCollection",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f9b9f602-f21d-4fdc-9561-93aa7b14e802",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConfigurationManager.ConnectionStrings"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConfigurationManager.ConnectionStrings",
+            "label": "P:System.Configuration.ConfigurationManager.ConnectionStrings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "549e47df-d364-43b4-a210-3e5bdb1531fe",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConnectionStringSettings"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConnectionStringSettings",
+            "label": "T:System.Configuration.ConnectionStringSettings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "32cc2a56-cfd3-42f3-8bb3-a62c5e9655a0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)",
+            "label": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "43dd170a-0874-47ac-b44f-b487e0ee6529",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConnectionStringSettings.ConnectionString"
+            },
+            "kind": "File",
+            "path": "Data\\SchoolContextFactory.cs",
+            "snippet": "var connectionString = ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConnectionStringSettings.ConnectionString",
+            "label": "P:System.Configuration.ConnectionStringSettings.ConnectionString",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 9,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ad88434f-1710-41e2-8d21-5ef1359d86b0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public ActionResult Edit([Bind(Include = \u0022CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath\u0022)] Course course, HttpPostedFileBase teachingMaterialImage)",
+              "protected": "T:System.Web.HttpPostedFileBase"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "public ActionResult Edit([Bind(Include = \u0022CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath\u0022)] Course course, HttpPostedFileBase teachingMaterialImage)",
+            "protectedSnippet": "T:System.Web.HttpPostedFileBase",
+            "label": "T:System.Web.HttpPostedFileBase",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 127,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "b85f93c2-47ff-454f-a6ff-256a5cda7c7b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "teachingMaterialImage.SaveAs(filePath);",
+              "protected": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "teachingMaterialImage.SaveAs(filePath);",
+            "protectedSnippet": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)",
+            "label": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 179,
+            "column": 24
+          }
+        },
+        {
+          "incidentId": "78eb8b68-84af-4a9c-ba4c-85371ca8a22f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }",
+              "protected": "P:System.Web.HttpPostedFileBase.ContentLength"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "label": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 148,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "897f13b7-1a8f-4482-8fc2-6e635525dc65",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();",
+              "protected": "P:System.Web.HttpPostedFileBase.FileName"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.FileName",
+            "label": "P:System.Web.HttpPostedFileBase.FileName",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 138,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "f62d42f1-c7b3-4a27-9151-f341b3b7906f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (teachingMaterialImage != null \u0026\u0026 teachingMaterialImage.ContentLength \u003E 0)\r\n                {\r\n                    // Validate file type\r\n                    var allowedExtensions = new[] { \u0022.jpg\u0022, \u0022.jpeg\u0022, \u0022.png\u0022, \u0022.gif\u0022, \u0022.bmp\u0022 };\r\n                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();\r\n                    \r\n                    if (!allowedExtensions.Contains(fileExtension))\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Please upload a valid image file (jpg, jpeg, png, gif, bmp).\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    // Validate file size (max 5MB)\r\n                    if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    try\r\n                    {\r\n                        // Create uploads directory if it doesn\u0027t exist\r\n                        var uploadsPath = Server.MapPath(\u0022~/Uploads/TeachingMaterials/\u0022);\r\n                        if (!Directory.Exists(uploadsPath))\r\n                        {\r\n                            Directory.CreateDirectory(uploadsPath);\r\n                        }\r\n\r\n                        // Generate unique filename\r\n                        var fileName = $\u0022course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}\u0022;\r\n                        var filePath = Path.Combine(uploadsPath, fileName);\r\n\r\n                        // Delete old file if exists\r\n                        if (!string.IsNullOrEmpty(course.TeachingMaterialImagePath))\r\n                        {\r\n                            var oldFilePath = Server.MapPath(course.TeachingMaterialImagePath);\r\n                            if (System.IO.File.Exists(oldFilePath))\r\n                            {\r\n                                System.IO.File.Delete(oldFilePath);\r\n                            }\r\n                        }\r\n\r\n                        // Save new file\r\n                        teachingMaterialImage.SaveAs(filePath);\r\n                        course.TeachingMaterialImagePath = $\u0022~/Uploads/TeachingMaterials/{fileName}\u0022;\r\n                    }\r\n                    catch (Exception ex)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Error uploading file: \u0022 \u002B ex.Message);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n                }",
+              "protected": "P:System.Web.HttpPostedFileBase.ContentLength"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "if (teachingMaterialImage != null \u0026\u0026 teachingMaterialImage.ContentLength \u003E 0)\r\n                {\r\n                    // Validate file type\r\n                    var allowedExtensions = new[] { \u0022.jpg\u0022, \u0022.jpeg\u0022, \u0022.png\u0022, \u0022.gif\u0022, \u0022.bmp\u0022 };\r\n                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();\r\n                    \r\n                    if (!allowedExtensions.Contains(fileExtension))\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Please upload a valid image file (jpg, jpeg, png, gif, bmp).\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    // Validate file size (max 5MB)\r\n                    if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    try\r\n                    {\r\n                        // Create uploads directory if it doesn\u0027t exist\r\n                        var uploadsPath = Server.MapPath(\u0022~/Uploads/TeachingMaterials/\u0022);\r\n                        if (!Directory.Exists(uploadsPath))\r\n                        {\r\n                            Directory.CreateDirectory(uploadsPath);\r\n                        }\r\n\r\n                        // Generate unique filename\r\n                        var fileName = $\u0022course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}\u0022;\r\n                        var filePath = Path.Combine(uploadsPath, fileName);\r\n\r\n                        // Delete old file if exists\r\n                        if (!string.IsNullOrEmpty(course.TeachingMaterialImagePath))\r\n                        {\r\n                            var oldFilePath = Server.MapPath(course.TeachingMaterialImagePath);\r\n                            if (System.IO.File.Exists(oldFilePath))\r\n                            {\r\n                                System.IO.File.Delete(oldFilePath);\r\n                            }\r\n                        }\r\n\r\n                        // Save new file\r\n                        teachingMaterialImage.SaveAs(filePath);\r\n                        course.TeachingMaterialImagePath = $\u0022~/Uploads/TeachingMaterials/{fileName}\u0022;\r\n                    }\r\n                    catch (Exception ex)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Error uploading file: \u0022 \u002B ex.Message);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n                }",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "label": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 134,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "acac15a6-0e04-464b-b824-3c4d53885c6a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public ActionResult Create([Bind(Include = \u0022CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath\u0022)] Course course, HttpPostedFileBase teachingMaterialImage)",
+              "protected": "T:System.Web.HttpPostedFileBase"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "public ActionResult Create([Bind(Include = \u0022CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath\u0022)] Course course, HttpPostedFileBase teachingMaterialImage)",
+            "protectedSnippet": "T:System.Web.HttpPostedFileBase",
+            "label": "T:System.Web.HttpPostedFileBase",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 44,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "2fe8d9b5-57c3-4efb-9992-49aba9299e79",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "teachingMaterialImage.SaveAs(filePath);",
+              "protected": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "teachingMaterialImage.SaveAs(filePath);",
+            "protectedSnippet": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)",
+            "label": "M:System.Web.HttpPostedFileBase.SaveAs(System.String)",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 86,
+            "column": 24
+          }
+        },
+        {
+          "incidentId": "96af7570-082c-4760-bcdf-1d340d09fc0d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }",
+              "protected": "P:System.Web.HttpPostedFileBase.ContentLength"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "label": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 65,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "7f011b79-660a-44f1-b113-b444a401e045",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();",
+              "protected": "P:System.Web.HttpPostedFileBase.FileName"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.FileName",
+            "label": "P:System.Web.HttpPostedFileBase.FileName",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 55,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "bb138ca0-bcaf-478a-891a-759eafb92b58",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "if (teachingMaterialImage != null \u0026\u0026 teachingMaterialImage.ContentLength \u003E 0)\r\n                {\r\n                    // Validate file type\r\n                    var allowedExtensions = new[] { \u0022.jpg\u0022, \u0022.jpeg\u0022, \u0022.png\u0022, \u0022.gif\u0022, \u0022.bmp\u0022 };\r\n                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();\r\n                    \r\n                    if (!allowedExtensions.Contains(fileExtension))\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Please upload a valid image file (jpg, jpeg, png, gif, bmp).\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    // Validate file size (max 5MB)\r\n                    if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    try\r\n                    {\r\n                        // Create uploads directory if it doesn\u0027t exist\r\n                        var uploadsPath = Server.MapPath(\u0022~/Uploads/TeachingMaterials/\u0022);\r\n                        if (!Directory.Exists(uploadsPath))\r\n                        {\r\n                            Directory.CreateDirectory(uploadsPath);\r\n                        }\r\n\r\n                        // Generate unique filename\r\n                        var fileName = $\u0022course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}\u0022;\r\n                        var filePath = Path.Combine(uploadsPath, fileName);\r\n\r\n                        // Save file\r\n                        teachingMaterialImage.SaveAs(filePath);\r\n                        course.TeachingMaterialImagePath = $\u0022~/Uploads/TeachingMaterials/{fileName}\u0022;\r\n                    }\r\n                    catch (Exception ex)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Error uploading file: \u0022 \u002B ex.Message);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n                }",
+              "protected": "P:System.Web.HttpPostedFileBase.ContentLength"
+            },
+            "kind": "File",
+            "path": "Controllers\\CoursesController.cs",
+            "snippet": "if (teachingMaterialImage != null \u0026\u0026 teachingMaterialImage.ContentLength \u003E 0)\r\n                {\r\n                    // Validate file type\r\n                    var allowedExtensions = new[] { \u0022.jpg\u0022, \u0022.jpeg\u0022, \u0022.png\u0022, \u0022.gif\u0022, \u0022.bmp\u0022 };\r\n                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();\r\n                    \r\n                    if (!allowedExtensions.Contains(fileExtension))\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Please upload a valid image file (jpg, jpeg, png, gif, bmp).\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    // Validate file size (max 5MB)\r\n                    if (teachingMaterialImage.ContentLength \u003E 5 * 1024 * 1024)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022File size must be less than 5MB.\u0022);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n\r\n                    try\r\n                    {\r\n                        // Create uploads directory if it doesn\u0027t exist\r\n                        var uploadsPath = Server.MapPath(\u0022~/Uploads/TeachingMaterials/\u0022);\r\n                        if (!Directory.Exists(uploadsPath))\r\n                        {\r\n                            Directory.CreateDirectory(uploadsPath);\r\n                        }\r\n\r\n                        // Generate unique filename\r\n                        var fileName = $\u0022course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}\u0022;\r\n                        var filePath = Path.Combine(uploadsPath, fileName);\r\n\r\n                        // Save file\r\n                        teachingMaterialImage.SaveAs(filePath);\r\n                        course.TeachingMaterialImagePath = $\u0022~/Uploads/TeachingMaterials/{fileName}\u0022;\r\n                    }\r\n                    catch (Exception ex)\r\n                    {\r\n                        ModelState.AddModelError(\u0022teachingMaterialImage\u0022, \u0022Error uploading file: \u0022 \u002B ex.Message);\r\n                        ViewBag.DepartmentID = new SelectList(db.Departments, \u0022DepartmentID\u0022, \u0022Name\u0022, course.DepartmentID);\r\n                        return View(course);\r\n                    }\r\n                }",
+            "protectedSnippet": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "label": "P:System.Web.HttpPostedFileBase.ContentLength",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 51,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "373fed4d-c6db-4ce3-891b-463f2e50f51e",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConfigurationManager"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConfigurationManager",
+            "label": "T:System.Configuration.ConfigurationManager",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b3624152-17e3-4f66-8f82-a0c040232b77",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConnectionStringSettingsCollection"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConnectionStringSettingsCollection",
+            "label": "T:System.Configuration.ConnectionStringSettingsCollection",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "22094048-a47a-47f8-99ad-95cf9a958cdb",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConfigurationManager.ConnectionStrings"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConfigurationManager.ConnectionStrings",
+            "label": "P:System.Configuration.ConfigurationManager.ConnectionStrings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "2c23afd8-38ed-431a-9bc6-768655dcddb9",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "T:System.Configuration.ConnectionStringSettings"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "T:System.Configuration.ConnectionStringSettings",
+            "label": "T:System.Configuration.ConnectionStringSettings",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "5440b0a6-8b52-4304-8738-26edec899fa9",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)",
+            "label": "P:System.Configuration.ConnectionStringSettingsCollection.Item(System.String)",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "7743b0bc-63d2-4fc0-85dd-178378bde89f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+              "protected": "P:System.Configuration.ConnectionStringSettings.ConnectionString"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[\u0022DefaultConnection\u0022].ConnectionString;",
+            "protectedSnippet": "P:System.Configuration.ConnectionStringSettings.ConnectionString",
+            "label": "P:System.Configuration.ConnectionStringSettings.ConnectionString",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 26,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ac7592af-a17a-4387-a8ff-6a7d122f0b99",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+              "protected": "T:System.Web.Routing.RouteTable"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+            "protectedSnippet": "T:System.Web.Routing.RouteTable",
+            "label": "T:System.Web.Routing.RouteTable",
+            "line": 17,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8f9ba96d-ab2e-4e2e-87d6-311bf4f55e39",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+              "protected": "T:System.Web.Routing.RouteCollection"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+            "protectedSnippet": "T:System.Web.Routing.RouteCollection",
+            "label": "T:System.Web.Routing.RouteCollection",
+            "line": 17,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c73551b1-c343-4e9f-a663-518c68439a32",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+              "protected": "P:System.Web.Routing.RouteTable.Routes"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "RouteConfig.RegisterRoutes(RouteTable.Routes);",
+            "protectedSnippet": "P:System.Web.Routing.RouteTable.Routes",
+            "label": "P:System.Web.Routing.RouteTable.Routes",
+            "line": 17,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "920f50dd-8fe3-4847-b7d8-9ee53c87a633",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "HttpApplication",
+              "protected": "M:System.Web.HttpApplication.#ctor"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "HttpApplication",
+            "protectedSnippet": "M:System.Web.HttpApplication.#ctor",
+            "label": "M:System.Web.HttpApplication.#ctor",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 11,
+            "column": 34
+          }
+        },
+        {
+          "incidentId": "16bf5cab-8c08-4925-8e9d-e616d3426008",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.SystemWebAdapters, 1.4.0. Add package reference to Microsoft.AspNetCore.SystemWebAdapters, 1.4.0",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "HttpApplication",
+              "protected": "T:System.Web.HttpApplication"
+            },
+            "kind": "File",
+            "path": "Global.asax.cs",
+            "snippet": "HttpApplication",
+            "protectedSnippet": "T:System.Web.HttpApplication",
+            "label": "T:System.Web.HttpApplication",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.SystemWebAdapters",
+              "PackageNewVersion": "1.4.0"
+            },
+            "line": 11,
+            "column": 34
+          }
+        },
+        {
+          "incidentId": "0d68643c-6ef1-4bb9-b152-22ce279541c0",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "ContosoUniversity.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public static void RegisterRoutes(RouteCollection routes)",
+              "protected": "T:System.Web.Routing.RouteCollection"
+            },
+            "kind": "File",
+            "path": "App_Start\\RouteConfig.cs",
+            "snippet": "public static void RegisterRoutes(RouteCollection routes)",
+            "protectedSnippet": "T:System.Web.Routing.RouteCollection",
+            "label": "T:System.Web.Routing.RouteCollection",
+            "line": 7,
+            "column": 8
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "Msmq",
+          "incidents": [
+            "f7ba228c-0b99-464d-bb9a-a3ab8d929a12",
+            "b78b5b1f-1182-449a-b914-729edd5f72a6",
+            "1fa5e51e-9700-4c85-b7f6-f8e791043ff1",
+            "632e1e95-26fa-4f6b-abb5-e7088ddf9f17",
+            "1b172aa0-6356-4791-8230-ba38cd4c6e1e",
+            "8334c33f-620e-4b2e-8fe6-dc8df1c2a884",
+            "351d542e-5736-4249-8b8c-e425fbda4561",
+            "263121e4-3af7-4a5f-99cd-d2a6ee7f047d",
+            "6c4a952e-56f9-47e0-8eb3-bc2c8870f282",
+            "1870d320-c2e3-4626-8d51-c3fe033c8027",
+            "413c1eaa-633a-4b9d-87d0-5a421fa00476",
+            "34260251-1f1f-428c-92a6-6b1e1e61fed4",
+            "2fa3229d-d55b-408b-8808-82677bc393bc",
+            "84d52120-b476-4131-a51b-e653894bae7d",
+            "cc2ec9de-a4a7-49f0-a4ea-ed032df55bbf",
+            "c7c837bd-2082-4f36-9d0f-c50b2d4c7605",
+            "383d2add-b6ea-46c8-8dd1-95403e45d213",
+            "6d25e986-17f1-42d4-8c97-7887f812493e",
+            "47f9eed5-c78d-4f67-93a4-7ebe1ab95b1b",
+            "794eb2e4-635c-40a5-9a76-6ec41eb5d60b",
+            "faa72627-f86b-4bfc-89f4-730cd4fb42a0",
+            "bf118bd7-cb86-4d10-b206-bb2d3e02bcf9",
+            "681a505a-fe43-4fe8-8df6-e7749d14884e",
+            "4ba17249-3ed5-4f41-b20e-a709a816b545",
+            "81eff17d-5e69-4258-8ab4-27ac0f347f4c",
+            "0c896ab7-ca80-4a63-94ee-15fcd6297d52",
+            "9b310184-31b4-4975-8a36-74d76d154519",
+            "fdf28082-2f3e-4f62-95e4-3cbfe7758f8e",
+            "6f8e4d46-361e-4d1d-b548-db8ae5c1556b",
+            "fac5fbd3-f52f-4413-94c2-94a0a81290f0",
+            "1ed462fe-b622-4e39-9ed8-94d6cc8b9872",
+            "9fd36726-2390-4f81-9700-35274522e02f",
+            "c8bc852c-b050-47e9-8bb2-6f7fd3d832a6",
+            "a4cef3d3-96b6-4c74-a591-d136cf010cff",
+            "bd4c95fd-0ee8-4a29-ad1f-54b26d17de97",
+            "d2603441-18c7-46ad-a2b6-ae15548acfcf",
+            "31b0da3c-e4ed-419c-a97e-c33cbc5bb731",
+            "49c3dcbd-5232-4ea9-b751-470f1a22a2ab",
+            "bfb46d95-4cdf-40b3-a48e-4a215add6af1",
+            "1f16d378-ae73-4474-a2bb-8844e2f34104",
+            "07fe771c-d1ef-42b0-8d03-9c6155123fc6",
+            "fe2a0d69-1b63-4e3c-bd83-7f947bb8251d",
+            "be46e88f-b9d5-4c7f-ba19-ec330befdb9a",
+            "5ff7f814-8dc1-4ad6-a784-bfdf58ee9f85",
+            "e43f8bd6-91c1-4ffd-be00-dc7a6e9bae93",
+            "a4a2db1e-6e07-40ba-8904-521e66b832a3",
+            "17318690-3b96-46d3-9f88-7e9b42f370b9",
+            "c3b611d0-4df1-4415-931e-f34c940a2b6b",
+            "cd93a6a4-2e9d-4519-8990-58734a6e1e0c",
+            "4634af1b-6a73-4b22-bef6-3ca4265bb467",
+            "0d26cdd1-38de-4dfd-bf1f-516973514580",
+            "33edb087-55c5-4fb6-9d7e-da2d1969f90b",
+            "fe52fde5-d21b-4dc3-a991-00976eb43078",
+            "cf0d31b6-ce0f-4aee-9f1e-edd2ec43b964",
+            "886b0360-0fa3-453c-b2d6-e2edcadd974a",
+            "99ccf13a-3ac7-4a31-b291-f19ae7cdc2d5",
+            "b07dfb60-0669-4db2-8d89-94092e8a32d7",
+            "588ba9da-d3d6-4d8d-9a52-ce74308e203d",
+            "db4533d1-acb2-4649-bdeb-1e6373568ab9"
+          ]
+        },
+        {
+          "featureId": "LegacyConfiguration",
+          "incidents": [
+            "7743b0bc-63d2-4fc0-85dd-178378bde89f",
+            "5440b0a6-8b52-4304-8738-26edec899fa9",
+            "2c23afd8-38ed-431a-9bc6-768655dcddb9",
+            "22094048-a47a-47f8-99ad-95cf9a958cdb",
+            "b3624152-17e3-4f66-8f82-a0c040232b77",
+            "373fed4d-c6db-4ce3-891b-463f2e50f51e",
+            "43dd170a-0874-47ac-b44f-b487e0ee6529",
+            "32cc2a56-cfd3-42f3-8bb3-a62c5e9655a0",
+            "549e47df-d364-43b4-a210-3e5bdb1531fe",
+            "f9b9f602-f21d-4fdc-9561-93aa7b14e802",
+            "cfe4f182-d235-423e-be3d-a29eb857bc3f",
+            "90f91fa7-76e5-4eea-9cef-55012c287d56",
+            "45aaded9-cb43-4a0d-a5d4-016a88c70687",
+            "6aa15e20-827a-495b-98bb-55e3838e74cb",
+            "ee1cd6b1-e8a1-4628-9735-85d900a17f2e",
+            "4e136a7b-b19a-4ad6-b320-fba592218283"
+          ]
+        },
+        {
+          "featureId": "SystemWeb",
+          "incidents": [
+            "0d68643c-6ef1-4bb9-b152-22ce279541c0",
+            "16bf5cab-8c08-4925-8e9d-e616d3426008",
+            "920f50dd-8fe3-4847-b7d8-9ee53c87a633",
+            "c73551b1-c343-4e9f-a663-518c68439a32",
+            "8f9ba96d-ab2e-4e2e-87d6-311bf4f55e39",
+            "ac7592af-a17a-4387-a8ff-6a7d122f0b99",
+            "bb138ca0-bcaf-478a-891a-759eafb92b58",
+            "7f011b79-660a-44f1-b113-b444a401e045",
+            "96af7570-082c-4760-bcdf-1d340d09fc0d",
+            "2fe8d9b5-57c3-4efb-9992-49aba9299e79",
+            "acac15a6-0e04-464b-b824-3c4d53885c6a",
+            "f62d42f1-c7b3-4a27-9151-f341b3b7906f",
+            "897f13b7-1a8f-4482-8fc2-6e635525dc65",
+            "78eb8b68-84af-4a9c-ba4c-85371ca8a22f",
+            "b85f93c2-47ff-454f-a6ff-256a5cda7c7b",
+            "ad88434f-1710-41e2-8d21-5ef1359d86b0"
+          ]
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "NuGet package functionality is included with framework reference.\n\nPackage needs to be removed.",
+      "label": "NuGet package functionality is included with framework reference",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0001": {
+      "id": "NuGet.0001",
+      "isFeature": false,
+      "description": "NuGet package is incompatible with selected target framework.\n\nPackage needs to be upgraded to a version supporting selected project target framework. If there no new package versions supporting new target framework, different package needs to be used and all code needs to be upgraded to new API.",
+      "label": "NuGet package is incompatible",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262529",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "NuGet package contains security vulnerabilities.\n\nPackage needs to be upgraded to a newer version that addresses known security vulnerabilities.",
+      "label": "NuGet package contains security vulnerability",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "Project file needs to be converted to SDK-style. Modern .NET framework projects require a change in the project file format and use SDK corresponding to project flavor and functionality.",
+      "label": "Project file needs to be converted to SDK-style",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.0001": {
+      "id": "Feature.0001",
+      "isFeature": true,
+      "description": "System.Web.Optimization bundling and minification is not supported in .NET Core and should be replaced with actual html tags pointing to content files.",
+      "label": "System.Web.Optimization bundling and minification is not supported in .NET Core and should be replaced with actual html tags pointing to content files",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.1000": {
+      "id": "Feature.1000",
+      "isFeature": true,
+      "description": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs.",
+      "label": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.0002": {
+      "id": "Feature.0002",
+      "isFeature": true,
+      "description": "Routes registration via RouteCollection is not supported in .NET Core and needs to be converted to the route mappings on the application object.",
+      "label": "Routes registration via RouteCollection is not supported in .NET Core and needs to be converted to the route mappings on the application object",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.0008": {
+      "id": "Feature.0008",
+      "isFeature": true,
+      "description": "Convert System.Messaging to MSMQ in .NET Core.",
+      "label": "Convert System.Messaging to MSMQ in .NET Core",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Msmq": {
+      "id": "Msmq",
+      "isFeature": false,
+      "description": "Microsoft Message Queue (MSMQ) APIs for Windows-based message queuing that are not supported in .NET Core/.NET. MSMQ is a Windows-specific technology. Migrate to RabbitMQ, Azure Service Bus, or other modern message queues.",
+      "label": "MSMQ \u0026 Message Queuing",
+      "severity": "Mandatory",
+      "effort": 2,
+      "links": [
+        {
+          "title": "Azure Service Bus",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341616",
+          "isCustom": false
+        }
+      ]
+    },
+    "LegacyConfiguration": {
+      "id": "LegacyConfiguration",
+      "isFeature": false,
+      "description": "Legacy XML-based configuration system (app.config/web.config) that has been replaced by a more flexible configuration model in .NET Core. The old system was rigid and XML-based. Migrate to Microsoft.Extensions.Configuration with JSON/environment variables; use System.Configuration.ConfigurationManager NuGet package as interim bridge if needed.",
+      "label": "Legacy Configuration System",
+      "severity": "Mandatory",
+      "effort": 2,
+      "links": [
+        {
+          "title": "Configuration in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341702",
+          "isCustom": false
+        }
+      ]
+    },
+    "SystemWeb": {
+      "id": "SystemWeb",
+      "isFeature": false,
+      "description": "Legacy ASP.NET Framework APIs for web applications (System.Web.*) that don\u0027t exist in ASP.NET Core due to architectural differences. ASP.NET Core represents a complete redesign of the web framework. Migrate to ASP.NET Core equivalents or consider System.Web.Adapters package for compatibility.",
+      "label": "ASP.NET Framework (System.Web)",
+      "severity": "Mandatory",
+      "effort": 4,
+      "links": [
+        {
+          "title": "Migrate from ASP.NET to ASP.NET Core",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341905",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
