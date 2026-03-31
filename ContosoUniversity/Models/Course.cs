@@ -20,7 +20,7 @@ namespace ContosoUniversity.Models
 
         [Display(Name = "Teaching Material Image")]
         [StringLength(255)]
-        public string TeachingMaterialImagePath { get; set; }
+        public string? TeachingMaterialImagePath { get; set; }
 
         public virtual Department Department { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
