@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernizing .NET with GitHub Copilot</title>
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" type="image/svg+xml">
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES
+           ============================================ */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --bg-card: #1c2128;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --border: #30363d;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-purple: #a371f7;
+            --accent-orange: #f0883e;
+            --accent-cyan: #39d353;
+            --accent-pink: #f778ba;
+            --glow-blue: rgba(88, 166, 255, 0.15);
+            --glow-green: rgba(63, 185, 80, 0.15);
+            --glow-purple: rgba(163, 113, 247, 0.15);
+            --glow-orange: rgba(240, 136, 62, 0.15);
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           ANIMATED BACKGROUND
+           ============================================ */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.07;
+            z-index: -1;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .bg-glow--blue {
+            background: var(--accent-blue);
+            top: -200px;
+            right: -100px;
+        }
+
+        .bg-glow--purple {
+            background: var(--accent-purple);
+            bottom: -200px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 20px); }
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .nav-brand svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #79b8ff;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           ARCHITECTURE DIAGRAM
+           ============================================ */
+        .architecture {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .arch-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .arch-surfaces {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .arch-surface {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arch-surface::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .arch-surface--blue::before { background: var(--accent-blue); }
+        .arch-surface--green::before { background: var(--accent-green); }
+        .arch-surface--purple::before { background: var(--accent-purple); }
+        .arch-surface--orange::before { background: var(--accent-orange); }
+
+        .arch-surface:hover {
+            transform: translateY(-4px);
+            border-color: var(--text-muted);
+        }
+
+        .arch-surface--blue:hover { box-shadow: 0 8px 30px var(--glow-blue); }
+        .arch-surface--green:hover { box-shadow: 0 8px 30px var(--glow-green); }
+        .arch-surface--purple:hover { box-shadow: 0 8px 30px var(--glow-purple); }
+        .arch-surface--orange:hover { box-shadow: 0 8px 30px var(--glow-orange); }
+
+        .arch-surface-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .arch-surface h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .arch-surface p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .arch-arrows {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .arch-arrow {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            position: relative;
+        }
+
+        .arch-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid var(--text-muted);
+        }
+
+        .arch-engine {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(163, 113, 247, 0.08));
+            border: 2px solid var(--accent-blue);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            animation: engineGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes engineGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(88, 166, 255, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(88, 166, 255, 0.2); }
+        }
+
+        .arch-engine h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arch-engine-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .arch-engine-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .arch-engine-feature::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+        }
+
+        /* ============================================
+           OPTIONS GRID
+           ============================================ */
+        .options {
+            padding: 6rem 2rem;
+        }
+
+        .options-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .option-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .option-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--text-muted);
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .option-card--blue::before { background: linear-gradient(90deg, var(--accent-blue), transparent); }
+        .option-card--green::before { background: linear-gradient(90deg, var(--accent-green), transparent); }
+        .option-card--purple::before { background: linear-gradient(90deg, var(--accent-purple), transparent); }
+        .option-card--orange::before { background: linear-gradient(90deg, var(--accent-orange), transparent); }
+
+        .option-card--blue:hover { box-shadow: 0 8px 30px var(--glow-blue); }
+        .option-card--green:hover { box-shadow: 0 8px 30px var(--glow-green); }
+        .option-card--purple:hover { box-shadow: 0 8px 30px var(--glow-purple); }
+        .option-card--orange:hover { box-shadow: 0 8px 30px var(--glow-orange); }
+
+        .option-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-card--blue .option-number { background: var(--glow-blue); color: var(--accent-blue); }
+        .option-card--green .option-number { background: var(--glow-green); color: var(--accent-green); }
+        .option-card--purple .option-number { background: var(--glow-purple); color: var(--accent-purple); }
+        .option-card--orange .option-number { background: var(--glow-orange); color: var(--accent-orange); }
+
+        .option-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card > p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .option-when {
+            background: rgba(63, 185, 80, 0.06);
+            border: 1px solid rgba(63, 185, 80, 0.15);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-when h4 {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-when ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-when li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0.2rem 0;
+        }
+
+        .option-when li::before {
+            content: '✓ ';
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .setup-block {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .setup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .setup-header .lang-tag {
+            font-size: 0.7rem;
+            background: var(--bg-primary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .setup-steps {
+            padding: 1rem;
+        }
+
+        .setup-step {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+        }
+
+        .setup-step:not(:last-child) {
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.1rem;
+        }
+
+        .option-card--blue .step-num { background: var(--glow-blue); color: var(--accent-blue); }
+        .option-card--green .step-num { background: var(--glow-green); color: var(--accent-green); }
+        .option-card--purple .step-num { background: var(--glow-purple); color: var(--accent-purple); }
+        .option-card--orange .step-num { background: var(--glow-orange); color: var(--accent-orange); }
+
+        .step-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .step-content strong {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .step-content p,
+        .step-content span {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .step-content code {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.78rem;
+            color: var(--accent-cyan);
+            word-break: break-all;
+        }
+
+        /* ============================================
+           FLOWCHART
+           ============================================ */
+        .flowchart {
+            padding: 6rem 2rem;
+        }
+
+        .flow-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flow-decision {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .flow-diamond {
+            flex-shrink: 0;
+            width: 220px;
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flow-diamond-shape {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-card);
+            border: 2px solid;
+            transform: rotate(45deg);
+            border-radius: 8px;
+        }
+
+        .flow-diamond--blue .flow-diamond-shape { border-color: var(--accent-blue); }
+        .flow-diamond--purple .flow-diamond-shape { border-color: var(--accent-purple); }
+        .flow-diamond--green .flow-diamond-shape { border-color: var(--accent-green); }
+
+        .flow-diamond-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .flow-answer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .flow-line {
+            width: 60px;
+            height: 2px;
+            position: relative;
+        }
+
+        .flow-line::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+
+        .flow-line--blue::before { background: var(--accent-blue); }
+        .flow-line--green::before { background: var(--accent-green); }
+        .flow-line--purple::before { background: var(--accent-purple); }
+        .flow-line--orange::before { background: var(--accent-orange); }
+
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .flow-line--blue::after { border-left: 8px solid var(--accent-blue); }
+        .flow-line--green::after { border-left: 8px solid var(--accent-green); }
+        .flow-line--purple::after { border-left: 8px solid var(--accent-purple); }
+        .flow-line--orange::after { border-left: 8px solid var(--accent-orange); }
+
+        .flow-answer-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 40px;
+        }
+
+        .flow-result {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            border: 2px solid;
+            background: var(--bg-card);
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .flow-result--blue { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .flow-result--green { border-color: var(--accent-green); color: var(--accent-green); }
+        .flow-result--purple { border-color: var(--accent-purple); color: var(--accent-purple); }
+        .flow-result--orange { border-color: var(--accent-orange); color: var(--accent-orange); }
+
+        .flow-connector {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-left: 109px;
+        }
+
+        .flow-vline {
+            width: 2px;
+            height: 40px;
+            background: var(--text-muted);
+        }
+
+        .flow-no-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-left: 0.75rem;
+            padding-top: 10px;
+        }
+
+        .flow-split {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-left: 0;
+        }
+
+        .flow-split-results {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .flow-split-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* ============================================
+           RESOURCES
+           ============================================ */
+        .resources {
+            padding: 6rem 2rem;
+        }
+
+        .resources-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.25s;
+        }
+
+        .resource-link:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--glow-blue);
+        }
+
+        .resource-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .resource-link strong {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .resource-link span {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .arch-surfaces { grid-template-columns: repeat(2, 1fr); }
+            .options-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .flow-decision { flex-direction: column; align-items: flex-start; }
+            .flow-connector { padding-left: 2rem; }
+            .flow-split { padding-left: 0; flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .arch-surfaces { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--blue"></div>
+    <div class="bg-glow bg-glow--purple"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <svg viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+                Modernize .NET
+            </a>
+            <ul class="nav-links">
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#options">Options</a></li>
+                <li><a href="#flowchart">Decision Guide</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="hero-badge">Public Preview</div>
+        <h1>
+            Modernizing .NET with<br>
+            <span class="gradient-text">GitHub Copilot</span>
+        </h1>
+        <p class="hero-subtitle">
+            Four options, one shared engine. Choose the modernization path
+            that fits your workflow — from interactive IDE guidance to
+            autonomous batch upgrades at scale.
+        </p>
+        <div class="hero-cta">
+            <a href="https://dotnet.microsoft.com/en-us/platform/modernize" class="btn btn-primary" target="_blank">
+                Get Started ↗
+            </a>
+            <a href="#options" class="btn btn-secondary">
+                Explore Options ↓
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== ARCHITECTURE ========== -->
+    <section class="architecture" id="architecture">
+        <div class="section-header reveal">
+            <span class="section-label">Common Foundation</span>
+            <h2>One Engine. Four Surfaces.</h2>
+            <p>
+                All modernization options share the same <strong>modernize-dotnet</strong> agent plugin
+                powering the Assess → Plan → Execute workflow.
+            </p>
+        </div>
+        <div class="arch-container reveal">
+            <div class="arch-surfaces">
+                <div class="arch-surface arch-surface--blue">
+                    <div class="arch-surface-icon">🖥️</div>
+                    <h3>IDE</h3>
+                    <p>Visual Studio &amp; VS Code<br>Interactive chat-driven</p>
+                </div>
+                <div class="arch-surface arch-surface--green">
+                    <div class="arch-surface-icon">⌨️</div>
+                    <h3>Copilot CLI</h3>
+                    <p>Terminal-first<br>Command line</p>
+                </div>
+                <div class="arch-surface arch-surface--purple">
+                    <div class="arch-surface-icon">🤖</div>
+                    <h3>Coding Agent</h3>
+                    <p>GitHub.com<br>Autonomous PRs</p>
+                </div>
+                <div class="arch-surface arch-surface--orange">
+                    <div class="arch-surface-icon">📦</div>
+                    <h3>Modernize CLI</h3>
+                    <p>Batch &amp; portfolio<br>Scalable automation</p>
+                </div>
+            </div>
+            <div class="arch-arrows">
+                <div class="arch-arrow"></div>
+                <div class="arch-arrow"></div>
+                <div class="arch-arrow"></div>
+                <div class="arch-arrow"></div>
+            </div>
+            <div class="arch-engine">
+                <h3>🧠 modernize-dotnet Agent Plugin</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    Shared core — improvements benefit every surface simultaneously
+                </p>
+                <div class="arch-engine-features">
+                    <span class="arch-engine-feature">Assessment Engine</span>
+                    <span class="arch-engine-feature">Upgrade Skills &amp; Patterns</span>
+                    <span class="arch-engine-feature">Code Transformations</span>
+                    <span class="arch-engine-feature">Build &amp; Test Validation</span>
+                    <span class="arch-engine-feature">Traceable Artifacts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== OPTIONS ========== -->
+    <section class="options" id="options">
+        <div class="section-header reveal">
+            <span class="section-label">Setup &amp; Run</span>
+            <h2>Four Ways to Modernize</h2>
+            <p>Each option provides complete Assess → Plan → Execute capabilities with setup instructions below.</p>
+        </div>
+
+        <div class="options-grid">
+            <!-- OPTION 1: IDE -->
+            <div class="option-card option-card--blue reveal">
+                <div class="option-number">1</div>
+                <h3>IDE — Visual Studio &amp; VS Code</h3>
+                <p>Interactive, chat-driven modernization right in your editor with step-by-step AI guidance.</p>
+
+                <div class="option-when">
+                    <h4>✅ Best When</h4>
+                    <ul>
+                        <li>Working on a specific project interactively</li>
+                        <li>Want step-by-step review of each transformation</li>
+                        <li>Prefer IDE-integrated, visual workflow</li>
+                    </ul>
+                </div>
+
+                <div class="setup-block">
+                    <div class="setup-header">
+                        <span>Setup Instructions</span>
+                        <span class="lang-tag">IDE</span>
+                    </div>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Visual Studio</strong>
+                                <span>VS 2022 (17.14.17+) or VS 2026 — modernization is <strong>built-in</strong>, no extra install needed.</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>VS Code</strong>
+                                <span>Install extension: <code>ms-dotnettools.vscode-dotnet-modernize</code><br>
+                                ⚠️ NOT <code>vscjava.migrate-java-to-azure</code> (that's Java-only)</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Enable Copilot Agent Mode</strong>
+                                <span>Open Copilot Chat → use <code>@modernize-dotnet</code> to start assessment</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong>Run Upgrade</strong>
+                                <span>Follow the Assess → Plan → Execute lifecycle. Review artifacts in <code>.github/upgrades/</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPTION 2: COPILOT CLI -->
+            <div class="option-card option-card--green reveal">
+                <div class="option-number">2</div>
+                <h3>Copilot CLI</h3>
+                <p>Same modernize-dotnet agent, terminal-first experience — no IDE required.</p>
+
+                <div class="option-when">
+                    <h4>✅ Best When</h4>
+                    <ul>
+                        <li>Terminal-first or SSH-based development</li>
+                        <li>Quick assessments from the command line</li>
+                        <li>Scripting and lightweight automation</li>
+                    </ul>
+                </div>
+
+                <div class="setup-block">
+                    <div class="setup-header">
+                        <span>Setup Instructions</span>
+                        <span class="lang-tag">CLI</span>
+                    </div>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Install Plugin</strong>
+                                <span>Run: <code>/plugin install modernize-dotnet@modernize-dotnet-plugins</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Navigate to Project</strong>
+                                <span><code>cd your-project-directory</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Assess</strong>
+                                <span>Ask: <code>Assess this project for upgrade to .NET 10</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong>Plan &amp; Execute</strong>
+                                <span>Review generated plan, then ask agent to execute upgrades. Review artifacts before committing.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPTION 3: CODING AGENT -->
+            <div class="option-card option-card--purple reveal">
+                <div class="option-number">3</div>
+                <h3>Coding Agent — GitHub.com</h3>
+                <p>Autonomous agent that runs on GitHub, creates branches and PRs for your team to review.</p>
+
+                <div class="option-when">
+                    <h4>✅ Best When</h4>
+                    <ul>
+                        <li>Want fully autonomous, hands-off upgrades</li>
+                        <li>Prefer GitHub-native PR review workflow</li>
+                        <li>Delegating modernization to the cloud</li>
+                    </ul>
+                </div>
+
+                <div class="setup-block">
+                    <div class="setup-header">
+                        <span>Setup Instructions</span>
+                        <span class="lang-tag">GitHub.com</span>
+                    </div>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Configure Agent</strong>
+                                <span>Follow setup at <code>github.com/dotnet/modernize-dotnet/coding-agent</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Add copilot-setup-steps.yml</strong>
+                                <span>Configure the Coding Agent workflow in your repository's <code>.github/</code> directory</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Create Issue or Assign</strong>
+                                <span>Open an issue describing the upgrade → assign to Copilot. The agent creates a branch and PR automatically.</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong>Review PR</strong>
+                                <span>Review the generated PR as a normal code review. MCP tools available for extended integration.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPTION 4: MODERNIZE CLI -->
+            <div class="option-card option-card--orange reveal">
+                <div class="option-number">4</div>
+                <h3>Modernize CLI <span style="font-size: 0.8rem; color: var(--accent-orange);">(Public Preview)</span></h3>
+                <p>Batch assessment and upgrade engine purpose-built for portfolios at scale with CI/CD integration.</p>
+
+                <div class="option-when">
+                    <h4>✅ Best When</h4>
+                    <ul>
+                        <li>Assessing or upgrading dozens/hundreds of repos</li>
+                        <li>CI/CD pipeline integration needed</li>
+                        <li>Enterprise-wide portfolio modernization</li>
+                    </ul>
+                </div>
+
+                <div class="setup-block">
+                    <div class="setup-header">
+                        <span>Setup Instructions</span>
+                        <span class="lang-tag">CLI / CI/CD</span>
+                    </div>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Install Modernize CLI</strong>
+                                <span>Follow the installation guide at <code>aka.ms/ghcp-modernization-agent</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Batch Assessment</strong>
+                                <span>Point the CLI at multiple repos or a portfolio manifest to scan for modernization candidates.</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Define Standards</strong>
+                                <span>Configure org-wide upgrade skills and patterns for consistent outcomes across all projects.</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong>Execute &amp; Integrate</strong>
+                                <span>Run upgrades in semi or fully automated mode. Integrate into GitHub Actions or ADO pipelines.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FLOWCHART ========== -->
+    <section class="flowchart" id="flowchart">
+        <div class="section-header reveal">
+            <span class="section-label">Decision Guide</span>
+            <h2>Which Option Is Right for You?</h2>
+            <p>Answer three questions to find your ideal modernization path.</p>
+        </div>
+
+        <div class="flow-container reveal">
+            <!-- Decision 1 -->
+            <div class="flow-decision">
+                <div class="flow-diamond flow-diamond--blue">
+                    <div class="flow-diamond-shape"></div>
+                    <div class="flow-diamond-text">Prefer more<br>interactive?</div>
+                </div>
+                <div class="flow-answer">
+                    <span class="flow-answer-label" style="color: var(--accent-blue);">Yes →</span>
+                    <div class="flow-line flow-line--blue"></div>
+                    <div class="flow-result flow-result--blue">1. IDE (VS / VS Code)</div>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="flow-connector">
+                <div class="flow-vline"></div>
+                <div class="flow-no-label">No (fully autonomous) ↓</div>
+            </div>
+
+            <!-- Decision 2 -->
+            <div class="flow-decision">
+                <div class="flow-diamond flow-diamond--purple">
+                    <div class="flow-diamond-shape"></div>
+                    <div class="flow-diamond-text">Fully delegate<br>to Cloud?</div>
+                </div>
+                <div class="flow-answer">
+                    <span class="flow-answer-label" style="color: var(--accent-purple);">Yes →</span>
+                    <div class="flow-line flow-line--purple"></div>
+                    <div class="flow-result flow-result--purple">3. Coding Agent</div>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="flow-connector">
+                <div class="flow-vline"></div>
+                <div class="flow-no-label">No ↓</div>
+            </div>
+
+            <!-- Decision 3 -->
+            <div class="flow-split">
+                <div class="flow-diamond flow-diamond--green">
+                    <div class="flow-diamond-shape"></div>
+                    <div class="flow-diamond-text">Single or<br>Multiple?</div>
+                </div>
+                <div class="flow-split-results">
+                    <div class="flow-split-item">
+                        <span class="flow-answer-label" style="color: var(--accent-green);">Single →</span>
+                        <div class="flow-line flow-line--green"></div>
+                        <div class="flow-result flow-result--green">2. Copilot CLI</div>
+                    </div>
+                    <div class="flow-split-item">
+                        <span class="flow-answer-label" style="color: var(--accent-orange);">Batch →</span>
+                        <div class="flow-line flow-line--orange"></div>
+                        <div class="flow-result flow-result--orange">4. Modernize CLI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RESOURCES ========== -->
+    <section class="resources" id="resources">
+        <div class="section-header reveal">
+            <span class="section-label">Learn More</span>
+            <h2>Resources &amp; Links</h2>
+        </div>
+
+        <div class="resources-grid reveal">
+            <a href="https://dotnet.microsoft.com/en-us/platform/modernize" class="resource-link" target="_blank">
+                <span class="resource-icon">🚀</span>
+                <div>
+                    <strong>Modernize .NET Platform</strong>
+                    <span>Official .NET modernization landing page</span>
+                </div>
+            </a>
+            <a href="https://github.com/dotnet/modernize-dotnet" class="resource-link" target="_blank">
+                <span class="resource-icon">📦</span>
+                <div>
+                    <strong>modernize-dotnet on GitHub</strong>
+                    <span>Agent plugin source, coding agent setup, docs</span>
+                </div>
+            </a>
+            <a href="https://aka.ms/ghcp-modernization-agent" class="resource-link" target="_blank">
+                <span class="resource-icon">🤖</span>
+                <div>
+                    <strong>Modernization Agent Overview</strong>
+                    <span>aka.ms/ghcp-modernization-agent — Modernize CLI docs</span>
+                </div>
+            </a>
+            <a href="https://learn.microsoft.com/en-us/azure/developer/github-copilot-app-modernization/overview" class="resource-link" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                    <strong>Copilot App Modernization Overview</strong>
+                    <span>Microsoft Learn — full documentation</span>
+                </div>
+            </a>
+            <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-modernize" class="resource-link" target="_blank">
+                <span class="resource-icon">🧩</span>
+                <div>
+                    <strong>VS Code Extension</strong>
+                    <span>ms-dotnettools.vscode-dotnet-modernize</span>
+                </div>
+            </a>
+            <a href="https://github.com/dotnet/modernize-dotnet/blob/main/coding-agent/README.md" class="resource-link" target="_blank">
+                <span class="resource-icon">⚡</span>
+                <div>
+                    <strong>Coding Agent Setup</strong>
+                    <span>Configure autonomous upgrades on GitHub.com</span>
+                </div>
+            </a>
+            <a href="https://learn.microsoft.com/en-us/dotnet/azure/migration/appmod/coding-agent-support" class="resource-link" target="_blank">
+                <span class="resource-icon">🔌</span>
+                <div>
+                    <strong>MCP / Coding Agent Support</strong>
+                    <span>Extended tool integration for coding agents</span>
+                </div>
+            </a>
+            <a href="https://devblogs.microsoft.com/dotnet/modernize-dotnet-anywhere-with-ghcp/" class="resource-link" target="_blank">
+                <span class="resource-icon">📝</span>
+                <div>
+                    <strong>.NET Blog — Modernize Anywhere</strong>
+                    <span>Deep dive blog post on the modernize-dotnet agent</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>
+            Built with 💜 using GitHub Copilot &nbsp;·&nbsp;
+            All options share the <a href="https://github.com/dotnet/modernize-dotnet">modernize-dotnet</a> agent plugin
+        </p>
+    </footer>
+
+    <!-- ========== SCROLL REVEAL ========== -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
