@@ -1,34 +1,16 @@
 using System;
-using System.Messaging;
-using System.Configuration;
+using System.Collections.Concurrent;
+using System.Text.Json;
 using ContosoUniversity.Models;
-using Newtonsoft.Json;
 
 namespace ContosoUniversity.Services
 {
-    public class NotificationService
+    public class NotificationService : IDisposable
     {
-        private readonly string _queuePath;
-        private readonly MessageQueue _queue;
+        private static readonly ConcurrentQueue<string> _messageQueue = new ConcurrentQueue<string>();
 
         public NotificationService()
         {
-            // Get queue path from configuration or use default
-            _queuePath = ConfigurationManager.AppSettings["NotificationQueuePath"] ?? @".\Private$\ContosoUniversityNotifications";
-            
-            // Ensure the queue exists
-            if (!MessageQueue.Exists(_queuePath))
-            {
-                _queue = MessageQueue.Create(_queuePath);
-                _queue.SetPermissions("Everyone", MessageQueueAccessRights.FullControl);
-            }
-            else
-            {
-                _queue = new MessageQueue(_queuePath);
-            }
-            
-            // Configure queue formatter
-            _queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
         }
 
         public void SendNotification(string entityType, string entityId, EntityOperation operation, string userName = null)
@@ -51,18 +33,11 @@ namespace ContosoUniversity.Services
                     IsRead = false
                 };
 
-                var jsonMessage = JsonConvert.SerializeObject(notification);
-                var message = new Message(jsonMessage)
-                {
-                    Label = $"{entityType} {operation}",
-                    Priority = MessagePriority.Normal
-                };
-
-                _queue.Send(message);
+                var jsonMessage = JsonSerializer.Serialize(notification);
+                _messageQueue.Enqueue(jsonMessage);
             }
             catch (Exception ex)
             {
-                // Log error but don't break the main operation
                 System.Diagnostics.Debug.WriteLine($"Failed to send notification: {ex.Message}");
             }
         }
@@ -71,13 +46,10 @@ namespace ContosoUniversity.Services
         {
             try
             {
-                var message = _queue.Receive(TimeSpan.FromSeconds(1));
-                var jsonContent = message.Body.ToString();
-                return JsonConvert.DeserializeObject<Notification>(jsonContent);
-            }
-            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)
-            {
-                // No messages available
+                if (_messageQueue.TryDequeue(out var jsonContent))
+                {
+                    return JsonSerializer.Deserialize<Notification>(jsonContent);
+                }
                 return null;
             }
             catch (Exception ex)
@@ -114,7 +86,7 @@ namespace ContosoUniversity.Services
 
         public void Dispose()
         {
-            _queue?.Dispose();
+            // No unmanaged resources to clean up with in-memory queue
         }
     }
 }
