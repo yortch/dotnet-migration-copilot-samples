@@ -925,11 +925,8 @@
             autonomous batch upgrades at scale.
         </p>
         <div class="hero-cta">
-            <a href="https://dotnet.microsoft.com/en-us/platform/modernize" class="btn btn-primary" target="_blank">
-                Get Started ↗
-            </a>
-            <a href="#options" class="btn btn-secondary">
-                Explore Options ↓
+            <a href="#getting-started" class="btn btn-primary">
+                Get Started ↓
             </a>
         </div>
     </section>
@@ -1090,22 +1087,22 @@
                         <div class="setup-step">
                             <div class="step-num">1</div>
                             <div class="step-content">
-                                <strong>Install Copilot CLI Plugin Marketplace</strong>
-                                <span>Run: <code>/extension install @anthropic/plugin-marketplace</code></span>
+                                <strong>Launch Copilot CLI</strong>
+                                <span>Start the GitHub Copilot CLI in your project directory</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">2</div>
                             <div class="step-content">
-                                <strong>Install modernize-dotnet Plugin</strong>
-                                <span>Run: <code>/plugin install modernize-dotnet@modernize-dotnet-plugins</code></span>
+                                <strong>Install Plugin Marketplace</strong>
+                                <span>Run: <code>/plugin marketplace add dotnet/modernize-dotnet</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
-                                <strong>Navigate to Project</strong>
-                                <span><code>cd your-project-directory</code></span>
+                                <strong>Select Agent</strong>
+                                <span>Run: <code>/agent</code> and select <code>modernize-dotnet</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
@@ -1157,15 +1154,15 @@
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
-                                <strong>Create Issue or Assign</strong>
-                                <span>Open an issue describing the upgrade → assign to Copilot. The agent creates a branch and PR automatically.</span>
+                                <strong>Start Cloud Agent Session</strong>
+                                <span>Go to the <strong>Agents</strong> tab of your GitHub project, select <code>modernize-dotnet</code> from the custom agents dropdown, enter prompt <code>Upgrade project to .NET 10</code>, and optionally change the model.</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">4</div>
                             <div class="step-content">
-                                <strong>Review PR</strong>
-                                <span>Review the generated PR as a normal code review.</span>
+                                <strong>Review &amp; Submit</strong>
+                                <span>Review committed code and submit a PR when done.</span>
                             </div>
                         </div>
                     </div>
@@ -1235,32 +1232,18 @@
         </div>
 
         <div class="resources-grid reveal">
-            <a href="https://dotnet.microsoft.com/en-us/platform/modernize" class="resource-link" target="_blank">
-                <span class="resource-icon">🚀</span>
-                <div>
-                    <strong>Modernize .NET Platform</strong>
-                    <span>Official .NET modernization landing page</span>
-                </div>
-            </a>
-            <a href="https://github.com/dotnet/modernize-dotnet" class="resource-link" target="_blank">
-                <span class="resource-icon">📦</span>
-                <div>
-                    <strong>modernize-dotnet agent</strong>
-                    <span>Agent plugin source, coding agent setup, docs</span>
-                </div>
-            </a>
-            <a href="https://aka.ms/ghcp-modernization-agent" class="resource-link" target="_blank">
-                <span class="resource-icon">🤖</span>
-                <div>
-                    <strong>Modernization Agent CLI</strong>
-                    <span>aka.ms/ghcp-modernization-agent — Modernize CLI docs</span>
-                </div>
-            </a>
             <a href="https://learn.microsoft.com/en-us/azure/developer/github-copilot-app-modernization/overview" class="resource-link" target="_blank">
                 <span class="resource-icon">📖</span>
                 <div>
-                    <strong>Copilot App Modernization Overview</strong>
+                    <strong>GitHub Copilot Modernization Overview</strong>
                     <span>Microsoft Learn — full documentation</span>
+                </div>
+            </a>
+            <a href="https://devblogs.microsoft.com/dotnet/modernize-dotnet-anywhere-with-ghcp/" class="resource-link" target="_blank">
+                <span class="resource-icon">📝</span>
+                <div>
+                    <strong>.NET Blog — Modernize Anywhere</strong>
+                    <span>Deep dive blog post on the modernize-dotnet agent</span>
                 </div>
             </a>
             <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure" class="resource-link" target="_blank">
@@ -1270,6 +1253,13 @@
                     <span>VS Code Marketplace extension for .NET modernization</span>
                 </div>
             </a>
+            <a href="https://github.com/dotnet/modernize-dotnet" class="resource-link" target="_blank">
+                <span class="resource-icon">📦</span>
+                <div>
+                    <strong>modernize-dotnet agent</strong>
+                    <span>Agent plugin source, coding agent setup, docs</span>
+                </div>
+            </a>
             <a href="https://github.com/dotnet/modernize-dotnet/tree/main/coding-agent" class="resource-link" target="_blank">
                 <span class="resource-icon">⚡</span>
                 <div>
@@ -1277,11 +1267,11 @@
                     <span>Configure autonomous upgrades on GitHub.com</span>
                 </div>
             </a>
-            <a href="https://devblogs.microsoft.com/dotnet/modernize-dotnet-anywhere-with-ghcp/" class="resource-link" target="_blank">
-                <span class="resource-icon">📝</span>
+            <a href="https://aka.ms/ghcp-modernization-agent" class="resource-link" target="_blank">
+                <span class="resource-icon">🤖</span>
                 <div>
-                    <strong>.NET Blog — Modernize Anywhere</strong>
-                    <span>Deep dive blog post on the modernize-dotnet agent</span>
+                    <strong>Modernization Agent CLI</strong>
+                    <span>aka.ms/ghcp-modernization-agent — Modernize CLI docs</span>
                 </div>
             </a>
         </div>
