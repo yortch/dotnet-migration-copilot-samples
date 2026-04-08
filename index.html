@@ -905,9 +905,8 @@
                 Modernize .NET
             </a>
             <ul class="nav-links">
-                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
                 <li><a href="#options">Options</a></li>
-                <li><a href="#flowchart">Decision Guide</a></li>
                 <li><a href="#resources">Resources</a></li>
             </ul>
         </div>
@@ -921,7 +920,7 @@
             <span class="gradient-text">GitHub Copilot</span>
         </h1>
         <p class="hero-subtitle">
-            Four options, one shared engine. Choose the modernization path
+            Four options to modernize legacy .NET applications. Choose the path
             that fits your workflow — from interactive IDE guidance to
             autonomous batch upgrades at scale.
         </p>
@@ -935,57 +934,72 @@
         </div>
     </section>
 
-    <!-- ========== ARCHITECTURE ========== -->
-    <section class="architecture" id="architecture">
+    <!-- ========== GETTING STARTED ========== -->
+    <section class="architecture" id="getting-started">
         <div class="section-header reveal">
-            <span class="section-label">Common Foundation</span>
-            <h2>One Engine. Four Surfaces.</h2>
-            <p>
-                All modernization options share the same <strong>modernize-dotnet</strong> agent plugin
-                powering the Assess → Plan → Execute workflow.
-            </p>
+            <span class="section-label">Getting Started</span>
+            <h2>Clone the Sample Project</h2>
+            <p>Start with the <strong>ContosoUniversity</strong> sample — a realistic legacy .NET application with common modernization challenges.</p>
         </div>
         <div class="arch-container reveal">
-            <div class="arch-surfaces">
-                <div class="arch-surface arch-surface--blue">
-                    <div class="arch-surface-icon">🖥️</div>
-                    <h3>IDE</h3>
-                    <p>Visual Studio &amp; VS Code<br>Interactive chat-driven</p>
+            <!-- Clone step -->
+            <div class="setup-block" style="margin-bottom: 2rem;">
+                <div class="setup-header">
+                    <span>Step 1 — Clone or Fork the Sample Repository</span>
+                    <span class="lang-tag">Terminal</span>
                 </div>
-                <div class="arch-surface arch-surface--green">
-                    <div class="arch-surface-icon">⌨️</div>
-                    <h3>Copilot CLI</h3>
-                    <p>Terminal-first<br>Command line</p>
-                </div>
-                <div class="arch-surface arch-surface--purple">
-                    <div class="arch-surface-icon">🤖</div>
-                    <h3>Coding Agent</h3>
-                    <p>GitHub.com<br>Autonomous PRs</p>
-                </div>
-                <div class="arch-surface arch-surface--orange">
-                    <div class="arch-surface-icon">📦</div>
-                    <h3>Modernize CLI</h3>
-                    <p>Batch &amp; portfolio<br>Scalable automation</p>
+                <div class="setup-steps">
+                    <div class="setup-step">
+                        <div class="step-num" style="background: var(--glow-blue); color: var(--accent-blue);">1</div>
+                        <div class="step-content">
+                            <strong>Clone the repo</strong>
+                            <span><code>git clone https://github.com/Azure-Samples/dotnet-migration-copilot-samples.git</code></span>
+                        </div>
+                    </div>
+                    <div class="setup-step">
+                        <div class="step-num" style="background: var(--glow-blue); color: var(--accent-blue);">2</div>
+                        <div class="step-content">
+                            <strong>Open the ContosoUniversity solution</strong>
+                            <span><code>cd dotnet-migration-copilot-samples/ContosoUniversity</code></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="arch-arrows">
-                <div class="arch-arrow"></div>
-                <div class="arch-arrow"></div>
-                <div class="arch-arrow"></div>
-                <div class="arch-arrow"></div>
+
+            <!-- Tech stack details -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+                <div class="arch-surface arch-surface--orange" style="text-align: left; padding: 1.5rem;">
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.1rem;">🏗️ Legacy Tech Stack</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">ASP.NET MVC 5</strong> — ~10 years old (2014)</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">.NET Framework 4.8</strong> — legacy, Windows-only</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">Entity Framework 6</strong> — ~11 years old (2013)</li>
+                    </ul>
+                </div>
+                <div class="arch-surface arch-surface--purple" style="text-align: left; padding: 1.5rem;">
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.1rem;">⚙️ Infrastructure Dependencies</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">SQL Server LocalDB</strong> — local dev database</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">IIS / IIS Express</strong> — ~25 years old (1995)</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">MSMQ</strong> — ~28 years old (1997), deprecated</li>
+                    </ul>
+                </div>
+                <div class="arch-surface arch-surface--green" style="text-align: left; padding: 1.5rem;">
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.1rem;">🎯 Upgrade Target</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">.NET 10</strong> — latest, cross-platform</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">ASP.NET Core MVC</strong> — modern web stack</li>
+                        <li style="padding: 0.25rem 0;"><strong style="color: var(--text-primary);">EF Core</strong> — modern ORM</li>
+                    </ul>
+                </div>
             </div>
-            <div class="arch-engine">
-                <h3>🧠 modernize-dotnet Agent Plugin</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                    Shared core — improvements benefit every surface simultaneously
+
+            <!-- Sample prompt -->
+            <div style="background: var(--bg-card); border: 1px solid var(--accent-green); border-radius: 12px; padding: 1.5rem 2rem; text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">Sample prompt to use with any option:</p>
+                <p style="font-size: 1.3rem; font-weight: 700; color: var(--accent-green); font-family: 'SF Mono', 'Fira Code', monospace;">
+                    "Upgrade my project to .NET 10"
                 </p>
-                <div class="arch-engine-features">
-                    <span class="arch-engine-feature">Assessment Engine</span>
-                    <span class="arch-engine-feature">Upgrade Skills &amp; Patterns</span>
-                    <span class="arch-engine-feature">Code Transformations</span>
-                    <span class="arch-engine-feature">Build &amp; Test Validation</span>
-                    <span class="arch-engine-feature">Traceable Artifacts</span>
-                </div>
             </div>
         </div>
     </section>
@@ -1024,29 +1038,28 @@
                             <div class="step-num">1</div>
                             <div class="step-content">
                                 <strong>Visual Studio</strong>
-                                <span>VS 2022 (17.14.17+) or VS 2026 — modernization is <strong>built-in</strong>, no extra install needed.</span>
+                                <span>VS 2022 (17.14.17+) or VS 2026 — modernization is built-in, no extra install needed.</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">2</div>
                             <div class="step-content">
                                 <strong>VS Code</strong>
-                                <span>Install extension: <code>ms-dotnettools.vscode-dotnet-modernize</code><br>
-                                ⚠️ NOT <code>vscjava.migrate-java-to-azure</code> (that's Java-only)</span>
+                                <span>Install <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure" target="_blank" style="color: var(--accent-blue);">GitHub Copilot modernization</a> extension</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
-                                <strong>Enable Copilot Agent Mode</strong>
-                                <span>Open Copilot Chat → use <code>@modernize-dotnet</code> to start assessment</span>
+                                <strong>Select Custom Agent</strong>
+                                <span>Open Copilot Chat → select <code>modernize-dotnet</code> custom agent</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">4</div>
                             <div class="step-content">
                                 <strong>Run Upgrade</strong>
-                                <span>Follow the Assess → Plan → Execute lifecycle. Review artifacts in <code>.github/upgrades/</code></span>
+                                <span>Enter prompt: <code>Upgrade to .NET 10</code></span>
                             </div>
                         </div>
                     </div>
@@ -1077,39 +1090,39 @@
                         <div class="setup-step">
                             <div class="step-num">1</div>
                             <div class="step-content">
-                                <strong>Install Plugin</strong>
-                                <span>Run: <code>/plugin install modernize-dotnet@modernize-dotnet-plugins</code></span>
+                                <strong>Install Copilot CLI Plugin Marketplace</strong>
+                                <span>Run: <code>/extension install @anthropic/plugin-marketplace</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Install modernize-dotnet Plugin</strong>
+                                <span>Run: <code>/plugin install modernize-dotnet@modernize-dotnet-plugins</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">3</div>
                             <div class="step-content">
                                 <strong>Navigate to Project</strong>
                                 <span><code>cd your-project-directory</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
-                            <div class="step-num">3</div>
-                            <div class="step-content">
-                                <strong>Assess</strong>
-                                <span>Ask: <code>Assess this project for upgrade to .NET 10</code></span>
-                            </div>
-                        </div>
-                        <div class="setup-step">
                             <div class="step-num">4</div>
                             <div class="step-content">
-                                <strong>Plan &amp; Execute</strong>
-                                <span>Review generated plan, then ask agent to execute upgrades. Review artifacts before committing.</span>
+                                <strong>Run Upgrade</strong>
+                                <span>Enter prompt: <code>Upgrade to .NET 10</code> — review generated plan, then let the agent execute upgrades.</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- OPTION 3: CODING AGENT -->
+            <!-- OPTION 3: GITHUB COPILOT CLOUD AGENT -->
             <div class="option-card option-card--purple reveal">
                 <div class="option-number">3</div>
-                <h3>Coding Agent — GitHub.com</h3>
+                <h3>GitHub Copilot Cloud Agent</h3>
                 <p>Autonomous agent that runs on GitHub, creates branches and PRs for your team to review.</p>
 
                 <div class="option-when">
@@ -1131,14 +1144,14 @@
                             <div class="step-num">1</div>
                             <div class="step-content">
                                 <strong>Configure Agent</strong>
-                                <span>Follow setup at <code>github.com/dotnet/modernize-dotnet/coding-agent</code></span>
+                                <span>Follow setup at <a href="https://github.com/dotnet/modernize-dotnet/tree/main/coding-agent" target="_blank" style="color: var(--accent-purple);">github.com/dotnet/modernize-dotnet/coding-agent</a></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">2</div>
                             <div class="step-content">
                                 <strong>Add copilot-setup-steps.yml</strong>
-                                <span>Configure the Coding Agent workflow in your repository's <code>.github/</code> directory</span>
+                                <span>Configure the Cloud Agent workflow in your repository's <code>.github/workflows/</code> directory</span>
                             </div>
                         </div>
                         <div class="setup-step">
@@ -1152,7 +1165,7 @@
                             <div class="step-num">4</div>
                             <div class="step-content">
                                 <strong>Review PR</strong>
-                                <span>Review the generated PR as a normal code review. MCP tools available for extended integration.</span>
+                                <span>Review the generated PR as a normal code review.</span>
                             </div>
                         </div>
                     </div>
@@ -1184,7 +1197,7 @@
                             <div class="step-num">1</div>
                             <div class="step-content">
                                 <strong>Install Modernize CLI</strong>
-                                <span>Follow the installation guide at <code>aka.ms/ghcp-modernization-agent</code></span>
+                                <span>Follow the installation guide at <a href="https://aka.ms/ghcp-modernization-agent" target="_blank" style="color: var(--accent-orange);">aka.ms/ghcp-modernization-agent</a></span>
                             </div>
                         </div>
                         <div class="setup-step">
@@ -1214,75 +1227,6 @@
         </div>
     </section>
 
-    <!-- ========== FLOWCHART ========== -->
-    <section class="flowchart" id="flowchart">
-        <div class="section-header reveal">
-            <span class="section-label">Decision Guide</span>
-            <h2>Which Option Is Right for You?</h2>
-            <p>Answer three questions to find your ideal modernization path.</p>
-        </div>
-
-        <div class="flow-container reveal">
-            <!-- Decision 1 -->
-            <div class="flow-decision">
-                <div class="flow-diamond flow-diamond--blue">
-                    <div class="flow-diamond-shape"></div>
-                    <div class="flow-diamond-text">Prefer more<br>interactive?</div>
-                </div>
-                <div class="flow-answer">
-                    <span class="flow-answer-label" style="color: var(--accent-blue);">Yes →</span>
-                    <div class="flow-line flow-line--blue"></div>
-                    <div class="flow-result flow-result--blue">1. IDE (VS / VS Code)</div>
-                </div>
-            </div>
-
-            <!-- Connector -->
-            <div class="flow-connector">
-                <div class="flow-vline"></div>
-                <div class="flow-no-label">No (fully autonomous) ↓</div>
-            </div>
-
-            <!-- Decision 2 -->
-            <div class="flow-decision">
-                <div class="flow-diamond flow-diamond--purple">
-                    <div class="flow-diamond-shape"></div>
-                    <div class="flow-diamond-text">Fully delegate<br>to Cloud?</div>
-                </div>
-                <div class="flow-answer">
-                    <span class="flow-answer-label" style="color: var(--accent-purple);">Yes →</span>
-                    <div class="flow-line flow-line--purple"></div>
-                    <div class="flow-result flow-result--purple">3. Coding Agent</div>
-                </div>
-            </div>
-
-            <!-- Connector -->
-            <div class="flow-connector">
-                <div class="flow-vline"></div>
-                <div class="flow-no-label">No ↓</div>
-            </div>
-
-            <!-- Decision 3 -->
-            <div class="flow-split">
-                <div class="flow-diamond flow-diamond--green">
-                    <div class="flow-diamond-shape"></div>
-                    <div class="flow-diamond-text">Single or<br>Multiple?</div>
-                </div>
-                <div class="flow-split-results">
-                    <div class="flow-split-item">
-                        <span class="flow-answer-label" style="color: var(--accent-green);">Single →</span>
-                        <div class="flow-line flow-line--green"></div>
-                        <div class="flow-result flow-result--green">2. Copilot CLI</div>
-                    </div>
-                    <div class="flow-split-item">
-                        <span class="flow-answer-label" style="color: var(--accent-orange);">Batch →</span>
-                        <div class="flow-line flow-line--orange"></div>
-                        <div class="flow-result flow-result--orange">4. Modernize CLI</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ========== RESOURCES ========== -->
     <section class="resources" id="resources">
         <div class="section-header reveal">
@@ -1301,14 +1245,14 @@
             <a href="https://github.com/dotnet/modernize-dotnet" class="resource-link" target="_blank">
                 <span class="resource-icon">📦</span>
                 <div>
-                    <strong>modernize-dotnet on GitHub</strong>
+                    <strong>modernize-dotnet agent</strong>
                     <span>Agent plugin source, coding agent setup, docs</span>
                 </div>
             </a>
             <a href="https://aka.ms/ghcp-modernization-agent" class="resource-link" target="_blank">
                 <span class="resource-icon">🤖</span>
                 <div>
-                    <strong>Modernization Agent Overview</strong>
+                    <strong>Modernization Agent CLI</strong>
                     <span>aka.ms/ghcp-modernization-agent — Modernize CLI docs</span>
                 </div>
             </a>
@@ -1319,25 +1263,18 @@
                     <span>Microsoft Learn — full documentation</span>
                 </div>
             </a>
-            <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-modernize" class="resource-link" target="_blank">
+            <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure" class="resource-link" target="_blank">
                 <span class="resource-icon">🧩</span>
                 <div>
-                    <strong>VS Code Extension</strong>
-                    <span>ms-dotnettools.vscode-dotnet-modernize</span>
+                    <strong>GitHub Copilot modernization VS Code Extension</strong>
+                    <span>VS Code Marketplace extension for .NET modernization</span>
                 </div>
             </a>
-            <a href="https://github.com/dotnet/modernize-dotnet/blob/main/coding-agent/README.md" class="resource-link" target="_blank">
+            <a href="https://github.com/dotnet/modernize-dotnet/tree/main/coding-agent" class="resource-link" target="_blank">
                 <span class="resource-icon">⚡</span>
                 <div>
-                    <strong>Coding Agent Setup</strong>
+                    <strong>modernize-dotnet agent setup for GitHub Copilot Cloud Agent</strong>
                     <span>Configure autonomous upgrades on GitHub.com</span>
-                </div>
-            </a>
-            <a href="https://learn.microsoft.com/en-us/dotnet/azure/migration/appmod/coding-agent-support" class="resource-link" target="_blank">
-                <span class="resource-icon">🔌</span>
-                <div>
-                    <strong>MCP / Coding Agent Support</strong>
-                    <span>Extended tool integration for coding agents</span>
                 </div>
             </a>
             <a href="https://devblogs.microsoft.com/dotnet/modernize-dotnet-anywhere-with-ghcp/" class="resource-link" target="_blank">
@@ -1353,8 +1290,7 @@
     <!-- ========== FOOTER ========== -->
     <footer>
         <p>
-            Built with 💜 using GitHub Copilot &nbsp;·&nbsp;
-            All options share the <a href="https://github.com/dotnet/modernize-dotnet">modernize-dotnet</a> agent plugin
+            Built with 💜 using GitHub Copilot
         </p>
     </footer>
 
