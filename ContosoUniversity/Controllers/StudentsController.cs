@@ -1,232 +1,201 @@
-using System;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Net;
-using System.Web.Mvc;
+using System.Diagnostics;
 using ContosoUniversity.Data;
 using ContosoUniversity.Models;
-using System.Diagnostics;
+using ContosoUniversity.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace ContosoUniversity.Controllers
+namespace ContosoUniversity.Controllers;
+
+public class StudentsController : BaseController
 {
-    public class StudentsController : BaseController
+    public StudentsController(SchoolContext db, NotificationService notificationService)
+        : base(db, notificationService)
     {
-        // GET: Students - Admins and Teachers can view
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+    }
+
+    public IActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+    {
+        ViewData["CurrentSort"] = sortOrder;
+        ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : string.Empty;
+        ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+        if (searchString is not null)
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var students = from s in db.Students
-                           select s;
-            
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                students = students.Where(s => s.LastName.Contains(searchString)
-                                       || s.FirstMidName.Contains(searchString));
-            }
-            
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    students = students.OrderByDescending(s => s.LastName);
-                    break;
-                case "Date":
-                    students = students.OrderBy(s => s.EnrollmentDate);
-                    break;
-                case "date_desc":
-                    students = students.OrderByDescending(s => s.EnrollmentDate);
-                    break;
-                default:
-                    students = students.OrderBy(s => s.LastName);
-                    break;
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(PaginatedList<Student>.Create(students, pageNumber, pageSize));
+            page = 1;
+        }
+        else
+        {
+            searchString = currentFilter;
         }
 
-        // GET: Students/Details/5 - Admins and Teachers can view details
-        public ActionResult Details(int? id)
+        ViewData["CurrentFilter"] = searchString;
+
+        var students = Db.Students.AsNoTracking().AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchString))
         {
-            if (id == null)
+            students = students.Where(student =>
+                student.LastName.Contains(searchString) ||
+                student.FirstMidName.Contains(searchString));
+        }
+
+        students = sortOrder switch
+        {
+            "name_desc" => students.OrderByDescending(student => student.LastName),
+            "Date" => students.OrderBy(student => student.EnrollmentDate),
+            "date_desc" => students.OrderByDescending(student => student.EnrollmentDate),
+            _ => students.OrderBy(student => student.LastName)
+        };
+
+        const int pageSize = 10;
+        var pageNumber = page ?? 1;
+        return View(PaginatedList<Student>.Create(students, pageNumber, pageSize));
+    }
+
+    public IActionResult Details(int? id)
+    {
+        if (id is null)
+        {
+            return BadRequest();
+        }
+
+        var student = Db.Students
+            .AsNoTracking()
+            .Include(item => item.Enrollments)
+                .ThenInclude(enrollment => enrollment.Course)
+            .SingleOrDefault(item => item.ID == id.Value);
+
+        return student is null ? NotFound() : View(student);
+    }
+
+    public IActionResult Create()
+    {
+        var student = new Student
+        {
+            EnrollmentDate = DateTime.Today
+        };
+
+        return View(student);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create([Bind("LastName,FirstMidName,EnrollmentDate")] Student student)
+    {
+        try
+        {
+            ValidateEnrollmentDate(student.EnrollmentDate);
+
+            if (!ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View(student);
             }
-            Student student = db.Students
-                .Include(s => s.Enrollments)
-                    .ThenInclude(e => e.Course)
-                .Where(s => s.ID == id).Single();
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
+
+            Db.Students.Add(student);
+            Db.SaveChanges();
+
+            var studentName = $"{student.FirstMidName} {student.LastName}";
+            SendEntityNotification("Student", student.ID.ToString(), studentName, EntityOperation.CREATE);
+
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            Trace.TraceError($"Error creating student: {ex.Message} | Student: {student?.FirstMidName} {student?.LastName} | EnrollmentDate: {student?.EnrollmentDate} | Stack: {ex.StackTrace}");
+            ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             return View(student);
         }
+    }
 
-        // GET: Students/Create
-        public ActionResult Create()
+    public IActionResult Edit(int? id)
+    {
+        if (id is null)
         {
-            var student = new Student
+            return BadRequest();
+        }
+
+        var student = Db.Students.Find(id.Value);
+        return student is null ? NotFound() : View(student);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit([Bind("ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+    {
+        try
+        {
+            ValidateEnrollmentDate(student.EnrollmentDate);
+
+            if (!ModelState.IsValid)
             {
-                EnrollmentDate = DateTime.Today // Set default to today's date
-            };
+                return View(student);
+            }
+
+            Db.Entry(student).State = EntityState.Modified;
+            Db.SaveChanges();
+
+            var studentName = $"{student.FirstMidName} {student.LastName}";
+            SendEntityNotification("Student", student.ID.ToString(), studentName, EntityOperation.UPDATE);
+
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            Trace.TraceError($"Error editing student: {ex.Message} | Student ID: {student?.ID} | Student: {student?.FirstMidName} {student?.LastName} | EnrollmentDate: {student?.EnrollmentDate} | Stack: {ex.StackTrace}");
+            ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             return View(student);
         }
+    }
 
-        // POST: Students/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName,FirstMidName,EnrollmentDate")] Student student)
+    public IActionResult Delete(int? id)
+    {
+        if (id is null)
         {
-            try
-            {
-                // Validate EnrollmentDate is not default/minimum value
-                if (student.EnrollmentDate == DateTime.MinValue || student.EnrollmentDate == default(DateTime))
-                {
-                    ModelState.AddModelError("EnrollmentDate", "Please enter a valid enrollment date.");
-                }
-
-                // Ensure EnrollmentDate is within valid SQL Server datetime range
-                if (student.EnrollmentDate < new DateTime(1753, 1, 1) || student.EnrollmentDate > new DateTime(9999, 12, 31))
-                {
-                    ModelState.AddModelError("EnrollmentDate", "Enrollment date must be between 1753 and 9999.");
-                }
-
-                if (ModelState.IsValid)
-                {
-                    db.Students.Add(student);
-                    db.SaveChanges();
-                    
-                    // Send notification for student creation
-                    var studentName = $"{student.FirstMidName} {student.LastName}";
-                    SendEntityNotification("Student", student.ID.ToString(), studentName, EntityOperation.CREATE);
-                    
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError($"Error creating student: {ex.Message} | Student: {student?.FirstMidName} {student?.LastName} | EnrollmentDate: {student?.EnrollmentDate} | Stack: {ex.StackTrace}");
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View(student);
+            return BadRequest();
         }
 
-        // GET: Students/Edit/5
-        public ActionResult Edit(int? id)
+        var student = Db.Students.Find(id.Value);
+        return student is null ? NotFound() : View(student);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteConfirmed(int id)
+    {
+        try
         {
-            if (id == null)
+            var student = Db.Students.Find(id);
+            if (student is null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction(nameof(Index));
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(student);
+
+            var studentName = $"{student.FirstMidName} {student.LastName}";
+            Db.Students.Remove(student);
+            Db.SaveChanges();
+
+            SendEntityNotification("Student", id.ToString(), studentName, EntityOperation.DELETE);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            Trace.TraceError($"Error deleting student: {ex.Message} | Student ID: {id} | Stack: {ex.StackTrace}");
+            TempData["ErrorMessage"] = "Unable to delete the student. Try again, and if the problem persists see your system administrator.";
+            return RedirectToAction(nameof(Index));
+        }
+    }
+
+    private void ValidateEnrollmentDate(DateTime enrollmentDate)
+    {
+        if (enrollmentDate == DateTime.MinValue || enrollmentDate == default)
+        {
+            ModelState.AddModelError("EnrollmentDate", "Please enter a valid enrollment date.");
         }
 
-        // POST: Students/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+        if (enrollmentDate < new DateTime(1753, 1, 1) || enrollmentDate > new DateTime(9999, 12, 31))
         {
-            try
-            {
-                // Validate EnrollmentDate is not default/minimum value
-                if (student.EnrollmentDate == DateTime.MinValue || student.EnrollmentDate == default(DateTime))
-                {
-                    ModelState.AddModelError("EnrollmentDate", "Please enter a valid enrollment date.");
-                }
-
-                // Ensure EnrollmentDate is within valid SQL Server datetime range
-                if (student.EnrollmentDate < new DateTime(1753, 1, 1) || student.EnrollmentDate > new DateTime(9999, 12, 31))
-                {
-                    ModelState.AddModelError("EnrollmentDate", "Enrollment date must be between 1753 and 9999.");
-                }
-
-                if (ModelState.IsValid)
-                {
-                    db.Entry(student).State = EntityState.Modified;
-                    db.SaveChanges();
-                    
-                    // Send notification for student update
-                    var studentName = $"{student.FirstMidName} {student.LastName}";
-                    SendEntityNotification("Student", student.ID.ToString(), studentName, EntityOperation.UPDATE);
-                    
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError($"Error editing student: {ex.Message} | Student ID: {student?.ID} | Student: {student?.FirstMidName} {student?.LastName} | EnrollmentDate: {student?.EnrollmentDate} | Stack: {ex.StackTrace}");
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View(student);
-        }
-
-        // GET: Students/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Student student = db.Students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(student);
-        }
-
-        // POST: Students/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            try
-            {
-                Student student = db.Students.Find(id);
-                var studentName = $"{student.FirstMidName} {student.LastName}";
-                db.Students.Remove(student);
-                db.SaveChanges();
-                
-                // Send notification for student deletion
-                SendEntityNotification("Student", id.ToString(), studentName, EntityOperation.DELETE);
-                
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError($"Error deleting student: {ex.Message} | Student ID: {id} | Stack: {ex.StackTrace}");
-                TempData["ErrorMessage"] = "Unable to delete the student. Try again, and if the problem persists see your system administrator.";
-                return RedirectToAction("Index");
-            }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                // Base class will dispose db and notificationService
-            }
-            base.Dispose(disposing);
+            ModelState.AddModelError("EnrollmentDate", "Enrollment date must be between 1753 and 9999.");
         }
     }
 }

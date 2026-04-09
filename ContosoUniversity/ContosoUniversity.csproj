@@ -21,4 +21,14 @@
     <Compile Remove="Controllers\**\*.cs" />
     <Compile Remove="Global.asax.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorsController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+  </ItemGroup>
 </Project>
