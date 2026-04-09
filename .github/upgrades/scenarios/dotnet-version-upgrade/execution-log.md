@@ -13,3 +13,13 @@ Converted `ContosoUniversity.csproj` to SDK-style and removed `packages.config`,
 
 Rebuilt the project bootstrap for ASP.NET Core. Replaced the interim SDK-style net48 project file with a minimal `net10.0` web project, added `Program.cs` and `appsettings.json`, and removed the legacy MVC startup/configuration files (`Global.asax*`, `App_Start/*`, `Web.config`, and `Views/Web.config`). To support the remaining migration subtasks, the still-unmigrated controllers and notification service were temporarily excluded from compilation. Validation succeeded with `dotnet build ContosoUniversity.csproj -warnaserror`.
 
+
+## [2026-04-09 15:39] 03.02-static-assets
+
+Migrated the static asset pipeline away from System.Web bundling. `Program.cs` now serves the existing `Content`, `Scripts`, and `Uploads` directories as static files, `_Layout.cshtml` uses direct stylesheet/script tags, and the affected CRUD views now reference the jQuery validation scripts explicitly. Added `_ViewImports.cshtml` for ASP.NET Core Razor imports and validated with `dotnet build ContosoUniversity.csproj -warnaserror`.
+
+
+## [2026-04-09 15:40] 03.03-notification-service
+
+Replaced the legacy MSMQ dependency with a database-backed notification service. `NotificationService` now stores notifications through `SchoolContext`, exposes unread/read operations for the later controller work, and is registered in ASP.NET Core DI. Validation succeeded with `dotnet build ContosoUniversity.csproj -warnaserror`.
+

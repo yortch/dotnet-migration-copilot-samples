@@ -1,6 +1,6 @@
 # Migration Progress
 
-**Progress**: 2/13 tasks complete <progress value="15" max="100"></progress> 15%
+**Progress**: 4/13 tasks complete <progress value="31" max="100"></progress> 31%
 **Status**: In Progress - Task 03-web-app-upgrade
 
 ## Tasks
@@ -9,8 +9,8 @@
 - ❌ 02-sdk-style-conversion: Convert the web project to SDK-style on its current framework ([Content](tasks/02-sdk-style-conversion/task.md), [Progress](tasks/02-sdk-style-conversion/progress-details.md))
 - 🔄 03-web-app-upgrade: Rewrite the application for ASP.NET Core on .NET 10 ([Content](tasks/03-web-app-upgrade/task.md))
    - ✅ 03.01-bootstrap-config: Rebuild project bootstrap and configuration for ASP.NET Core ([Content](tasks/03.01-bootstrap-config/task.md), [Progress](tasks/03.01-bootstrap-config/progress-details.md))
-   - 🔲 03.02-static-assets: Migrate static assets and layout bundling
-   - 🔲 03.03-notification-service: Replace the System.Messaging notification implementation
+   - ✅ 03.02-static-assets: Migrate static assets and layout bundling ([Content](tasks/03.02-static-assets/task.md), [Progress](tasks/03.02-static-assets/progress-details.md))
+   - ✅ 03.03-notification-service: Replace the System.Messaging notification implementation ([Content](tasks/03.03-notification-service/task.md), [Progress](tasks/03.03-notification-service/progress-details.md))
    - 🔲 03.04-base-controller: Migrate shared controller infrastructure
    - 🔲 03.05-home-controller: Migrate HomeController and its views
    - 🔲 03.06-courses-controller: Migrate CoursesController and its views

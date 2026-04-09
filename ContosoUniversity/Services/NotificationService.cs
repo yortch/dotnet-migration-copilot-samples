@@ -1,120 +1,84 @@
-using System;
-using System.Messaging;
-using System.Configuration;
+using ContosoUniversity.Data;
 using ContosoUniversity.Models;
-using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
-namespace ContosoUniversity.Services
+namespace ContosoUniversity.Services;
+
+public class NotificationService
 {
-    public class NotificationService
+    private readonly ILogger<NotificationService> _logger;
+    private readonly SchoolContext _dbContext;
+
+    public NotificationService(SchoolContext dbContext, ILogger<NotificationService> logger)
     {
-        private readonly string _queuePath;
-        private readonly MessageQueue _queue;
+        _dbContext = dbContext;
+        _logger = logger;
+    }
 
-        public NotificationService()
+    public void SendNotification(string entityType, string entityId, EntityOperation operation, string userName = null)
+    {
+        SendNotification(entityType, entityId, null, operation, userName);
+    }
+
+    public void SendNotification(string entityType, string entityId, string entityDisplayName, EntityOperation operation, string userName = null)
+    {
+        try
         {
-            // Get queue path from configuration or use default
-            _queuePath = ConfigurationManager.AppSettings["NotificationQueuePath"] ?? @".\Private$\ContosoUniversityNotifications";
-            
-            // Ensure the queue exists
-            if (!MessageQueue.Exists(_queuePath))
+            var notification = new Notification
             {
-                _queue = MessageQueue.Create(_queuePath);
-                _queue.SetPermissions("Everyone", MessageQueueAccessRights.FullControl);
-            }
-            else
-            {
-                _queue = new MessageQueue(_queuePath);
-            }
-            
-            // Configure queue formatter
-            _queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+                EntityType = entityType,
+                EntityId = entityId,
+                Operation = operation.ToString(),
+                Message = GenerateMessage(entityType, entityId, entityDisplayName, operation),
+                CreatedAt = DateTime.UtcNow,
+                CreatedBy = userName ?? "System",
+                IsRead = false
+            };
+
+            _dbContext.Notifications.Add(notification);
+            _dbContext.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to save notification for {EntityType} {EntityId}", entityType, entityId);
+        }
+    }
+
+    public IReadOnlyList<Notification> GetUnreadNotifications(int limit = 10)
+    {
+        return _dbContext.Notifications
+            .Where(notification => !notification.IsRead)
+            .OrderByDescending(notification => notification.CreatedAt)
+            .Take(limit)
+            .AsNoTracking()
+            .ToList();
+    }
+
+    public void MarkAsRead(int notificationId)
+    {
+        var notification = _dbContext.Notifications.SingleOrDefault(item => item.Id == notificationId);
+        if (notification is null || notification.IsRead)
+        {
+            return;
         }
 
-        public void SendNotification(string entityType, string entityId, EntityOperation operation, string userName = null)
+        notification.IsRead = true;
+        notification.ReadAt = DateTime.UtcNow;
+        _dbContext.SaveChanges();
+    }
+
+    private static string GenerateMessage(string entityType, string entityId, string entityDisplayName, EntityOperation operation)
+    {
+        var displayText = !string.IsNullOrWhiteSpace(entityDisplayName)
+            ? $"{entityType} '{entityDisplayName}'"
+            : $"{entityType} (ID: {entityId})";
+
+        return operation switch
         {
-            SendNotification(entityType, entityId, null, operation, userName);
-        }
-
-        public void SendNotification(string entityType, string entityId, string entityDisplayName, EntityOperation operation, string userName = null)
-        {
-            try
-            {
-                var notification = new Notification
-                {
-                    EntityType = entityType,
-                    EntityId = entityId,
-                    Operation = operation.ToString(),
-                    Message = GenerateMessage(entityType, entityId, entityDisplayName, operation),
-                    CreatedAt = DateTime.Now,
-                    CreatedBy = userName ?? "System",
-                    IsRead = false
-                };
-
-                var jsonMessage = JsonConvert.SerializeObject(notification);
-                var message = new Message(jsonMessage)
-                {
-                    Label = $"{entityType} {operation}",
-                    Priority = MessagePriority.Normal
-                };
-
-                _queue.Send(message);
-            }
-            catch (Exception ex)
-            {
-                // Log error but don't break the main operation
-                System.Diagnostics.Debug.WriteLine($"Failed to send notification: {ex.Message}");
-            }
-        }
-
-        public Notification ReceiveNotification()
-        {
-            try
-            {
-                var message = _queue.Receive(TimeSpan.FromSeconds(1));
-                var jsonContent = message.Body.ToString();
-                return JsonConvert.DeserializeObject<Notification>(jsonContent);
-            }
-            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)
-            {
-                // No messages available
-                return null;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Failed to receive notification: {ex.Message}");
-                return null;
-            }
-        }
-
-        public void MarkAsRead(int notificationId)
-        {
-            // In a real implementation, you might want to store notifications in database as well
-            // for persistence and tracking read status
-        }
-
-        private string GenerateMessage(string entityType, string entityId, string entityDisplayName, EntityOperation operation)
-        {
-            var displayText = !string.IsNullOrWhiteSpace(entityDisplayName) 
-                ? $"{entityType} '{entityDisplayName}'" 
-                : $"{entityType} (ID: {entityId})";
-
-            switch (operation)
-            {
-                case EntityOperation.CREATE:
-                    return $"New {displayText} has been created";
-                case EntityOperation.UPDATE:
-                    return $"{displayText} has been updated";
-                case EntityOperation.DELETE:
-                    return $"{displayText} has been deleted";
-                default:
-                    return $"{displayText} operation: {operation}";
-            }
-        }
-
-        public void Dispose()
-        {
-            _queue?.Dispose();
-        }
+            EntityOperation.CREATE => $"New {displayText} has been created",
+            EntityOperation.UPDATE => $"{displayText} has been updated",
+            EntityOperation.DELETE => $"{displayText} has been deleted",
+            _ => $"{displayText} operation: {operation}"
+        };
     }
 }

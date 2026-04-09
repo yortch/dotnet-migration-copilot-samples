@@ -19,7 +19,6 @@
   <ItemGroup>
     <Compile Remove="App_Start\**\*.cs" />
     <Compile Remove="Controllers\**\*.cs" />
-    <Compile Remove="Services\NotificationService.cs" />
     <Compile Remove="Global.asax.cs" />
   </ItemGroup>
 </Project>
