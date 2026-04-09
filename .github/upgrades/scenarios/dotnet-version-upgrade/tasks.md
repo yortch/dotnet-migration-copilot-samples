@@ -1,6 +1,6 @@
 # Migration Progress
 
-**Progress**: 11/13 tasks complete <progress value="85" max="100"></progress> 85%
+**Progress**: 12/13 tasks complete <progress value="92" max="100"></progress> 92%
 **Status**: In Progress - Task 03-web-app-upgrade
 
 ## Tasks
@@ -18,6 +18,6 @@
    - ✅ 03.08-instructors-controller: Migrate InstructorsController and its views ([Content](tasks/03.08-instructors-controller/task.md), [Progress](tasks/03.08-instructors-controller/progress-details.md))
    - ✅ 03.09-notifications-controller: Migrate NotificationsController and its views ([Content](tasks/03.09-notifications-controller/task.md), [Progress](tasks/03.09-notifications-controller/progress-details.md))
    - ✅ 03.10-students-controller: Migrate StudentsController and its views ([Content](tasks/03.10-students-controller/task.md), [Progress](tasks/03.10-students-controller/progress-details.md))
-- 🔲 04-final-validation: Validate the upgraded solution and finalize workflow artifacts
+- ✅ 04-final-validation: Validate the upgraded solution and finalize workflow artifacts ([Content](tasks/04-final-validation/task.md), [Progress](tasks/04-final-validation/progress-details.md))
 
 **Legend**: ✅ Complete | 🔄 In Progress | 🔲 Pending | ⚠️ Blocked | ❌ Failed
