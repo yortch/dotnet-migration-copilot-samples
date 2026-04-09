@@ -9,6 +9,6 @@ Upgrade the ContosoUniversity sample from ASP.NET MVC 5 on .NET Framework 4.8 to
 ## Tasks
 
 - ✅ 01-prerequisites: Verify upgrade prerequisites ([Content](tasks/01-prerequisites/task.md), [Progress](tasks/01-prerequisites/progress-details.md))
-- 🔲 02-sdk-style-conversion: Convert the web project to SDK-style on its current framework
+- ❌ 02-sdk-style-conversion: Convert the web project to SDK-style on its current framework ([Content](tasks/02-sdk-style-conversion/task.md), [Progress](tasks/02-sdk-style-conversion/progress-details.md))
 - 🔲 03-web-app-upgrade: Rewrite the application for ASP.NET Core on .NET 10
 - 🔲 04-final-validation: Validate the upgraded solution and finalize workflow artifacts
