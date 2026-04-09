@@ -1,7 +1,7 @@
 # Migration Progress
 
 **Progress**: 12/13 tasks complete <progress value="92" max="100"></progress> 92%
-**Status**: In Progress - Task 03-web-app-upgrade
+**Status**: Completed with 1 failed task (`02-sdk-style-conversion`)
 
 ## Tasks
 
