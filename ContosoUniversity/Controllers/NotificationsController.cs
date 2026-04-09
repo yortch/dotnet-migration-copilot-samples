@@ -34,21 +34,6 @@ public class NotificationsController : BaseController
         }
     }
 
-    [HttpPost]
-    public JsonResult MarkAsRead(int id)
-    {
-        try
-        {
-            NotificationService.MarkAsRead(id);
-            return Json(new { success = true });
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error marking notification {NotificationId} as read", id);
-            return Json(new { success = false, message = "Error updating notification" });
-        }
-    }
-
     public IActionResult Index()
     {
         return View();

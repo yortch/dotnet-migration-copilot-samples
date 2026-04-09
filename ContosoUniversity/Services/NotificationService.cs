@@ -46,12 +46,25 @@ public class NotificationService
 
     public IReadOnlyList<Notification> GetUnreadNotifications(int limit = 10)
     {
-        return _dbContext.Notifications
+        var notifications = _dbContext.Notifications
             .Where(notification => !notification.IsRead)
             .OrderByDescending(notification => notification.CreatedAt)
             .Take(limit)
-            .AsNoTracking()
             .ToList();
+
+        if (notifications.Count == 0)
+        {
+            return notifications;
+        }
+
+        foreach (var notification in notifications)
+        {
+            notification.IsRead = true;
+            notification.ReadAt = DateTime.UtcNow;
+        }
+
+        _dbContext.SaveChanges();
+        return notifications;
     }
 
     public void MarkAsRead(int notificationId)

@@ -6,7 +6,7 @@ Run the final restore/build validation for the upgraded solution, confirm the re
 
 ## Validation Results
 
-- `dotnet build ContosoUniversity.sln -warnaserror` succeeded on the upgraded `net10.0` solution
+- `dotnet build ContosoUniversity.sln -warnaserror` succeeded on the upgraded `net10.0` solution with Razor compilation enabled
 - Build output contains 0 warnings and 0 errors
 - No test projects exist in the repository, so there were no automated tests to execute for this sample
 
@@ -14,3 +14,4 @@ Run the final restore/build validation for the upgraded solution, confirm the re
 
 - `tasks.md` now reflects the completed migration subtasks and the intentionally failed SDK-style stabilization task
 - Scenario task folders include `progress-details.md` for every executed task and subtask
+- Notification polling now reads from the database-backed notification service without the old MSMQ wording in the dashboard view
