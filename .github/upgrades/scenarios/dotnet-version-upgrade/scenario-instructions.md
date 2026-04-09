@@ -22,7 +22,7 @@
 - **Working Branch**: upgrade-to-net10-cca-live
 
 ## Build Tool Decisions
-- **ContosoUniversity.csproj**: Visual Studio MSBuild for the legacy project format; `dotnet build` currently fails with MSB4019 on `Microsoft.WebApplication.targets`, so use `dotnet build` only after SDK-style conversion.
+- **ContosoUniversity.csproj**: `dotnet build` after the net10 rewrite; the legacy project previously required Visual Studio MSBuild before conversion.
 
 ## Upgrade Options
 **Source**: .github/upgrades/scenarios/dotnet-version-upgrade/upgrade-options.md
