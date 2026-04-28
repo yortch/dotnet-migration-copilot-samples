@@ -1,47 +1,56 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+using System.Diagnostics;
 using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using ContosoUniversity.Models.SchoolViewModels;
+using ContosoUniversity.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace ContosoUniversity.Controllers
+namespace ContosoUniversity.Controllers;
+
+public class HomeController : BaseController
 {
-    public class HomeController : BaseController
+    public HomeController(SchoolContext db, NotificationService notificationService)
+        : base(db, notificationService)
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+    }
 
-        public ActionResult About()
-        {
-            IQueryable<EnrollmentDateGroup> data = 
-                from student in db.Students
-                group student by student.EnrollmentDate into dateGroup
-                select new EnrollmentDateGroup()
-                {
-                    EnrollmentDate = dateGroup.Key,
-                    StudentCount = dateGroup.Count()
-                };
-            return View(data.ToList());
-        }
+    public IActionResult Index()
+    {
+        return View();
+    }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+    public IActionResult About()
+    {
+        var data = Db.Students
+            .AsNoTracking()
+            .GroupBy(student => student.EnrollmentDate)
+            .Select(dateGroup => new EnrollmentDateGroup
+            {
+                EnrollmentDate = dateGroup.Key,
+                StudentCount = dateGroup.Count()
+            })
+            .OrderBy(item => item.EnrollmentDate)
+            .ToList();
 
-            return View();
-        }
+        return View(data);
+    }
 
-        public ActionResult Error()
-        {
-            return View();
-        }
+    public IActionResult Contact()
+    {
+        ViewData["Message"] = "Your contact page.";
+        return View();
+    }
 
-        public ActionResult Unauthorized()
-        {
-            ViewBag.Message = "You don't have permission to access this resource.";
-            return View();
-        }
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    [ActionName("Unauthorized")]
+    public IActionResult UnauthorizedPage()
+    {
+        Response.StatusCode = StatusCodes.Status403Forbidden;
+        return View("Error", new ErrorViewModel { RequestId = HttpContext.TraceIdentifier });
     }
 }
