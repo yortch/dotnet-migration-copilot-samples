@@ -1,0 +1,115 @@
+#nullable disable
+
+using System;
+using System.Messaging;
+using ContosoUniversityCore.Models;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+
+namespace ContosoUniversityCore.Services
+{
+    public class NotificationService : IDisposable
+    {
+        private readonly string _queuePath;
+        private readonly MessageQueue _queue;
+
+        public NotificationService(IConfiguration configuration)
+        {
+            _queuePath = configuration["NotificationQueuePath"] ?? @".\Private$\ContosoUniversityNotifications";
+
+            if (!MessageQueue.Exists(_queuePath))
+            {
+                _queue = MessageQueue.Create(_queuePath);
+                _queue.SetPermissions("Everyone", MessageQueueAccessRights.FullControl);
+            }
+            else
+            {
+                _queue = new MessageQueue(_queuePath);
+            }
+
+            _queue.Formatter = new XmlMessageFormatter(new[] { typeof(string) });
+        }
+
+        public void SendNotification(string entityType, string entityId, EntityOperation operation, string userName = null)
+        {
+            SendNotification(entityType, entityId, null, operation, userName);
+        }
+
+        public void SendNotification(string entityType, string entityId, string entityDisplayName, EntityOperation operation, string userName = null)
+        {
+            try
+            {
+                var notification = new Notification
+                {
+                    EntityType = entityType,
+                    EntityId = entityId,
+                    Operation = operation.ToString(),
+                    Message = GenerateMessage(entityType, entityId, entityDisplayName, operation),
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = userName ?? "System",
+                    IsRead = false
+                };
+
+                var jsonMessage = JsonConvert.SerializeObject(notification);
+                var message = new Message(jsonMessage)
+                {
+                    Label = $"{entityType} {operation}",
+                    Priority = MessagePriority.Normal
+                };
+
+                _queue.Send(message);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to send notification: {ex.Message}");
+            }
+        }
+
+        public Notification ReceiveNotification()
+        {
+            try
+            {
+                var message = _queue.Receive(TimeSpan.FromSeconds(1));
+                var jsonContent = message.Body?.ToString();
+                return string.IsNullOrWhiteSpace(jsonContent) ? null : JsonConvert.DeserializeObject<Notification>(jsonContent);
+            }
+            catch (MessageQueueException ex) when (ex.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to receive notification: {ex.Message}");
+                return null;
+            }
+        }
+
+        public void MarkAsRead(int notificationId)
+        {
+        }
+
+        private string GenerateMessage(string entityType, string entityId, string entityDisplayName, EntityOperation operation)
+        {
+            var displayText = !string.IsNullOrWhiteSpace(entityDisplayName)
+                ? $"{entityType} '{entityDisplayName}'"
+                : $"{entityType} (ID: {entityId})";
+
+            switch (operation)
+            {
+                case EntityOperation.CREATE:
+                    return $"New {displayText} has been created";
+                case EntityOperation.UPDATE:
+                    return $"{displayText} has been updated";
+                case EntityOperation.DELETE:
+                    return $"{displayText} has been deleted";
+                default:
+                    return $"{displayText} operation: {operation}";
+            }
+        }
+
+        public void Dispose()
+        {
+            _queue?.Dispose();
+        }
+    }
+}
