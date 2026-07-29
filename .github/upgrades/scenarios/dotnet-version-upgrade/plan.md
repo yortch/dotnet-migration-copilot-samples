@@ -1,20 +1,15 @@
 # Upgrade Plan — ContosoUniversity to .NET 10
 
 ## Selected Strategy
+
 **All-At-Once** — The single ContosoUniversity project is upgraded via side-by-side web migration (new ASP.NET Core project alongside the legacy net48 WAP).
 **Rationale**: 1 project (net48 WAP), .NET Framework single-project rule → All-at-Once. Side-by-side modifier injected because Project Approach = Side-by-side for the ASP.NET MVC Framework web project.
-
----
-
-## Projects in Scope
 
 | Project | Type | Current TFM | Target TFM | Approach |
 |---------|------|-------------|------------|----------|
 | ContosoUniversity.csproj | ASP.NET MVC WAP | net48 | net10.0 | Side-by-side (scaffold new Core project) |
 
 ---
-
-## Tasks
 
 ### 01-prerequisites: Verify Prerequisites
 
