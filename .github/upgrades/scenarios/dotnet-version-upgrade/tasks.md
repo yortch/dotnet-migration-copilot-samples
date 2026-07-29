@@ -1,0 +1,6 @@
+## Tasks
+
+- ⬜ 01-prerequisites: Verify Prerequisites
+- ⬜ 02-scaffold-contosouniversity: Scaffold New ASP.NET Core Project
+- ⬜ 03-migrate-contosouniversity: Migrate Web Assets to ASP.NET Core
+- ⬜ 04-final-validation: Final Validation
