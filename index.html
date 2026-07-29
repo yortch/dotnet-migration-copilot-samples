@@ -452,6 +452,12 @@
             gap: 2rem;
         }
 
+        .options-grid > .option-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            width: calc((100% - 2rem) / 2);
+            justify-self: center;
+        }
+
         .option-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -880,6 +886,7 @@
         @media (max-width: 900px) {
             .arch-surfaces { grid-template-columns: repeat(2, 1fr); }
             .options-grid { grid-template-columns: 1fr; }
+            .options-grid > .option-card:last-child:nth-child(odd) { grid-column: auto; width: 100%; }
             .nav-links { display: none; }
             .flow-decision { flex-direction: column; align-items: flex-start; }
             .flow-connector { padding-left: 2rem; }
@@ -1042,14 +1049,14 @@
                             <div class="step-num">2</div>
                             <div class="step-content">
                                 <strong>VS Code</strong>
-                                <span>Install <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure" target="_blank" style="color: var(--accent-blue);">GitHub Copilot modernization</a> extension</span>
+                                <span>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.upgrade-agent" target="_blank" style="color: var(--accent-blue);">GitHub Copilot upgrade</a> extension</span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
                                 <strong>Select Custom Agent</strong>
-                                <span>Open Copilot Chat → select <code>modernize-dotnet</code> custom agent</span>
+                                <span>Open Copilot Chat → select the <code>Upgrade</code> custom agent</span>
                             </div>
                         </div>
                         <div class="setup-step">
@@ -1067,7 +1074,7 @@
             <div class="option-card option-card--green reveal">
                 <div class="option-number">2</div>
                 <h3>Copilot CLI</h3>
-                <p>Same modernize-dotnet agent, terminal-first experience — no IDE required.</p>
+                <p>Same Upgrade agent, terminal-first experience — no IDE required.</p>
 
                 <div class="option-when">
                     <h4>✅ Best When</h4>
@@ -1094,19 +1101,26 @@
                         <div class="setup-step">
                             <div class="step-num">2</div>
                             <div class="step-content">
-                                <strong>Install Plugin Marketplace</strong>
-                                <span>Run: <code>/plugin marketplace add dotnet/modernize-dotnet</code></span>
+                                <strong>Add Plugin Marketplace</strong>
+                                <span>Run: <code>/plugin marketplace add microsoft/upgrade-agent-plugins</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
-                                <strong>Select Agent</strong>
-                                <span>Run: <code>/agent</code> and select <code>modernize-dotnet</code></span>
+                                <strong>Install Upgrade Plugin</strong>
+                                <span>Run: <code>/plugin install upgrade-agent@upgrade-agent-plugins</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong>Select Agent</strong>
+                                <span>Run: <code>/agent</code> and select <code>Upgrade</code></span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">5</div>
                             <div class="step-content">
                                 <strong>Run Upgrade</strong>
                                 <span>Enter prompt: <code>Upgrade to .NET 10</code> — review generated plan, then let the agent execute upgrades.</span>
@@ -1141,21 +1155,21 @@
                             <div class="step-num">1</div>
                             <div class="step-content">
                                 <strong>Configure Agent</strong>
-                                <span>Follow setup at <a href="https://github.com/dotnet/modernize-dotnet/tree/main/coding-agent" target="_blank" style="color: var(--accent-purple);">github.com/dotnet/modernize-dotnet/coding-agent</a></span>
+                                <span>Follow the <a href="https://github.com/microsoft/upgrade-agent-plugins/blob/main/cloud-agent/README.md" target="_blank" style="color: var(--accent-purple);">Upgrade cloud agent setup guide</a></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">2</div>
                             <div class="step-content">
-                                <strong>Add copilot-setup-steps.yml</strong>
-                                <span>Configure the Cloud Agent workflow in your repository's <code>.github/workflows/</code> directory</span>
+                                <strong>Configure MCP</strong>
+                                <span>Configure the cloud agent to use <code>Microsoft.GitHubCopilot.Upgrade.Mcp</code></span>
                             </div>
                         </div>
                         <div class="setup-step">
                             <div class="step-num">3</div>
                             <div class="step-content">
                                 <strong>Start Cloud Agent Session</strong>
-                                <span>Go to the <b>Agents</b> tab of your GitHub project, select <code>modernize-dotnet</code> from the custom agents dropdown, enter prompt <code>Upgrade project to .NET 10</code>, and optionally change the model.</span>
+                                <span>Go to the <b>Agents</b> tab of your GitHub project, select <code>Upgrade</code> from the custom agents dropdown, enter prompt <code>Upgrade project to .NET 10</code>, and optionally change the model.</span>
                             </div>
                         </div>
                         <div class="setup-step">
@@ -1169,9 +1183,48 @@
                 </div>
             </div>
 
-            <!-- OPTION 4: MODERNIZE CLI -->
-            <div class="option-card option-card--orange reveal">
+            <!-- OPTION 4: COPILOT DESKTOP APP -->
+            <div class="option-card option-card--blue reveal">
                 <div class="option-number">4</div>
+                <h3>Copilot Desktop App</h3>
+                <p>Install and run the Upgrade plugin from the dedicated GitHub Copilot desktop experience.</p>
+
+                <div class="option-when">
+                    <h4>✅ Best When</h4>
+                    <ul>
+                        <li>Prefer a dedicated desktop app</li>
+                        <li>Want a visual plugin installation flow</li>
+                        <li>Work across repositories outside an IDE</li>
+                    </ul>
+                </div>
+
+                <div class="setup-block">
+                    <div class="setup-header">
+                        <span>Setup Instructions</span>
+                        <span class="lang-tag">Desktop</span>
+                    </div>
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Add Plugin Marketplace</strong>
+                                <span>Click <a href="https://github.com/copilot/app/launch?entry_point=upgrade_agent_docs&amp;open=ghapp%3A%2F%2Fplugins%2Fmarketplace%2Fadd%3Fsource%3Dmicrosoft%2Fupgrade-agent-plugins" target="_blank" style="color: var(--accent-blue);">Launch Copilot App</a> to automatically add the plugin marketplace.</span>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Install Upgrade Plugin</strong>
+                                <span>Expand <code>upgrade-agent-plugins</code> and install the <code>upgrade-agent</code> plugin.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPTION 5: MODERNIZE CLI -->
+            <div class="option-card option-card--orange reveal">
+                <div class="option-number">5</div>
                 <h3>Modernize CLI <span style="font-size: 0.8rem; color: var(--accent-orange);">(Public Preview)</span></h3>
                 <p>Batch assessment and upgrade engine purpose-built for portfolios at scale with CI/CD integration.</p>
 
@@ -1243,27 +1296,27 @@
                 <span class="resource-icon">📝</span>
                 <div>
                     <strong>.NET Blog — Modernize Anywhere</strong>
-                    <span>Deep dive blog post on the modernize-dotnet agent</span>
+                    <span>Deep dive blog post on the Upgrade agent</span>
                 </div>
             </a>
-            <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure" class="resource-link" target="_blank">
+            <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.upgrade-agent" class="resource-link" target="_blank">
                 <span class="resource-icon">🧩</span>
                 <div>
-                    <strong>GitHub Copilot modernization VS Code Extension</strong>
-                    <span>VS Code Marketplace extension for .NET modernization</span>
+                    <strong>GitHub Copilot upgrade VS Code Extension</strong>
+                    <span>VS Code Marketplace extension for application upgrades</span>
                 </div>
             </a>
-            <a href="https://github.com/dotnet/modernize-dotnet" class="resource-link" target="_blank">
+            <a href="https://github.com/microsoft/upgrade-agent-plugins" class="resource-link" target="_blank">
                 <span class="resource-icon">📦</span>
                 <div>
-                    <strong>modernize-dotnet agent</strong>
+                    <strong>Upgrade agent</strong>
                     <span>Agent plugin source, coding agent setup, docs</span>
                 </div>
             </a>
-            <a href="https://github.com/dotnet/modernize-dotnet/tree/main/coding-agent" class="resource-link" target="_blank">
+            <a href="https://github.com/microsoft/upgrade-agent-plugins/blob/main/cloud-agent/README.md" class="resource-link" target="_blank">
                 <span class="resource-icon">⚡</span>
                 <div>
-                    <strong>modernize-dotnet agent setup for GitHub Copilot Cloud Agent</strong>
+                    <strong>Upgrade agent setup for GitHub Copilot Cloud Agent</strong>
                     <span>Configure autonomous upgrades on GitHub.com</span>
                 </div>
             </a>
