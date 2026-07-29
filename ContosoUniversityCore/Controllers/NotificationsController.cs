@@ -1,0 +1,74 @@
+#nullable disable
+
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using ContosoUniversityCore.Services;
+using ContosoUniversityCore.Data;
+using ContosoUniversityCore.Models;
+
+namespace ContosoUniversityCore.Controllers
+{
+    public class NotificationsController : BaseController
+    {
+        public NotificationsController(SchoolContext db, NotificationService notificationService, IWebHostEnvironment webHostEnvironment)
+            : base(db, notificationService, webHostEnvironment)
+        {
+        }
+
+        // GET: api/notifications - Get pending notifications for admin
+        [HttpGet]
+        public JsonResult GetNotifications()
+        {
+            var notifications = new List<Notification>();
+            
+            try
+            {
+                // Read all available notifications from the queue
+                Notification notification;
+                while ((notification = notificationService.ReceiveNotification()) != null)
+                {
+                    notifications.Add(notification);
+                    
+                    // Limit to prevent overwhelming the UI
+                    if (notifications.Count >= 10)
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error retrieving notifications: {ex.Message}");
+                return Json(new { success = false, message = "Error retrieving notifications" });
+            }
+
+            return Json(new { 
+                success = true, 
+                notifications = notifications,
+                count = notifications.Count 
+            });
+        }
+
+        // POST: api/notifications/mark-read
+        [HttpPost]
+        public JsonResult MarkAsRead(int id)
+        {
+            try
+            {
+                notificationService.MarkAsRead(id);
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error marking notification as read: {ex.Message}");
+                return Json(new { success = false, message = "Error updating notification" });
+            }
+        }
+
+        // GET: Notifications/Index - Admin notification dashboard
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
