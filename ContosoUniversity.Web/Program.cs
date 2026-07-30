@@ -14,10 +14,6 @@ builder.Services.AddDbContext<SchoolContext>(options =>
 // Register NotificationService
 builder.Services.AddScoped<NotificationService>();
 
-// Add YARP reverse proxy to forward unimplemented routes to the legacy project
-builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,14 +30,10 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-// Map controllers — implemented routes take priority over the YARP fallback
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
-// YARP fallback: forward any unmatched routes to the legacy ASP.NET Framework project
-app.MapReverseProxy();
 
 app.Run();
 
