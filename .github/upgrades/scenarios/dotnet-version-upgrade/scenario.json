@@ -3,11 +3,13 @@
   "operationId": "fd2d3189-642d-48d2-843e-33b06db8d985",
   "description": "Upgrade .NET projects to newer .NET versions, including guidance on current release status, support lifecycle (LTS/STS), and recommended upgrade targets.",
   "startTime": "2026-07-30T15:43:08.328411Z",
-  "lastUpdateTime": "2026-07-30T15:58:47.8006736Z",
+  "lastUpdateTime": "2026-07-30T16:00:30.1155739Z",
   "properties": {
     "taskStates": {
       "01-prerequisites": "Completed",
-      "02-scaffold-contoso": "Completed"
+      "02-scaffold-contoso": "Completed",
+      "03-migrate-contoso": "InProgress",
+      "03.01-models-data": "InProgress"
     }
   },
   "folderPath": ""

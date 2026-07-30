@@ -1,4 +1,5 @@
 using ContosoUniversity.Web.Data;
+using ContosoUniversity.Web.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddControllersWithViews();
 // Add EF Core with SQL Server
 builder.Services.AddDbContext<SchoolContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register NotificationService
+builder.Services.AddScoped<NotificationService>();
 
 // Add YARP reverse proxy to forward unimplemented routes to the legacy project
 builder.Services.AddReverseProxy()
