@@ -416,3 +416,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# .NET modernize
+.github/upgrades/scenarios/dotnet-version-upgrade/
+*.exe
