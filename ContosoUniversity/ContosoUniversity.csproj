@@ -20,7 +20,6 @@
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Messaging" />
@@ -34,12 +33,6 @@
   <ItemGroup>
     <Content Include="ROLE_SETUP_GUIDE.md" />
     <Content Include="Uploads\TeachingMaterials\course_1045_2b7f6522-b007-4c5d-9304-57b3ef4a182c.jpg" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Uploads\TeachingMaterials\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +60,16 @@
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="4.0.0" />
     <PackageReference Include="Modernizr" Version="2.6.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.12" />
     <PackageReference Include="WebGrease" Version="1.5.2" />
   </ItemGroup>
   <ItemGroup Label="Compile items now included by globbing that were not in the original project file">
     <Compile Remove="Services\LoggingService.cs" />
   </ItemGroup>
+  <!-- ConfigurationManager on .NET resolves settings from an explicit file map (see SchoolContextFactory),
+       backed by a copy of Web.config placed next to the build output under a name that can't collide with
+       the SDK's own generated IIS web.config. -->
+  <Target Name="CopyLegacyConfigForConfigurationManager" AfterTargets="Build;Publish">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Web.config" DestinationFiles="$(OutDir)legacy.config" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildProjectDirectory)\Web.config')" />
+  </Target>
 </Project>
