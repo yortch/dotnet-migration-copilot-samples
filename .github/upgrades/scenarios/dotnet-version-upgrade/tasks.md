@@ -1,6 +1,6 @@
 # Migration Progress
 
-**Progress**: 10/14 tasks complete <progress value="71" max="100"></progress> 71%
+**Progress**: 11/14 tasks complete <progress value="79" max="100"></progress> 79%
 **Status**: In Progress - Task 03-upgrade-web-project
 
 ## Tasks
@@ -16,7 +16,7 @@
   - ✅ 03.06-notifications-controller-migration: Migrate NotificationsController and its Views/Notifications folder to net10.0 ([Content](tasks/03.06-notifications-controller-migration/task.md), [Progress](tasks/03.06-notifications-controller-migration/progress-details.md))
   - ✅ 03.07-instructors-controller-migration: Migrate InstructorsController (67 API issues) and its Views/Instructors folder to net10.0 ([Content](tasks/03.07-instructors-controller-migration/task.md), [Progress](tasks/03.07-instructors-controller-migration/progress-details.md))
   - ✅ 03.08-departments-controller-migration: Migrate DepartmentsController (94 API issues) and its Views/Departments folder to net10.0 ([Content](tasks/03.08-departments-controller-migration/task.md), [Progress](tasks/03.08-departments-controller-migration/progress-details.md))
-  - 🔲 03.09-students-controller-migration: Migrate StudentsController (91 API issues) and its Views/Students folder to net10.0 ([Content](tasks/03.09-students-controller-migration/task.md))
+  - ✅ 03.09-students-controller-migration: Migrate StudentsController (91 API issues) and its Views/Students folder to net10.0 ([Content](tasks/03.09-students-controller-migration/task.md), [Progress](tasks/03.09-students-controller-migration/progress-details.md))
   - 🔲 03.10-courses-controller-migration: Migrate CoursesController (146 API issues, largest — includes file upload) and its Views/Courses folder to net10.0 ([Content](tasks/03.10-courses-controller-migration/task.md))
 - 🔲 04-final-validation: Build, smoke-test, and document follow-ups ([Content](tasks/04-final-validation/task.md))
 
