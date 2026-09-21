@@ -1,6 +1,6 @@
 # Migration Progress
 
-**Progress**: 7/14 tasks complete <progress value="50" max="100"></progress> 50%
+**Progress**: 8/14 tasks complete <progress value="57" max="100"></progress> 57%
 **Status**: In Progress - Task 03-upgrade-web-project
 
 ## Tasks
@@ -13,7 +13,7 @@
   - ✅ 03.03-legacy-config-migration: Migrate ConfigurationManager connection-string/appSettings reads and Web.config transforms (excludes NotificationService.cs) ([Content](tasks/03.03-legacy-config-migration/task.md), [Progress](tasks/03.03-legacy-config-migration/progress-details.md))
   - ✅ 03.04-msmq-replacement: Replace MSMQ (System.Messaging) usage in NotificationService.cs with a net10.0-compatible queue implementation ([Content](tasks/03.04-msmq-replacement/task.md), [Progress](tasks/03.04-msmq-replacement/progress-details.md))
   - ✅ 03.05-home-controller-migration: Migrate HomeController and its Views/Home folder to net10.0 (minimal API surface) ([Content](tasks/03.05-home-controller-migration/task.md), [Progress](tasks/03.05-home-controller-migration/progress-details.md))
-  - 🔲 03.06-notifications-controller-migration: Migrate NotificationsController and its Views/Notifications folder to net10.0 ([Content](tasks/03.06-notifications-controller-migration/task.md))
+  - ✅ 03.06-notifications-controller-migration: Migrate NotificationsController and its Views/Notifications folder to net10.0 ([Content](tasks/03.06-notifications-controller-migration/task.md), [Progress](tasks/03.06-notifications-controller-migration/progress-details.md))
   - 🔲 03.07-instructors-controller-migration: Migrate InstructorsController (67 API issues) and its Views/Instructors folder to net10.0 ([Content](tasks/03.07-instructors-controller-migration/task.md))
   - 🔲 03.08-departments-controller-migration: Migrate DepartmentsController (94 API issues) and its Views/Departments folder to net10.0 ([Content](tasks/03.08-departments-controller-migration/task.md))
   - 🔲 03.09-students-controller-migration: Migrate StudentsController (91 API issues) and its Views/Students folder to net10.0 ([Content](tasks/03.09-students-controller-migration/task.md))
