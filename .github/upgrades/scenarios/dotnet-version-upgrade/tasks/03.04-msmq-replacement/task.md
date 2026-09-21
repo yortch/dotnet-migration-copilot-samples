@@ -20,3 +20,10 @@ This subtask must complete before subtask 03.06 (`NotificationsController` migra
 - Public method signatures (`SendNotification`, `ReceiveNotification`, `MarkAsRead`) are unchanged.
 - `System.Messaging` reference is removed from the csproj.
 - The replacement technology decision is documented (comment + task note).
+
+## Research findings (added during execution)
+- `NotificationService.cs` is the sole `System.Messaging` consumer; `BaseController` instantiates it directly (`new NotificationService()`, no DI), so the parameterless constructor must be preserved.
+- Per the dispatcher's guidance, followed the `migrating-to-msmq-messaging` skill's default: `MSMQ.Messaging` NuGet package (v1.0.4, confirmed net10.0-supported), a namespace-only drop-in replacement — no custom Channels/Sqlite queue was built.
+- Confirmed the MSMQ Windows service is installed and running on this dev machine (`Get-Service -Name MSMQ`), so the migrated code is also runtime-testable here, not just compile-testable.
+- Reused 03.03's `ConfigurationManager.OpenMappedExeConfiguration` + explicit `legacy.config` pattern (from `SchoolContextFactory`) for the `NotificationQueuePath` read, instead of the implicit `ConfigurationManager.AppSettings[...]` convention, for consistency with the rest of the codebase.
+- See `progress-details.md` for full detail.

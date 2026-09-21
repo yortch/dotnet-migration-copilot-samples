@@ -1,6 +1,6 @@
 # Migration Progress
 
-**Progress**: 5/14 tasks complete <progress value="36" max="100"></progress> 36%
+**Progress**: 6/14 tasks complete <progress value="43" max="100"></progress> 43%
 **Status**: In Progress - Task 03-upgrade-web-project
 
 ## Tasks
@@ -11,7 +11,7 @@
   - ✅ 03.01-tfm-packages-bindingredirects: Retarget csproj to net10.0, resolve 37 package issues, document binding redirects ([Content](tasks/03.01-tfm-packages-bindingredirects/task.md), [Progress](tasks/03.01-tfm-packages-bindingredirects/progress-details.md))
   - ✅ 03.02-systemweb-adapters-scaffolding: Wire up System.Web Adapters hosting, migrate Global.asax/App_Start, BaseController, and bundling/static assets ([Content](tasks/03.02-systemweb-adapters-scaffolding/task.md), [Progress](tasks/03.02-systemweb-adapters-scaffolding/progress-details.md))
   - ✅ 03.03-legacy-config-migration: Migrate ConfigurationManager connection-string/appSettings reads and Web.config transforms (excludes NotificationService.cs) ([Content](tasks/03.03-legacy-config-migration/task.md), [Progress](tasks/03.03-legacy-config-migration/progress-details.md))
-  - 🔲 03.04-msmq-replacement: Replace MSMQ (System.Messaging) usage in NotificationService.cs with a net10.0-compatible queue implementation ([Content](tasks/03.04-msmq-replacement/task.md))
+  - ✅ 03.04-msmq-replacement: Replace MSMQ (System.Messaging) usage in NotificationService.cs with a net10.0-compatible queue implementation ([Content](tasks/03.04-msmq-replacement/task.md), [Progress](tasks/03.04-msmq-replacement/progress-details.md))
   - 🔲 03.05-home-controller-migration: Migrate HomeController and its Views/Home folder to net10.0 (minimal API surface) ([Content](tasks/03.05-home-controller-migration/task.md))
   - 🔲 03.06-notifications-controller-migration: Migrate NotificationsController and its Views/Notifications folder to net10.0 ([Content](tasks/03.06-notifications-controller-migration/task.md))
   - 🔲 03.07-instructors-controller-migration: Migrate InstructorsController (67 API issues) and its Views/Instructors folder to net10.0 ([Content](tasks/03.07-instructors-controller-migration/task.md))
