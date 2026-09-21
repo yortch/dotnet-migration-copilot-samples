@@ -25,7 +25,7 @@ namespace ContosoUniversity.Data
             {
                 ExeConfigFilename = Path.Combine(AppContext.BaseDirectory, "legacy.config")
             };
-            var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+            var config = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
             return config.ConnectionStrings.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
     }

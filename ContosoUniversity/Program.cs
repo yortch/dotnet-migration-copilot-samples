@@ -1,4 +1,9 @@
 using ContosoUniversity.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.SystemWebAdapters;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +21,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseStaticFiles();
+
+// Uploads/TeachingMaterials lives at the app root, not wwwroot, so it needs its own static file mapping
+// (parity with the classic Server.MapPath("~/Uploads/...") used to save/serve teaching material images).
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath, "Uploads")),
+    RequestPath = "/Uploads"
+});
 
 app.UseRouting();
 
