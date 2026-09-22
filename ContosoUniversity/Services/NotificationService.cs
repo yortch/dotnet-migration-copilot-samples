@@ -1,20 +1,20 @@
 using System;
-using System.Messaging;
-using System.Configuration;
+using MSMQ.Messaging;
 using ContosoUniversity.Models;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace ContosoUniversity.Services
 {
-    public class NotificationService
+    public class NotificationService : IDisposable
     {
         private readonly string _queuePath;
         private readonly MessageQueue _queue;
 
-        public NotificationService()
+        public NotificationService(IOptions<NotificationQueueOptions> options)
         {
             // Get queue path from configuration or use default
-            _queuePath = ConfigurationManager.AppSettings["NotificationQueuePath"] ?? @".\Private$\ContosoUniversityNotifications";
+            _queuePath = options?.Value?.QueuePath ?? @".\Private$\ContosoUniversityNotifications";
             
             // Ensure the queue exists
             if (!MessageQueue.Exists(_queuePath))
