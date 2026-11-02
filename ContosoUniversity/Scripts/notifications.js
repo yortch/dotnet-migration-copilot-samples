@@ -7,6 +7,7 @@
         notificationCount: 0,
         checkInterval: 5000, // Check every 5 seconds
         maxNotifications: 5,
+        seenNotifications: new Set(),
 
         init: function() {
             this.createContainer();
@@ -49,7 +50,11 @@
             .then(function(data) {
                 if (data.success && data.notifications && data.notifications.length > 0) {
                     data.notifications.forEach(function(notification) {
-                        self.showNotification(notification);
+                        if (!self.seenNotifications.has(notification.Id)) {
+                            self.seenNotifications.add(notification.Id);
+                            self.showNotification(notification);
+                        }
+                        self.markAsRead(notification.Id);
                     });
                 }
             })
@@ -61,7 +66,6 @@
         showNotification: function(notification) {
             var self = this;
             
-            // Create notification element
             var notificationEl = document.createElement('div');
             notificationEl.className = 'notification notification-info';
             
@@ -76,14 +80,27 @@
             notificationEl.className = 'notification notification-' + type;
             
             var timeAgo = this.getTimeAgo(new Date(notification.CreatedAt));
-            
-            notificationEl.innerHTML = 
-                '<button class="notification-close" onclick="NotificationSystem.closeNotification(this)">&times;</button>' +
-                '<div class="notification-title">' + notification.Operation + ' - ' + notification.EntityType + '</div>' +
-                '<div class="notification-message">' + notification.Message + '</div>' +
-                '<div class="notification-time">By ' + notification.CreatedBy + ' • ' + timeAgo + '</div>';
-            
-            // Add to container
+            var closeButton = document.createElement('button');
+            closeButton.className = 'notification-close';
+            closeButton.type = 'button';
+            closeButton.textContent = '×';
+            closeButton.addEventListener('click', function() {
+                self.closeNotification(closeButton);
+            });
+
+            var title = document.createElement('div');
+            title.className = 'notification-title';
+            title.textContent = notification.Operation + ' - ' + notification.EntityType;
+
+            var message = document.createElement('div');
+            message.className = 'notification-message';
+            message.textContent = notification.Message;
+
+            var time = document.createElement('div');
+            time.className = 'notification-time';
+            time.textContent = 'By ' + notification.CreatedBy + ' • ' + timeAgo;
+
+            notificationEl.append(closeButton, title, message, time);
             this.container.appendChild(notificationEl);
             
             // Animate in
@@ -98,6 +115,23 @@
             
             // Limit number of notifications
             this.limitNotifications();
+        },
+
+        markAsRead: function(id) {
+            var tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (!tokenElement) {
+                return;
+            }
+            var token = tokenElement.value;
+            fetch('/Notifications/MarkAsRead?id=' + encodeURIComponent(id), {
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': token
+                },
+                credentials: 'same-origin'
+            }).catch(function(error) {
+                console.log('Error marking notification as read:', error);
+            });
         },
 
         closeNotification: function(closeButton) {
