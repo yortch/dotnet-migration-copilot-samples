@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "Admin Notifications";
+    ViewBag.Title = "Notifications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +10,7 @@
         
         <div class="alert alert-info" role="alert">
             <strong>Real-time Notifications</strong><br />
-            As an administrator, you will receive notifications in the top-right corner when any entity (students, courses, instructors, departments) is created, updated, or deleted by any user in the system.
+            Authenticated users receive notifications in the top-right corner when students, courses, instructors, or departments are created, updated, or deleted.
         </div>
         
         <div class="card">
@@ -72,20 +72,20 @@
             </div>
             <div class="panel-body">
                 <div class="alert alert-warning" role="alert">
-                    <strong>Note:</strong> This notification system uses Microsoft Message Queuing (MSMQ) as the underlying technology for reliable message delivery.
+                    <strong>Note:</strong> Notifications are stored in the SQL Server database and marked as read after delivery.
                 </div>
                 
                 <h4>Features:</h4>
                 <ul>
                     <li><strong>Real-time delivery</strong> - Notifications appear immediately when operations occur</li>
-                    <li><strong>Reliable messaging</strong> - MSMQ ensures messages are not lost</li>
-                    <li><strong>Admin-only</strong> - Only administrators receive these notifications</li>
+                    <li><strong>Persistent delivery</strong> - Notifications remain in the database until delivered</li>
+                    <li><strong>Authenticated access</strong> - Windows authentication protects the application</li>
                     <li><strong>Auto-dismiss</strong> - Notifications automatically disappear after 8 seconds</li>
                     <li><strong>User-friendly</strong> - Click the × to dismiss notifications manually</li>
                 </ul>
                 
-                <h4>Queue Information:</h4>
-                <p><strong>Queue Path:</strong> <code>.\\Private$\\ContosoUniversityNotifications</code></p>
+                <h4>Storage Information:</h4>
+                <p><strong>Table:</strong> <code>Notification</code></p>
                 <p><strong>Check Interval:</strong> 5 seconds</p>
                 <p><strong>Max Visible Notifications:</strong> 5 at a time</p>
             </div>

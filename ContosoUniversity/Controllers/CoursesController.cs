@@ -54,8 +54,36 @@ namespace ContosoUniversity.Controllers
             return View(new Course());
         }
 
+        [HttpGet("/Uploads/TeachingMaterials/{fileName}")]
+        public ActionResult TeachingMaterialImage(string fileName)
+        {
+            if (Path.GetFileName(fileName) != fileName)
+            {
+                return NotFound();
+            }
+
+            var contentType = Path.GetExtension(fileName).ToLowerInvariant() switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                ".bmp" => "image/bmp",
+                _ => null
+            };
+            if (contentType == null)
+            {
+                return NotFound();
+            }
+
+            var filePath = Path.Combine(GetUploadsPath(), fileName);
+            return System.IO.File.Exists(filePath)
+                ? PhysicalFile(filePath, contentType)
+                : NotFound();
+        }
+
         // POST: Courses/Create
         [HttpPost]
+        [RequestSizeLimit(10 * 1024 * 1024)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind("CourseID,Title,Credits,DepartmentID")] Course course, IFormFile teachingMaterialImage)
         {
@@ -102,7 +130,8 @@ namespace ContosoUniversity.Controllers
                     }
                     catch (Exception ex)
                     {
-                        ModelState.AddModelError("teachingMaterialImage", "Error uploading file: " + ex.Message);
+                        System.Diagnostics.Debug.WriteLine($"Error uploading course image: {ex.Message}");
+                        ModelState.AddModelError("teachingMaterialImage", "Unable to upload the image. Please try again.");
                         ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name", course.DepartmentID);
                         return View(course);
                     }
@@ -139,6 +168,7 @@ namespace ContosoUniversity.Controllers
 
         // POST: Courses/Edit/5
         [HttpPost]
+        [RequestSizeLimit(10 * 1024 * 1024)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind("CourseID,Title,Credits,DepartmentID")] Course course, IFormFile teachingMaterialImage)
         {
@@ -147,6 +177,7 @@ namespace ContosoUniversity.Controllers
             {
                 return NotFound();
             }
+            course.TeachingMaterialImagePath = existingCourse.TeachingMaterialImagePath;
 
             if (ModelState.IsValid)
             {
@@ -182,26 +213,28 @@ namespace ContosoUniversity.Controllers
                         var fileName = $"course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}";
                         var filePath = Path.Combine(uploadsPath, fileName);
 
-                        // Delete old file if exists
-                        if (!string.IsNullOrEmpty(existingCourse.TeachingMaterialImagePath))
-                        {
-                            var oldFilePath = GetUploadPath(existingCourse.TeachingMaterialImagePath);
-                            if (System.IO.File.Exists(oldFilePath))
-                            {
-                                System.IO.File.Delete(oldFilePath);
-                            }
-                        }
-
-                        // Save new file
                         using (var stream = System.IO.File.Create(filePath))
                         {
                             teachingMaterialImage.CopyTo(stream);
                         }
+                        var oldFilePath = GetUploadPath(existingCourse.TeachingMaterialImagePath);
                         existingCourse.TeachingMaterialImagePath = $"~/Uploads/TeachingMaterials/{fileName}";
+                        if (System.IO.File.Exists(oldFilePath))
+                        {
+                            try
+                            {
+                                System.IO.File.Delete(oldFilePath);
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Error deleting replaced course image: {ex.Message}");
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
-                        ModelState.AddModelError("teachingMaterialImage", "Error uploading file: " + ex.Message);
+                        System.Diagnostics.Debug.WriteLine($"Error uploading course image: {ex.Message}");
+                        ModelState.AddModelError("teachingMaterialImage", "Unable to upload the image. Please try again.");
                         ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name", course.DepartmentID);
                         return View(course);
                     }
@@ -249,27 +282,25 @@ namespace ContosoUniversity.Controllers
             }
             var courseTitle = course.Title;
             
-            // Delete associated image file if it exists
-            if (!string.IsNullOrEmpty(course.TeachingMaterialImagePath))
+            var imagePath = course.TeachingMaterialImagePath;
+            db.Courses.Remove(course);
+            db.SaveChanges();
+
+            if (!string.IsNullOrEmpty(imagePath))
             {
-                var filePath = GetUploadPath(course.TeachingMaterialImagePath);
-                if (System.IO.File.Exists(filePath))
+                var filePath = GetUploadPath(imagePath);
+                try
                 {
-                    try
+                    if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
                     }
-                    catch (Exception ex)
-                    {
-                        // Log the error but don't prevent deletion of the course
-                        // In a production application, you would log this error properly
-                        System.Diagnostics.Debug.WriteLine($"Error deleting file: {ex.Message}");
-                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error deleting course image: {ex.Message}");
                 }
             }
-            
-            db.Courses.Remove(course);
-            db.SaveChanges();
             
             // Send notification for course deletion
             SendEntityNotification("Course", id.ToString(), courseTitle, EntityOperation.DELETE);
@@ -279,7 +310,7 @@ namespace ContosoUniversity.Controllers
 
         private string GetUploadsPath()
         {
-            return Path.Combine(_environment.WebRootPath, "Uploads", "TeachingMaterials");
+            return Path.Combine(_environment.ContentRootPath, "Uploads", "TeachingMaterials");
         }
 
         private string GetUploadPath(string relativePath)

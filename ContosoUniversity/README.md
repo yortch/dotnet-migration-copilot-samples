@@ -1,65 +1,38 @@
-# Contoso University - .NET Framework 4.8.2
+# Contoso University
 
-This project is a ASP.NET MVC 5 targeting .NET Framework 4.8.2.
-
-## Project Overview
-
-### Framework
-- ASP.NET MVC 5 (.NET Framework 4.8.2)
-
-### Database Access: Entity Framework
-- Entity Framework Core 3.1.32
-
-### Project Structure
-```
-ContosoUniversity/
-├── App_Start/              # Application startup configuration
-├── Controllers/            # MVC Controllers
-├── Data/                   # Entity Framework context and initializer
-├── Models/                 # Data models and view models
-├── Views/                  # Razor views
-├── Content/                # CSS and other content
-├── Scripts/                # JavaScript files
-├── Properties/             # Assembly properties
-├── Global.asax             # Application global events
-├── Web.config              # Configuration file
-└── packages.config         # NuGet packages
-```
-
-## Database Configuration
-
-The application uses SQL Server LocalDB with the following connection string in `Web.config`:
-```xml
-  <connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=ContosoUniversityNoAuthEFCore;Integrated Security=True;MultipleActiveResultSets=True" />
-  </connectionStrings>
-```
-
-## Running the Application
-
-1. **Prerequisites**:
-   - Visual Studio 2019 or later
-   - IIS Express
-   - SQL Server LocalDB
-   - Microsoft Message Queue (MSMQ) Server enabled
-
-2. **Setup**:
-   - Open the project in Visual Studio
-   - Restore NuGet packages
-   - Build the solution
-   - Run using IIS Express
+Contoso University is an ASP.NET Core MVC application targeting .NET 10. It uses Entity Framework Core 10 with SQL Server.
 
 ## Features
 
-- **Student Management**: CRUD operations for students with pagination and search
-- **Course Management**: Manage courses and their assignments to departments
-- **Instructor Management**: Handle instructor assignments and office locations
-- **Department Management**: Manage departments and their administrators
-- **Statistics**: View enrollment statistics by date
+- Student management with search, sorting, and pagination
+- Course, instructor, and department management
+- Enrollment statistics
+- Teaching-material image uploads
+- Database-backed notifications
+- Windows authentication using Negotiate
 
-## Database Initialization
+## Requirements
 
-The application uses Entity Framework Core Code First with a database initializer that:
-- Creates the database if it doesn't exist
-- Seeds sample data including students, instructors, courses, and departments
-- Handles model changes by recreating the database
+- .NET 10 SDK
+- SQL Server LocalDB or a compatible SQL Server instance
+- Windows for Negotiate authentication and the default LocalDB connection
+
+## Run
+
+From this directory:
+
+```powershell
+dotnet restore
+dotnet build ContosoUniversity.sln
+dotnet run --project ContosoUniversity.csproj
+```
+
+The default connection string is in `appsettings.json`. Override it with the `ConnectionStrings__DefaultConnection` environment variable when using another SQL Server instance.
+
+On startup, the application creates the database if it does not exist and seeds the sample data. `EnsureCreated` does not apply schema changes to an existing database; use a reviewed database migration when changing an established schema.
+
+## Notifications and uploads
+
+Notifications are stored in the `Notification` table and fetched by the browser every five seconds. Marking a notification as read updates its database record. Uploaded images are stored under `Uploads/TeachingMaterials` outside the public static-file directory and are served through an authenticated controller endpoint.
+
+Static CSS and JavaScript assets are served from `wwwroot/`.
