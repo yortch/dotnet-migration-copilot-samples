@@ -1,0 +1,25 @@
+{
+  "scenarioId": "dotnet-version-upgrade",
+  "operationId": "fd2d3189-642d-48d2-843e-33b06db8d985",
+  "description": "Upgrade .NET projects to newer .NET versions, including guidance on current release status, support lifecycle (LTS/STS), and recommended upgrade targets.",
+  "startTime": "2026-07-30T15:43:08.328411Z",
+  "lastUpdateTime": "2026-07-30T16:19:32.1888896Z",
+  "properties": {
+    "taskStates": {
+      "01-prerequisites": "Completed",
+      "02-scaffold-contoso": "Completed",
+      "03-migrate-contoso": "Completed",
+      "03.01-models-data": "Completed",
+      "03.02-services": "Completed",
+      "03.03-base-home": "Completed",
+      "03.04-students": "Completed",
+      "03.05-courses": "Completed",
+      "03.06-instructors": "Completed",
+      "03.07-departments": "Completed",
+      "03.08-notifications": "Completed",
+      "03.09-static-views": "Completed",
+      "04-final-validation": "Completed"
+    }
+  },
+  "folderPath": ""
+}
