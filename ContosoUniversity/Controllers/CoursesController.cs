@@ -54,7 +54,7 @@ namespace ContosoUniversity.Controllers
         // POST: Courses/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath")] Course course, IFormFile teachingMaterialImage)
+        public IActionResult Create([Bind("CourseID,Title,Credits,DepartmentID")] Course course, IFormFile teachingMaterialImage)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace ContosoUniversity.Controllers
                 {
                     // Validate file type
                     var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
-                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();
+                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLowerInvariant();
                     
                     if (!allowedExtensions.Contains(fileExtension))
                     {
@@ -83,8 +83,8 @@ namespace ContosoUniversity.Controllers
                     try
                     {
                         // Create uploads directory if it doesn't exist
-                            var uploadsPath = Path.Combine(_environment.WebRootPath, "Uploads", "TeachingMaterials");
-                            Directory.CreateDirectory(uploadsPath);
+                        var uploadsPath = Path.Combine(_environment.WebRootPath, "Uploads", "TeachingMaterials");
+                        Directory.CreateDirectory(uploadsPath);
 
                         // Generate unique filename
                         var fileName = $"course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}";
@@ -137,8 +137,15 @@ namespace ContosoUniversity.Controllers
         // POST: Courses/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("CourseID,Title,Credits,DepartmentID,TeachingMaterialImagePath")] Course course, IFormFile teachingMaterialImage)
+        public IActionResult Edit([Bind("CourseID,Title,Credits,DepartmentID")] Course course, IFormFile teachingMaterialImage)
         {
+            var existingCourse = db.Courses.Find(course.CourseID);
+            if (existingCourse == null)
+            {
+                return NotFound();
+            }
+
+            course.TeachingMaterialImagePath = existingCourse.TeachingMaterialImagePath;
             if (ModelState.IsValid)
             {
                 // Handle file upload if a new image is provided
@@ -146,7 +153,7 @@ namespace ContosoUniversity.Controllers
                 {
                     // Validate file type
                     var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
-                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLower();
+                    var fileExtension = Path.GetExtension(teachingMaterialImage.FileName).ToLowerInvariant();
                     
                     if (!allowedExtensions.Contains(fileExtension))
                     {
@@ -173,22 +180,13 @@ namespace ContosoUniversity.Controllers
                         var fileName = $"course_{course.CourseID}_{Guid.NewGuid()}{fileExtension}";
                         var filePath = Path.Combine(uploadsPath, fileName);
 
-                        // Delete old file if exists
-                        if (!string.IsNullOrEmpty(course.TeachingMaterialImagePath))
-                        {
-                            var oldFilePath = GetImageFilePath(course.TeachingMaterialImagePath);
-                            if (System.IO.File.Exists(oldFilePath))
-                            {
-                                System.IO.File.Delete(oldFilePath);
-                            }
-                        }
-
                         // Save new file
                         using (var fileStream = new FileStream(filePath, FileMode.CreateNew))
                         {
                             teachingMaterialImage.CopyTo(fileStream);
                         }
                         course.TeachingMaterialImagePath = $"~/Uploads/TeachingMaterials/{fileName}";
+                        DeleteTeachingMaterialImage(existingCourse.TeachingMaterialImagePath);
                     }
                     catch (Exception ex)
                     {
@@ -198,7 +196,10 @@ namespace ContosoUniversity.Controllers
                     }
                 }
 
-                db.Entry(course).State = EntityState.Modified;
+                existingCourse.Title = course.Title;
+                existingCourse.Credits = course.Credits;
+                existingCourse.DepartmentID = course.DepartmentID;
+                existingCourse.TeachingMaterialImagePath = course.TeachingMaterialImagePath;
                 db.SaveChanges();
                 
                 // Send notification for course update
@@ -231,26 +232,13 @@ namespace ContosoUniversity.Controllers
         public IActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
             var courseTitle = course.Title;
             
-            // Delete associated image file if it exists
-            if (!string.IsNullOrEmpty(course.TeachingMaterialImagePath))
-            {
-                var filePath = GetImageFilePath(course.TeachingMaterialImagePath);
-                if (System.IO.File.Exists(filePath))
-                {
-                    try
-                    {
-                        System.IO.File.Delete(filePath);
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log the error but don't prevent deletion of the course
-                        // In a production application, you would log this error properly
-                        System.Diagnostics.Debug.WriteLine($"Error deleting file: {ex.Message}");
-                    }
-                }
-            }
+            DeleteTeachingMaterialImage(course.TeachingMaterialImagePath);
             
             db.Courses.Remove(course);
             db.SaveChanges();
@@ -261,9 +249,46 @@ namespace ContosoUniversity.Controllers
             return RedirectToAction("Index");
         }
 
+        private void DeleteTeachingMaterialImage(string imagePath)
+        {
+            var filePath = GetImageFilePath(imagePath);
+            if (filePath != null && System.IO.File.Exists(filePath))
+            {
+                try
+                {
+                    System.IO.File.Delete(filePath);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error deleting file: {ex.Message}");
+                }
+            }
+        }
+
         private string GetImageFilePath(string imagePath)
         {
-            return Path.Combine(_environment.WebRootPath, "Uploads", "TeachingMaterials", Path.GetFileName(imagePath));
+            const string imagePathPrefix = "~/Uploads/TeachingMaterials/";
+            if (string.IsNullOrWhiteSpace(imagePath)
+                || !imagePath.StartsWith(imagePathPrefix, StringComparison.Ordinal))
+            {
+                return null;
+            }
+
+            var fileName = imagePath[imagePathPrefix.Length..];
+            var extension = Path.GetExtension(fileName).ToLowerInvariant();
+            var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+            var parts = fileNameWithoutExtension.Split('_');
+            if (parts.Length != 3
+                || parts[0] != "course"
+                || !int.TryParse(parts[1], out var courseId)
+                || !Guid.TryParse(parts[2], out var imageId)
+                || !new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" }.Contains(extension))
+            {
+                return null;
+            }
+
+            var safeFileName = $"course_{courseId}_{imageId:D}{extension}";
+            return Path.Combine(_environment.WebRootPath, "Uploads", "TeachingMaterials", safeFileName);
         }
     }
 }
