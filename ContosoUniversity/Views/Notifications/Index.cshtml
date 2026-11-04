@@ -1,16 +1,16 @@
 @{
-    ViewBag.Title = "Admin Notifications";
+    ViewBag.Title = "Notifications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewBag.Title</h2>
-        <p class="text-muted">Real-time notifications for entity operations across the system.</p>
+        <p class="text-muted">Notifications for entity operations during this application session.</p>
         
         <div class="alert alert-info" role="alert">
-            <strong>Real-time Notifications</strong><br />
-            As an administrator, you will receive notifications in the top-right corner when any entity (students, courses, instructors, departments) is created, updated, or deleted by any user in the system.
+            <strong>Notifications</strong><br />
+            Entity changes are placed in an in-memory queue and displayed in the top-right corner while this application instance is running.
         </div>
         
         <div class="card">
@@ -72,20 +72,17 @@
             </div>
             <div class="panel-body">
                 <div class="alert alert-warning" role="alert">
-                    <strong>Note:</strong> This notification system uses Microsoft Message Queuing (MSMQ) as the underlying technology for reliable message delivery.
+                    <strong>Note:</strong> Notifications are stored in process memory and are lost when the application restarts.
                 </div>
                 
                 <h4>Features:</h4>
                 <ul>
                     <li><strong>Real-time delivery</strong> - Notifications appear immediately when operations occur</li>
-                    <li><strong>Reliable messaging</strong> - MSMQ ensures messages are not lost</li>
-                    <li><strong>Admin-only</strong> - Only administrators receive these notifications</li>
+                    <li><strong>Process-local messaging</strong> - Requests to this application instance share a concurrent queue</li>
                     <li><strong>Auto-dismiss</strong> - Notifications automatically disappear after 8 seconds</li>
                     <li><strong>User-friendly</strong> - Click the × to dismiss notifications manually</li>
                 </ul>
                 
-                <h4>Queue Information:</h4>
-                <p><strong>Queue Path:</strong> <code>.\\Private$\\ContosoUniversityNotifications</code></p>
                 <p><strong>Check Interval:</strong> 5 seconds</p>
                 <p><strong>Max Visible Notifications:</strong> 5 at a time</p>
             </div>
@@ -95,10 +92,10 @@
             <h4>Quick Test</h4>
             <p>To test the notification system, try performing any of the following operations:</p>
             <ul>
-                <li>@Html.ActionLink("Create a new student", "Create", "Students", null, new { @class = "btn btn-sm btn-primary" })</li>
-                <li>@Html.ActionLink("Create a new course", "Create", "Courses", null, new { @class = "btn btn-sm btn-success" })</li>
-                <li>@Html.ActionLink("Create a new instructor", "Create", "Instructors", null, new { @class = "btn btn-sm btn-warning" })</li>
-                <li>@Html.ActionLink("Create a new department", "Create", "Departments", null, new { @class = "btn btn-sm btn-info" })</li>
+                <li><a class="btn btn-sm btn-primary" asp-controller="Students" asp-action="Create">Create a new student</a></li>
+                <li><a class="btn btn-sm btn-success" asp-controller="Courses" asp-action="Create">Create a new course</a></li>
+                <li><a class="btn btn-sm btn-warning" asp-controller="Instructors" asp-action="Create">Create a new instructor</a></li>
+                <li><a class="btn btn-sm btn-info" asp-controller="Departments" asp-action="Create">Create a new department</a></li>
             </ul>
             <p class="text-muted">After creating, editing, or deleting any entity, you should see a notification appear in the top-right corner of your screen.</p>
         </div>

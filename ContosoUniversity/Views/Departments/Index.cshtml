@@ -7,7 +7,7 @@
 <h2>Departments</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
 
 <table class="table">
@@ -45,11 +45,9 @@
                     @Html.DisplayFor(modelItem => item.Administrator.FullName)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }, new { @class = "btn btn-info btn-sm" })
-                    @Html.Raw(" | ")
-                    @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }, new { @class = "btn btn-warning btn-sm" })
-                    @Html.Raw(" | ")
-                    @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID }, new { @class = "btn btn-danger btn-sm" })
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.DepartmentID">Details</a> |
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.DepartmentID">Edit</a> |
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.DepartmentID">Delete</a>
                 </td>
             </tr>
         }

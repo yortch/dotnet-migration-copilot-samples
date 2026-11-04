@@ -1,65 +1,28 @@
-# Contoso University - .NET Framework 4.8.2
+# Contoso University
 
-This project is a ASP.NET MVC 5 targeting .NET Framework 4.8.2.
+Contoso University is an ASP.NET Core MVC application targeting .NET 10. It uses Entity Framework Core 10 with SQL Server and includes CRUD pages for students, courses, instructors, and departments.
 
-## Project Overview
+## Requirements
 
-### Framework
-- ASP.NET MVC 5 (.NET Framework 4.8.2)
+- .NET 10 SDK
+- SQL Server LocalDB or another SQL Server instance
 
-### Database Access: Entity Framework
-- Entity Framework Core 3.1.32
+## Run the application
 
-### Project Structure
-```
-ContosoUniversity/
-├── App_Start/              # Application startup configuration
-├── Controllers/            # MVC Controllers
-├── Data/                   # Entity Framework context and initializer
-├── Models/                 # Data models and view models
-├── Views/                  # Razor views
-├── Content/                # CSS and other content
-├── Scripts/                # JavaScript files
-├── Properties/             # Assembly properties
-├── Global.asax             # Application global events
-├── Web.config              # Configuration file
-└── packages.config         # NuGet packages
+From this directory:
+
+```powershell
+dotnet restore
+dotnet run
 ```
 
-## Database Configuration
+By default, the application connects to SQL Server LocalDB using the connection string in `appsettings.json`. Override it by setting the `ConnectionStrings__DefaultConnection` environment variable. On startup, the application creates the database if needed and seeds sample data when no students are present.
 
-The application uses SQL Server LocalDB with the following connection string in `Web.config`:
-```xml
-  <connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=ContosoUniversityNoAuthEFCore;Integrated Security=True;MultipleActiveResultSets=True" />
-  </connectionStrings>
-```
+Teaching material images are stored under `wwwroot/Uploads/TeachingMaterials`. The notification queue is in memory and is cleared when the application restarts; it is intended for local development and does not provide durable or multi-instance messaging.
 
-## Running the Application
+## Project structure
 
-1. **Prerequisites**:
-   - Visual Studio 2019 or later
-   - IIS Express
-   - SQL Server LocalDB
-   - Microsoft Message Queue (MSMQ) Server enabled
-
-2. **Setup**:
-   - Open the project in Visual Studio
-   - Restore NuGet packages
-   - Build the solution
-   - Run using IIS Express
-
-## Features
-
-- **Student Management**: CRUD operations for students with pagination and search
-- **Course Management**: Manage courses and their assignments to departments
-- **Instructor Management**: Handle instructor assignments and office locations
-- **Department Management**: Manage departments and their administrators
-- **Statistics**: View enrollment statistics by date
-
-## Database Initialization
-
-The application uses Entity Framework Core Code First with a database initializer that:
-- Creates the database if it doesn't exist
-- Seeds sample data including students, instructors, courses, and departments
-- Handles model changes by recreating the database
+- `Controllers/`, `Models/`, and `Views/`: MVC application
+- `Data/`: Entity Framework Core context and sample-data initializer
+- `Services/`: process-local notification queue
+- `Content/` and `Scripts/`: static assets served by ASP.NET Core
