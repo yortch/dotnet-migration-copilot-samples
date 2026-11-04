@@ -1,53 +1,46 @@
-# Contoso University - .NET Framework 4.8.2
+# Contoso University - .NET 10
 
-This project is a ASP.NET MVC 5 targeting .NET Framework 4.8.2.
+This project is an ASP.NET Core MVC application targeting .NET 10 (`net10.0`).
 
 ## Project Overview
 
 ### Framework
-- ASP.NET MVC 5 (.NET Framework 4.8.2)
+- ASP.NET Core MVC (.NET 10)
 
 ### Database Access: Entity Framework
-- Entity Framework Core 3.1.32
+- Entity Framework Core 10
 
 ### Project Structure
 ```
 ContosoUniversity/
-├── App_Start/              # Application startup configuration
 ├── Controllers/            # MVC Controllers
 ├── Data/                   # Entity Framework context and initializer
 ├── Models/                 # Data models and view models
+├── Services/               # Application services (in-memory notifications)
 ├── Views/                  # Razor views
-├── Content/                # CSS and other content
-├── Scripts/                # JavaScript files
-├── Properties/             # Assembly properties
-├── Global.asax             # Application global events
-├── Web.config              # Configuration file
-└── packages.config         # NuGet packages
+├── wwwroot/                # Static files (Content, Scripts)
+├── Program.cs              # Startup and dependency injection
+└── appsettings.json        # Configuration
 ```
 
 ## Database Configuration
 
-The application uses SQL Server LocalDB with the following connection string in `Web.config`:
-```xml
-  <connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=ContosoUniversityNoAuthEFCore;Integrated Security=True;MultipleActiveResultSets=True" />
-  </connectionStrings>
+The application uses SQL Server LocalDB with the following connection string in `appsettings.json`:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(LocalDb)\\MSSQLLocalDB;Database=ContosoUniversityNoAuthEFCore;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
+}
 ```
 
 ## Running the Application
 
 1. **Prerequisites**:
-   - Visual Studio 2019 or later
-   - IIS Express
+   - .NET 10 SDK
    - SQL Server LocalDB
-   - Microsoft Message Queue (MSMQ) Server enabled
 
 2. **Setup**:
-   - Open the project in Visual Studio
-   - Restore NuGet packages
-   - Build the solution
-   - Run using IIS Express
+   - `dotnet build`
+   - `dotnet run` (Kestrel)
 
 ## Features
 
