@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ContosoUniversity.Data;
@@ -41,13 +42,10 @@ namespace ContosoUniversity.Controllers
 
         public IActionResult Error()
         {
-            return View();
-        }
-
-        public IActionResult Unauthorized()
-        {
-            ViewBag.Message = "You don't have permission to access this resource.";
-            return View();
+            return View(new ContosoUniversity.Models.ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
     }
 }
